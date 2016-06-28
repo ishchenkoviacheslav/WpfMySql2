@@ -524,8 +524,7 @@ namespace WpfMySql2
         {
             Setting_DB DbSet = new Setting_DB();
             DbSet.ShowDialog();
-            readAllTableService();
-            MessageBox.Show("");
+            readAllTableService();            
         }
     }
 }
