@@ -7,8 +7,8 @@
         mc:Ignorable="d"
         Title="Detaillierte Information"  Height="593.333"  Width="982">
     <Grid>
-        <Button x:Name="ButtonForEsc" IsCancel="True"  Click="ButtonForEsc_Click" Margin="0,0,5000,5000">
-        </Button>
+        <!--<Button x:Name="ButtonForEsc" IsCancel="True"  Click="ButtonForEsc_Click" Margin="0,0,5000,5000">
+        </Button>-->
         <TextBox x:Name="kundenNrtxt" IsReadOnly="True" HorizontalAlignment="Left" Height="30" Margin="97,10,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="60" FontSize="16" IsTabStop="False"/>
         <Label x:Name="mobil" Content="Mobil:" HorizontalAlignment="Left" Margin="709,47,0,0" VerticalAlignment="Top" Width="74" Height="30" FontSize="16"/>
         <Label x:Name="Ort" Content="Ort:" HorizontalAlignment="Left" Margin="709,12,0,0" VerticalAlignment="Top" Width="74" Height="30" FontSize="16"/>
@@ -80,9 +80,8 @@
         </TabControl>
         <TextBox x:Name="anredeTxt" IsReadOnly="True" HorizontalAlignment="Left" Height="30" Margin="236,10,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="243" FontSize="16" IsTabStop="False"/>
         <ComboBox x:Name="statusCbx" HorizontalAlignment="Left" Margin="566,121,0,0" VerticalAlignment="Top" Width="397" Height="30" Text="" FontSize="16" TabIndex="1"/>
-        <ComboBox x:Name="comboBox" HorizontalAlignment="Left" Margin="97,521,0,0" VerticalAlignment="Top" Width="745" Height="30"/>
-        <Label x:Name="Senden" Content="Senden:" HorizontalAlignment="Left" Margin="9,521,0,0" VerticalAlignment="Top" Width="73" Height="30" FontSize="16"/>
         <Button x:Name="btnOK" IsDefault="True" Content="OK" HorizontalAlignment="Left" Margin="847,521,0,0" VerticalAlignment="Top" Width="119" Height="31" Click="btnOK_Click"/>
         <Label x:Name="statusLabel" Content="Status:" HorizontalAlignment="Left" Margin="484,121,0,0" VerticalAlignment="Top" Width="76" Height="30" FontSize="16"/>
+        <Button x:Name="btnAbschlissen" IsCancel="True" Content="Abschlissen" HorizontalAlignment="Left" Margin="723,521,0,0" VerticalAlignment="Top" Width="119" Height="31" Click="ButtonForEsc_Click"/>
     </Grid>
 </Window>

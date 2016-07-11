@@ -22,7 +22,7 @@ namespace WpfMySql2
     {
         public DataTable tableCurrentClient;
         DataRow row = null;
-        string id = MainWindow.rowDetail["id"].ToString();
+        string id = MainWindow.rowDetail["id"].ToString();//пробл. при дабл клик на пустой строке
         public InfoDetail()
         {
             InitializeComponent();
@@ -254,7 +254,9 @@ namespace WpfMySql2
                         string status = (String)cmbx.Content;
                         ComboBoxItem cmbx2 = (ComboBoxItem)mitarbeiterAus.SelectedValue;
                         string mitarbAus = (String)cmbx2.Content;
-                        string comm = string.Format("Update service Set  status = '{0}', mitarbeiterAus = '{1}', internVermerk = '{2}', bereicht = '{3}' Where id = '{4}'", status, mitarbAus,InternerVermerkTxt.Text,reparBericht.Text ,this.id);
+                    string internerVermStr = MySqlHelper.EscapeString(InternerVermerkTxt.Text);
+                    string reparBetichtStr = MySqlHelper.EscapeString(reparBericht.Text);
+                        string comm = string.Format("Update service Set  status = '{0}', mitarbeiterAus = '{1}', internVermerk = '{2}', bereicht = '{3}' Where id = '{4}'", status, mitarbAus, internerVermStr, reparBetichtStr ,this.id);
                         using (MySqlCommand cmd = new MySqlCommand(comm, cn))
                         {
                             cmd.ExecuteNonQuery();

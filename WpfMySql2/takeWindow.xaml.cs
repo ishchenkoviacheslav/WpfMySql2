@@ -133,7 +133,7 @@ namespace WpfMySql2
 
         private void button_OK_Click(object sender, RoutedEventArgs e)
         {
-            if (((ComboBoxItem)mitarbeiterNach.SelectedValue).Content.ToString() != "\t***" && geratTxt.Text != "" && serialNummerTxt.Text != "" && BemerkungTxt.Text != "" && (passKundenTxt.Text != "" || (textMuster1.Text!="" || textMuster2.Text != ""|| textMuster3.Text != ""|| textMuster4.Text != ""|| textMuster5.Text != "" || textMuster6.Text != ""|| textMuster7.Text != ""|| textMuster8.Text != ""|| textMuster9.Text != "")) && zubehorTxt.Text != "" && nameTxt.Text != "" && VornameTxt.Text != "" && (TelefonTxt.Text != "" || MobilTxt.Text != "" || EMailTxt.Text != ""))
+            if (((ComboBoxItem)mitarbeiterNach.SelectedValue).Content.ToString() != "\t***" && geratTxt.Text != "" && serialNummerTxt.Text != "" && BemerkungTxt.Text != "" && (passKundenTxt.Text != "" || (textMuster1.Text!="" || textMuster2.Text != ""|| textMuster3.Text != ""|| textMuster4.Text != ""|| textMuster5.Text != "" || textMuster6.Text != ""|| textMuster7.Text != ""|| textMuster8.Text != ""|| textMuster9.Text != "")) && zubehorTxt.Text != "" && (nameTxt.Text != "" || VornameTxt.Text != "") && (TelefonTxt.Text != "" || MobilTxt.Text != "" || EMailTxt.Text != ""))
             {
                 using (MySqlConnection cn = new MySqlConnection())
                 {
@@ -176,7 +176,13 @@ namespace WpfMySql2
                         if (textMuster9.Text == "")
                             textMuster9.Text = "*";
                         string graphKey = textMuster1.Text + textMuster2.Text + textMuster3.Text + textMuster4.Text + textMuster5.Text + textMuster6.Text + textMuster7.Text + textMuster8.Text + textMuster9.Text;
-                        string comm = string.Format("Insert Into service (dateTime, status, clientID, gerat, serialNummer, zubehor, fehlerBeschreibung, maxPrice, mitarbeiterNach, passKunden, graphKey, bemerkung, zustadn, internVermerk) values('{0}','{1}','{2}','{3}','{4}','{5}','{6}','{7}','{8}','{9}','{10}','{11}','{12}','{13}')", dataZeit , "Angenommen von", meinKundeID.ToString(), geratTxt.Text, serialNummerTxt.Text, zubehorTxt.Text, FehlerbeschreibungTxt.Text, maxPrice.Text, einMitarbeiterNach, passKundenTxt.Text, graphKey, BemerkungTxt.Text, zustandTxt.Text, InternerVermerkTxt.Text);
+                        string fehlerBeschreibungStr = MySqlHelper.EscapeString(FehlerbeschreibungTxt.Text); // чтоб можна было писать любые символы.напр. '  
+                        string geratStr = MySqlHelper.EscapeString(geratTxt.Text);
+                        string zubehorStr = MySqlHelper.EscapeString(zubehorTxt.Text);
+                        string bemerkundStr = MySqlHelper.EscapeString(BemerkungTxt.Text);
+                        string zustandStr = MySqlHelper.EscapeString(zustandTxt.Text);
+                        string internerFermStr = MySqlHelper.EscapeString(InternerVermerkTxt.Text);
+                        string comm = string.Format("Insert Into service (dateTime, status, clientID, gerat, serialNummer, zubehor, fehlerBeschreibung, maxPrice, mitarbeiterNach, passKunden, graphKey, bemerkung, zustadn, internVermerk) values('{0}','{1}','{2}','{3}','{4}','{5}','{6}','{7}','{8}','{9}','{10}','{11}','{12}','{13}')", dataZeit , "Angenommen von", meinKundeID.ToString(), geratStr, serialNummerTxt.Text, zubehorStr, fehlerBeschreibungStr, maxPrice.Text, einMitarbeiterNach, passKundenTxt.Text, graphKey, bemerkundStr, zustandStr, internerFermStr);
                         using (MySqlCommand cmd = new MySqlCommand(comm, cn))
                         {
                             cmd.ExecuteNonQuery();
@@ -196,7 +202,7 @@ namespace WpfMySql2
             }
             else
             {
-                MessageBox.Show("die Felder ausfüllen \n Erforderliche Felder (Gerat, Sernum, Bemerkung, Pass, Zubehor, Von, \n Name, Vorname und Telefon oder Mobil oder Email)", "Fehler", MessageBoxButton.OK, MessageBoxImage.Error);
+                MessageBox.Show("die Felder ausfüllen \n Erforderliche Felder (Gerat, Sernum, Bemerkung, Pass, Zubehor, Von, \n Name oder Vorname und Telefon oder Mobil oder Email)", "Fehler", MessageBoxButton.OK, MessageBoxImage.Error);
             }
         }
 

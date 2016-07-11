@@ -32,7 +32,7 @@ namespace WpfMySql2
         public static List<string> mitarbeiter = null;
         public static Dictionary<string, string> kundenGruppe = new Dictionary<string, string> { { "0", "alle Adressen" }, { "1", "Privat" }, { "2", "Geweblich" }, { "3", "Offentlich" }, { "4", "Altbestand" }, { "999", "Lieferanten" } };
         public static List<string> AnredeList = new List<string>() { "Bürgermeister", "Doktor", "Familie", "Firma", "Frau", "Herr", "Pfarrer", "Professor" };
-        public static List<string> statuses = new List<string>() { "Angenommen von", "In Bearbeitung", "Warten auf Ersatzteile", "Gerät ist beim Hersteller", "Geprüft", "Fertig zur Abholung", "Warten auf Kundenrückmeldung" };
+        public static List<string> statuses = new List<string>() { "Angenommen von", "In Bearbeitung", "Warten auf Ersatzteile", "Gerät ist beim Hersteller", "Warten auf Kundenrückmeldung", "Fertig zur Abholung","Abgeholt/Abgeschlossen" };
         public static bool isRun = false;
         public static bool cancel = false;
         public MainWindow()
@@ -156,40 +156,64 @@ namespace WpfMySql2
             {
                 DataTable table = new DataTable();
                 DataColumn column = new DataColumn("id", typeof(string));
+                column.Caption = "Nr.";
                 table.Columns.Add(column);
+
                 column = new DataColumn("dateTime", typeof(string));
-                //column.Caption = "Zeit/Data";
+                column.Caption = "Datum";
                 table.Columns.Add(column);
+
                 column = new DataColumn("status", typeof(string));
+                column.Caption = "Status";
                 table.Columns.Add(column);
+
                 column = new DataColumn("clientID", typeof(string));
+                column.Caption = "Kundennr.";
                 table.Columns.Add(column);
+
                 column = new DataColumn("gerat", typeof(string));
                 table.Columns.Add(column);
+                column.Caption = "Gerät";
+
                 column = new DataColumn("serialNummer", typeof(string));
                 table.Columns.Add(column);
-                column = new DataColumn("zubehor", typeof(string));
-                table.Columns.Add(column);
-                column = new DataColumn("fehlerBeschreibung", typeof(string));
-                table.Columns.Add(column);
-                column = new DataColumn("maxPrice", typeof(string));
-                table.Columns.Add(column);
+                column.Caption = "Seriennummer";
+
+                //column = new DataColumn("zubehor", typeof(string));
+                //table.Columns.Add(column);
+
+                //column = new DataColumn("fehlerBeschreibung", typeof(string));
+                //table.Columns.Add(column);
+
+                //column = new DataColumn("maxPrice", typeof(string));
+                //table.Columns.Add(column);
+
                 column = new DataColumn("mitarbeiterNach", typeof(string));
+                column.Caption = "angenomen von";
                 table.Columns.Add(column);
-                column = new DataColumn("mitarbeiterAus", typeof(string));
-                table.Columns.Add(column);
-                column = new DataColumn("passKunden", typeof(string));
-                table.Columns.Add(column);
-                column = new DataColumn("graphKey", typeof(string));
-                table.Columns.Add(column);
+
+                //column = new DataColumn("mitarbeiterAus", typeof(string));
+                //table.Columns.Add(column);
+
+                //column = new DataColumn("passKunden", typeof(string));
+                //table.Columns.Add(column);
+
+                //column = new DataColumn("graphKey", typeof(string));
+                //table.Columns.Add(column);
+
                 column = new DataColumn("bemerkung", typeof(string));
+                column.Caption = "Bemerkung";
                 table.Columns.Add(column);
-                column = new DataColumn("zustadn", typeof(string));
-                table.Columns.Add(column);
-                column = new DataColumn("bereicht", typeof(string));
-                table.Columns.Add(column);
-                column = new DataColumn("internVermerk", typeof(string));
-                table.Columns.Add(column);
+
+                //column = new DataColumn("zustadn", typeof(string));
+                //table.Columns.Add(column);
+
+                //column = new DataColumn("bereicht", typeof(string));
+                //table.Columns.Add(column);
+
+                //column = new DataColumn("internVermerk", typeof(string));
+                //table.Columns.Add(column);
+
                 using (MySqlConnection cn = new MySqlConnection())
                 {
                     cn.ConnectionString = App.GetConnection();
@@ -329,10 +353,13 @@ namespace WpfMySql2
             {
                 DataGrid mainGrid = (DataGrid)sender;
                 rowDetail = (DataRowView)mainGrid.SelectedItem;
-                InfoDetail detail = new InfoDetail();
-                detail.ShowDialog();
-                readAllTableService();
-                rowDetail = null;
+                if (rowDetail != null)//защита от дабл клик на пустой строке датагрида. Если пустой строки нету, то дабл клик по полосе прокрутки ведет к тому же.
+                {
+                    InfoDetail detail = new InfoDetail();
+                    detail.ShowDialog();
+                    readAllTableService();
+                    rowDetail = null;
+                }
             }
 
 
@@ -379,7 +406,7 @@ namespace WpfMySql2
                     try
                     {
                         cn.Open();
-                        using (MySqlCommand cmd = new MySqlCommand("create table service (id INT AUTO_INCREMENT PRIMARY KEY, dateTime VARCHAR(50),status VARCHAR(50), clientID VARCHAR(10), gerat VARCHAR(200), serialNummer VARCHAR(50), zubehor VARCHAR(150), fehlerBeschreibung VARCHAR(150), maxPrice VARCHAR(10), mitarbeiterNach VARCHAR(50), mitarbeiterAus VARCHAR(50), passKunden VARCHAR(30), graphKey VARCHAR(30), bemerkung VARCHAR(150), zustadn VARCHAR(100),  bereicht VARCHAR(300), internVermerk VARCHAR(300))", cn))
+                        using (MySqlCommand cmd = new MySqlCommand("create table service (id INT AUTO_INCREMENT PRIMARY KEY, dateTime VARCHAR(50),status VARCHAR(50), clientID VARCHAR(10), gerat VARCHAR(200), serialNummer VARCHAR(50), zubehor VARCHAR(250), fehlerBeschreibung VARCHAR(250), maxPrice VARCHAR(10), mitarbeiterNach VARCHAR(50), mitarbeiterAus VARCHAR(50), passKunden VARCHAR(30), graphKey VARCHAR(30), bemerkung VARCHAR(250), zustadn VARCHAR(200),  bereicht VARCHAR(500), internVermerk VARCHAR(500))", cn))
                         {
                             cmd.ExecuteNonQuery();
                         }
