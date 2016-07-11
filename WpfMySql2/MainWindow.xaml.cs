@@ -32,7 +32,7 @@ namespace WpfMySql2
         public static List<string> mitarbeiter = null;
         public static Dictionary<string, string> kundenGruppe = new Dictionary<string, string> { { "0", "alle Adressen" }, { "1", "Privat" }, { "2", "Geweblich" }, { "3", "Offentlich" }, { "4", "Altbestand" }, { "999", "Lieferanten" } };
         public static List<string> AnredeList = new List<string>() { "Bürgermeister", "Doktor", "Familie", "Firma", "Frau", "Herr", "Pfarrer", "Professor" };
-        public static List<string> statuses = new List<string>() { "Angenommen von", "In Bearbeitung", "Warten auf Ersatzteile", "Gerät ist beim Hersteller", "Warten auf Kundenrückmeldung", "Fertig zur Abholung","Abgeholt/Abgeschlossen" };
+        public static List<string> statuses = new List<string>() { "Angenommen von", "In Bearbeitung", "Warten auf Ersatzteile", "Gerät ist beim Hersteller", "Warten auf Kundenrückmeldung", "Fertig zur Abholung", "Abgeholt/Abgeschlossen" };
         public static bool isRun = false;
         public static bool cancel = false;
         public MainWindow()
@@ -235,17 +235,17 @@ namespace WpfMySql2
                                     row["clientID"] = dr["clientID"].ToString();
                                     row["gerat"] = dr["gerat"].ToString();
                                     row["serialNummer"] = dr["serialNummer"].ToString();
-                                    row["zubehor"] = dr["zubehor"].ToString();
-                                    row["fehlerBeschreibung"] = dr["fehlerBeschreibung"].ToString();
-                                    row["maxPrice"] = dr["maxPrice"].ToString();
+                                    //row["zubehor"] = dr["zubehor"].ToString();
+                                    //row["fehlerBeschreibung"] = dr["fehlerBeschreibung"].ToString();
+                                    // row["maxPrice"] = dr["maxPrice"].ToString();
                                     row["mitarbeiterNach"] = dr["mitarbeiterNach"].ToString();
-                                    row["mitarbeiterAus"] = dr["mitarbeiterAus"].ToString();
-                                    row["passKunden"] = dr["passKunden"].ToString();
-                                    row["graphKey"] = dr["graphKey"].ToString();
+                                    //row["mitarbeiterAus"] = dr["mitarbeiterAus"].ToString();
+                                    //row["passKunden"] = dr["passKunden"].ToString();
+                                    //row["graphKey"] = dr["graphKey"].ToString();
                                     row["bemerkung"] = dr["bemerkung"].ToString();
-                                    row["zustadn"] = dr["zustadn"].ToString();
-                                    row["bereicht"] = dr["bereicht"].ToString();
-                                    row["internVermerk"] = dr["internVermerk"].ToString();
+                                    //row["zustadn"] = dr["zustadn"].ToString();
+                                    //row["bereicht"] = dr["bereicht"].ToString();
+                                    //row["internVermerk"] = dr["internVermerk"].ToString();
                                     table.Rows.Add(row);
                                 }
                             }
@@ -268,38 +268,167 @@ namespace WpfMySql2
         {
             DataTable table = new DataTable();
             DataColumn column = new DataColumn("id", typeof(string));
+            column.Caption = "Nr.";
             table.Columns.Add(column);
+
             column = new DataColumn("dateTime", typeof(string));
-            //column.Caption = "Zeit/Data";
+            column.Caption = "Datum";
             table.Columns.Add(column);
+
             column = new DataColumn("status", typeof(string));
+            column.Caption = "Status";
             table.Columns.Add(column);
+
             column = new DataColumn("clientID", typeof(string));
+            column.Caption = "Kundennr.";
             table.Columns.Add(column);
+
             column = new DataColumn("gerat", typeof(string));
             table.Columns.Add(column);
+            column.Caption = "Gerät";
+
             column = new DataColumn("serialNummer", typeof(string));
             table.Columns.Add(column);
+            column.Caption = "Seriennummer";
+
+            //column = new DataColumn("zubehor", typeof(string));
+            //table.Columns.Add(column);
+
+            //column = new DataColumn("fehlerBeschreibung", typeof(string));
+            //table.Columns.Add(column);
+
+            //column = new DataColumn("maxPrice", typeof(string));
+            //table.Columns.Add(column);
+
+            column = new DataColumn("mitarbeiterNach", typeof(string));
+            column.Caption = "angenomen von";
+            table.Columns.Add(column);
+
+            //column = new DataColumn("mitarbeiterAus", typeof(string));
+            //table.Columns.Add(column);
+
+            //column = new DataColumn("passKunden", typeof(string));
+            //table.Columns.Add(column);
+
+            //column = new DataColumn("graphKey", typeof(string));
+            //table.Columns.Add(column);
+
+            column = new DataColumn("bemerkung", typeof(string));
+            column.Caption = "Bemerkung";
+            table.Columns.Add(column);
+
+            //column = new DataColumn("zustadn", typeof(string));
+            //table.Columns.Add(column);
+
+            //column = new DataColumn("bereicht", typeof(string));
+            //table.Columns.Add(column);
+
+            //column = new DataColumn("internVermerk", typeof(string));
+            //table.Columns.Add(column);
+            using (MySqlConnection cn = new MySqlConnection())
+            {
+                cn.ConnectionString = App.GetConnection();
+                try
+                {
+                    cn.Open();
+                    string CommandStringEnterText = String.Format("Select * From service WHERE client LIKE '%{0}%'", this.textBoxFilter.Text);
+                    using (MySqlCommand cmd = new MySqlCommand(CommandStringEnterText, cn))
+                    {
+                        using (MySqlDataReader dr = cmd.ExecuteReader())
+                        {
+                            // table.Load(dr);
+                            while (dr.Read())
+                            {
+                                DataRow row = table.NewRow();
+                                row["id"] = dr["id"].ToString();
+                                row["dateTime"] = dr["dateTime"].ToString();
+                                row["status"] = dr["status"].ToString();
+                                row["clientID"] = dr["clientID"].ToString();
+                                row["gerat"] = dr["gerat"].ToString();
+                                row["serialNummer"] = dr["serialNummer"].ToString();
+                                //row["zubehor"] = dr["zubehor"].ToString();
+                                //row["fehlerBeschreibung"] = dr["fehlerBeschreibung"].ToString();
+                                // row["maxPrice"] = dr["maxPrice"].ToString();
+                                row["mitarbeiterNach"] = dr["mitarbeiterNach"].ToString();
+                                //row["mitarbeiterAus"] = dr["mitarbeiterAus"].ToString();
+                                //row["passKunden"] = dr["passKunden"].ToString();
+                                //row["graphKey"] = dr["graphKey"].ToString();
+                                row["bemerkung"] = dr["bemerkung"].ToString();
+                                //row["zustadn"] = dr["zustadn"].ToString();
+                                //row["bereicht"] = dr["bereicht"].ToString();
+                                //row["internVermerk"] = dr["internVermerk"].ToString();
+                                table.Rows.Add(row);
+                            }
+                        }
+                    }
+                }
+                catch (MySqlException ex)
+                {
+                    MessageBox.Show(ex.Message);
+                }
+            }
+            auftragQualitat(table);
+            this.dataGridMain.ItemsSource = table.AsDataView();
+        }
+        private void readAllOneRow(string id)
+        {
+            DataTable table = new DataTable();
+            DataColumn column = new DataColumn("id", typeof(string));
+            column.Caption = "Nr.";
+            table.Columns.Add(column);
+
+            column = new DataColumn("dateTime", typeof(string));
+            column.Caption = "Datum";
+            table.Columns.Add(column);
+
+            column = new DataColumn("status", typeof(string));
+            column.Caption = "Status";
+            table.Columns.Add(column);
+
+            column = new DataColumn("clientID", typeof(string));
+            column.Caption = "Kundennr.";
+            table.Columns.Add(column);
+
+            column = new DataColumn("gerat", typeof(string));
+            table.Columns.Add(column);
+            column.Caption = "Gerät";
+
+            column = new DataColumn("serialNummer", typeof(string));
+            table.Columns.Add(column);
+            column.Caption = "Seriennummer";
+
             column = new DataColumn("zubehor", typeof(string));
             table.Columns.Add(column);
+
             column = new DataColumn("fehlerBeschreibung", typeof(string));
             table.Columns.Add(column);
+
             column = new DataColumn("maxPrice", typeof(string));
             table.Columns.Add(column);
+
             column = new DataColumn("mitarbeiterNach", typeof(string));
+            column.Caption = "angenomen von";
             table.Columns.Add(column);
+
             column = new DataColumn("mitarbeiterAus", typeof(string));
             table.Columns.Add(column);
+
             column = new DataColumn("passKunden", typeof(string));
             table.Columns.Add(column);
+
             column = new DataColumn("graphKey", typeof(string));
             table.Columns.Add(column);
+
             column = new DataColumn("bemerkung", typeof(string));
+            column.Caption = "Bemerkung";
             table.Columns.Add(column);
+
             column = new DataColumn("zustadn", typeof(string));
             table.Columns.Add(column);
+
             column = new DataColumn("bereicht", typeof(string));
             table.Columns.Add(column);
+
             column = new DataColumn("internVermerk", typeof(string));
             table.Columns.Add(column);
             using (MySqlConnection cn = new MySqlConnection())
@@ -308,7 +437,7 @@ namespace WpfMySql2
                 try
                 {
                     cn.Open();
-                    string CommandStringEnterText = String.Format("Select * From service WHERE client LIKE '%{0}%'", this.textBoxFilter.Text);
+                    string CommandStringEnterText = String.Format("Select * From service WHERE id LIKE '%{0}%'", id);
                     using (MySqlCommand cmd = new MySqlCommand(CommandStringEnterText, cn))
                     {
                         using (MySqlDataReader dr = cmd.ExecuteReader())
@@ -344,8 +473,8 @@ namespace WpfMySql2
                     MessageBox.Show(ex.Message);
                 }
             }
-            auftragQualitat(table);
-            this.dataGridMain.ItemsSource = table.AsDataView();
+           DataRow row2 = (table.Rows[0]);
+            rowDetail = table.DefaultView[table.Rows.IndexOf(row2)]; // преобразование DataRow в DataRowView http://stackoverflow.com/questions/15632036/how-can-convert-datarow-to-datarowview-in-c-sharp
         }
         private void DataGridMain_MouseDoubleClick(object sender, MouseButtonEventArgs e)
         {
@@ -355,6 +484,7 @@ namespace WpfMySql2
                 rowDetail = (DataRowView)mainGrid.SelectedItem;
                 if (rowDetail != null)//защита от дабл клик на пустой строке датагрида. Если пустой строки нету, то дабл клик по полосе прокрутки ведет к тому же.
                 {
+                    readAllOneRow(rowDetail["id"].ToString());//внутри будет переинициализирован rowDetail
                     InfoDetail detail = new InfoDetail();
                     detail.ShowDialog();
                     readAllTableService();
@@ -424,40 +554,63 @@ namespace WpfMySql2
         {
             DataTable table = new DataTable();
             DataColumn column = new DataColumn("id", typeof(string));
+            column.Caption = "Nr.";
             table.Columns.Add(column);
+
             column = new DataColumn("dateTime", typeof(string));
-            //column.Caption = "Zeit/Data";
+            column.Caption = "Datum";
             table.Columns.Add(column);
+
             column = new DataColumn("status", typeof(string));
+            column.Caption = "Status";
             table.Columns.Add(column);
+
             column = new DataColumn("clientID", typeof(string));
+            column.Caption = "Kundennr.";
             table.Columns.Add(column);
+
             column = new DataColumn("gerat", typeof(string));
             table.Columns.Add(column);
+            column.Caption = "Gerät";
+
             column = new DataColumn("serialNummer", typeof(string));
             table.Columns.Add(column);
-            column = new DataColumn("zubehor", typeof(string));
-            table.Columns.Add(column);
-            column = new DataColumn("fehlerBeschreibung", typeof(string));
-            table.Columns.Add(column);
-            column = new DataColumn("maxPrice", typeof(string));
-            table.Columns.Add(column);
+            column.Caption = "Seriennummer";
+
+            //column = new DataColumn("zubehor", typeof(string));
+            //table.Columns.Add(column);
+
+            //column = new DataColumn("fehlerBeschreibung", typeof(string));
+            //table.Columns.Add(column);
+
+            //column = new DataColumn("maxPrice", typeof(string));
+            //table.Columns.Add(column);
+
             column = new DataColumn("mitarbeiterNach", typeof(string));
+            column.Caption = "angenomen von";
             table.Columns.Add(column);
-            column = new DataColumn("mitarbeiterAus", typeof(string));
-            table.Columns.Add(column);
-            column = new DataColumn("passKunden", typeof(string));
-            table.Columns.Add(column);
-            column = new DataColumn("graphKey", typeof(string));
-            table.Columns.Add(column);
+
+            //column = new DataColumn("mitarbeiterAus", typeof(string));
+            //table.Columns.Add(column);
+
+            //column = new DataColumn("passKunden", typeof(string));
+            //table.Columns.Add(column);
+
+            //column = new DataColumn("graphKey", typeof(string));
+            //table.Columns.Add(column);
+
             column = new DataColumn("bemerkung", typeof(string));
+            column.Caption = "Bemerkung";
             table.Columns.Add(column);
-            column = new DataColumn("zustadn", typeof(string));
-            table.Columns.Add(column);
-            column = new DataColumn("bereicht", typeof(string));
-            table.Columns.Add(column);
-            column = new DataColumn("internVermerk", typeof(string));
-            table.Columns.Add(column);
+
+            //column = new DataColumn("zustadn", typeof(string));
+            //table.Columns.Add(column);
+
+            //column = new DataColumn("bereicht", typeof(string));
+            //table.Columns.Add(column);
+
+            //column = new DataColumn("internVermerk", typeof(string));
+            //table.Columns.Add(column);
             using (MySqlConnection cn = new MySqlConnection())
             {
                 cn.ConnectionString = App.GetConnection();
@@ -478,17 +631,17 @@ namespace WpfMySql2
                                 row["clientID"] = dr["clientID"].ToString();
                                 row["gerat"] = dr["gerat"].ToString();
                                 row["serialNummer"] = dr["serialNummer"].ToString();
-                                row["zubehor"] = dr["zubehor"].ToString();
-                                row["fehlerBeschreibung"] = dr["fehlerBeschreibung"].ToString();
-                                row["maxPrice"] = dr["maxPrice"].ToString();
+                                //row["zubehor"] = dr["zubehor"].ToString();
+                                //row["fehlerBeschreibung"] = dr["fehlerBeschreibung"].ToString();
+                                // row["maxPrice"] = dr["maxPrice"].ToString();
                                 row["mitarbeiterNach"] = dr["mitarbeiterNach"].ToString();
-                                row["mitarbeiterAus"] = dr["mitarbeiterAus"].ToString();
-                                row["passKunden"] = dr["passKunden"].ToString();
-                                row["graphKey"] = dr["graphKey"].ToString();
+                                //row["mitarbeiterAus"] = dr["mitarbeiterAus"].ToString();
+                                //row["passKunden"] = dr["passKunden"].ToString();
+                                //row["graphKey"] = dr["graphKey"].ToString();
                                 row["bemerkung"] = dr["bemerkung"].ToString();
-                                row["zustadn"] = dr["zustadn"].ToString();
-                                row["bereicht"] = dr["bereicht"].ToString();
-                                row["internVermerk"] = dr["internVermerk"].ToString();
+                                //row["zustadn"] = dr["zustadn"].ToString();
+                                //row["bereicht"] = dr["bereicht"].ToString();
+                                //row["internVermerk"] = dr["internVermerk"].ToString();
                                 table.Rows.Add(row);
                             }
                         }
@@ -503,7 +656,6 @@ namespace WpfMySql2
             //подсчёт кол. договоров
             auftragQualitat(table);
             this.dataGridMain.ItemsSource = table.AsDataView();
-
         }
         private void auftragQualitat(DataTable table)
         {
@@ -514,11 +666,11 @@ namespace WpfMySql2
             foreach (DataRow row in table.Rows)
             {
                 allRows++;
-                if(row["status"].ToString()== "Angenommen von" || row["status"].ToString() == "In Bearbeitung"|| row["status"].ToString() == "Warten auf Ersatzteile" || row["status"].ToString() == "Gerät ist beim Hersteller")
+                if (row["status"].ToString() == "Angenommen von" || row["status"].ToString() == "In Bearbeitung" || row["status"].ToString() == "Warten auf Ersatzteile" || row["status"].ToString() == "Gerät ist beim Hersteller")
                 {
                     rotStatus++;
                 }
-                    else
+                else
                 {
                     grunstatus++;
                 }
@@ -551,7 +703,7 @@ namespace WpfMySql2
         {
             Setting_DB DbSet = new Setting_DB();
             DbSet.ShowDialog();
-            readAllTableService();            
+            readAllTableService();
         }
     }
 }
