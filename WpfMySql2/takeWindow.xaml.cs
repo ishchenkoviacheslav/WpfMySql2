@@ -89,7 +89,7 @@ namespace WpfMySql2
                 mitarbeiterNach.Items.Add(cbx);
             }
         }
-
+     
         private void clientBaseBtn_Click(object sender, RoutedEventArgs e)
         {
             clientsBase clientBaseWnd = new clientsBase();
@@ -129,6 +129,26 @@ namespace WpfMySql2
 
                 MainWindow.kundenID = null;
             }
+        }
+
+        string readSomeKunde(string rec_id,MySqlConnection cn)
+        {
+            string match = "";
+                    string CommandStringEnterText = String.Format("Select * From adressen WHERE REC_ID  LIKE '%{0}%'", rec_id);
+                    using (MySqlCommand cmd = new MySqlCommand(CommandStringEnterText, cn))
+                    {
+                        using (MySqlDataReader dr = cmd.ExecuteReader())
+                        {
+                            while (dr.Read())
+                            {
+                                
+                                match = dr["MATCHCODE"].ToString() + " ";
+                                match += dr["NAME1"].ToString() + " ";
+                                match += dr["NAME2"].ToString();
+                            }
+                        }
+                    }
+            return match;
         }
 
         private void button_OK_Click(object sender, RoutedEventArgs e)
@@ -182,7 +202,9 @@ namespace WpfMySql2
                         string bemerkundStr = MySqlHelper.EscapeString(BemerkungTxt.Text);
                         string zustandStr = MySqlHelper.EscapeString(zustandTxt.Text);
                         string internerFermStr = MySqlHelper.EscapeString(InternerVermerkTxt.Text);
-                        string comm = string.Format("Insert Into service (dateTime, status, clientID, gerat, serialNummer, zubehor, fehlerBeschreibung, maxPrice, mitarbeiterNach, passKunden, graphKey, bemerkung, zustadn, internVermerk) values('{0}','{1}','{2}','{3}','{4}','{5}','{6}','{7}','{8}','{9}','{10}','{11}','{12}','{13}')", dataZeit , "Angenommen von", meinKundeID.ToString(), geratStr, serialNummerTxt.Text, zubehorStr, fehlerBeschreibungStr, maxPrice.Text, einMitarbeiterNach, passKundenTxt.Text, graphKey, bemerkundStr, zustandStr, internerFermStr);
+                        string kundMatchcode = readSomeKunde(meinKundeID,cn);
+                        
+                        string comm = string.Format("Insert Into service (dateTime, status, clientID, gerat, serialNummer, zubehor, fehlerBeschreibung, maxPrice, mitarbeiterNach, passKunden, graphKey, bemerkung, zustadn, internVermerk, kundNamVorMatch) values('{0}','{1}','{2}','{3}','{4}','{5}','{6}','{7}','{8}','{9}','{10}','{11}','{12}','{13}','{14}')", dataZeit , "Angenommen von", meinKundeID, geratStr, serialNummerTxt.Text, zubehorStr, fehlerBeschreibungStr, maxPrice.Text, einMitarbeiterNach, passKundenTxt.Text, graphKey, bemerkundStr, zustandStr, internerFermStr, kundMatchcode);
                         using (MySqlCommand cmd = new MySqlCommand(comm, cn))
                         {
                             cmd.ExecuteNonQuery();

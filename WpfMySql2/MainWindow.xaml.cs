@@ -173,6 +173,10 @@ namespace WpfMySql2
                 column.Caption = "Kundennr.";
                 table.Columns.Add(column);
 
+                column = new DataColumn("kundNamVorMatch", typeof(string));
+                column.Caption = "Kunden matchcode";
+                table.Columns.Add(column);
+
                 column = new DataColumn("gerat", typeof(string));
                 table.Columns.Add(column);
                 column.Caption = "Gerät";
@@ -235,6 +239,7 @@ namespace WpfMySql2
                                     row["dateTime"] = dr["dateTime"].ToString();
                                     row["status"] = dr["status"].ToString();
                                     row["clientID"] = dr["clientID"].ToString();
+                                    row["kundNamVorMatch"] = dr["kundNamVorMatch"].ToString();
                                     row["gerat"] = dr["gerat"].ToString();
                                     row["serialNummer"] = dr["serialNummer"].ToString();
                                     //row["zubehor"] = dr["zubehor"].ToString();
@@ -265,6 +270,7 @@ namespace WpfMySql2
         private void TextBoxFilter_TextChanged(object sender, TextChangedEventArgs e)
         {
             readPartTable();
+            //initSuchFilter();//разобратся
         }
         private void readPartTable()
         {
@@ -283,6 +289,10 @@ namespace WpfMySql2
 
             column = new DataColumn("clientID", typeof(string));
             column.Caption = "Kundennr.";
+            table.Columns.Add(column);
+
+            column = new DataColumn("kundNamVorMatch", typeof(string));
+            column.Caption = "Kunden matchcode";
             table.Columns.Add(column);
 
             column = new DataColumn("gerat", typeof(string));
@@ -333,7 +343,7 @@ namespace WpfMySql2
                 try
                 {
                     cn.Open();
-                    string CommandStringEnterText = String.Format("Select * From service WHERE client LIKE '%{0}%'", this.textBoxFilter.Text);
+                    string CommandStringEnterText = String.Format("Select * From service WHERE kundNamVorMatch LIKE '%{0}%'", this.textBoxFilter.Text);
                     using (MySqlCommand cmd = new MySqlCommand(CommandStringEnterText, cn))
                     {
                         using (MySqlDataReader dr = cmd.ExecuteReader())
@@ -346,6 +356,8 @@ namespace WpfMySql2
                                 row["dateTime"] = dr["dateTime"].ToString();
                                 row["status"] = dr["status"].ToString();
                                 row["clientID"] = dr["clientID"].ToString();
+                                row["kundNamVorMatch"] = dr["kundNamVorMatch"].ToString();
+
                                 row["gerat"] = dr["gerat"].ToString();
                                 row["serialNummer"] = dr["serialNummer"].ToString();
                                 //row["zubehor"] = dr["zubehor"].ToString();
@@ -389,6 +401,10 @@ namespace WpfMySql2
 
             column = new DataColumn("clientID", typeof(string));
             column.Caption = "Kundennr.";
+            table.Columns.Add(column);
+
+            column = new DataColumn("kundNamVorMatch", typeof(string));
+            column.Caption = "Kunden matchcode";
             table.Columns.Add(column);
 
             column = new DataColumn("gerat", typeof(string));
@@ -452,6 +468,8 @@ namespace WpfMySql2
                                 row["dateTime"] = dr["dateTime"].ToString();
                                 row["status"] = dr["status"].ToString();
                                 row["clientID"] = dr["clientID"].ToString();
+                                row["kundNamVorMatch"] = dr["kundNamVorMatch"].ToString();
+
                                 row["gerat"] = dr["gerat"].ToString();
                                 row["serialNummer"] = dr["serialNummer"].ToString();
                                 row["zubehor"] = dr["zubehor"].ToString();
@@ -538,7 +556,7 @@ namespace WpfMySql2
                     try
                     {
                         cn.Open();
-                        using (MySqlCommand cmd = new MySqlCommand("create table service (id INT AUTO_INCREMENT PRIMARY KEY, dateTime VARCHAR(50),status VARCHAR(50), clientID VARCHAR(10), gerat VARCHAR(200), serialNummer VARCHAR(50), zubehor VARCHAR(250), fehlerBeschreibung VARCHAR(250), maxPrice VARCHAR(10), mitarbeiterNach VARCHAR(50), mitarbeiterAus VARCHAR(50), passKunden VARCHAR(30), graphKey VARCHAR(30), bemerkung VARCHAR(250), zustadn VARCHAR(200),  bereicht VARCHAR(500), internVermerk VARCHAR(500))", cn))
+                        using (MySqlCommand cmd = new MySqlCommand("create table service (id INT AUTO_INCREMENT PRIMARY KEY, dateTime VARCHAR(50),status VARCHAR(50), clientID VARCHAR(10), gerat VARCHAR(200), serialNummer VARCHAR(50), zubehor VARCHAR(250), fehlerBeschreibung VARCHAR(250), maxPrice VARCHAR(10), mitarbeiterNach VARCHAR(50), mitarbeiterAus VARCHAR(50), passKunden VARCHAR(30), graphKey VARCHAR(30), bemerkung VARCHAR(250), zustadn VARCHAR(200),  bereicht VARCHAR(500), internVermerk VARCHAR(500), kundNamVorMatch VARCHAR(150))", cn))
                         {
                             cmd.ExecuteNonQuery();
                         }
@@ -569,6 +587,10 @@ namespace WpfMySql2
 
             column = new DataColumn("clientID", typeof(string));
             column.Caption = "Kundennr.";
+            table.Columns.Add(column);
+
+            column = new DataColumn("kundNamVorMatch", typeof(string));
+            column.Caption = "Kunden matchcode";
             table.Columns.Add(column);
 
             column = new DataColumn("gerat", typeof(string));
@@ -631,6 +653,8 @@ namespace WpfMySql2
                                 row["dateTime"] = dr["dateTime"].ToString();
                                 row["status"] = dr["status"].ToString();
                                 row["clientID"] = dr["clientID"].ToString();
+                                row["kundNamVorMatch"] = dr["kundNamVorMatch"].ToString();
+
                                 row["gerat"] = dr["gerat"].ToString();
                                 row["serialNummer"] = dr["serialNummer"].ToString();
                                 //row["zubehor"] = dr["zubehor"].ToString();
@@ -671,7 +695,6 @@ namespace WpfMySql2
                 case "dateTime":
                     e.Column.Header = "Datum";
                     break;
-
                 case "status":
                     e.Column.Header = "Status";
                     break;
@@ -689,6 +712,9 @@ namespace WpfMySql2
                     break;
                 case "bemerkung":
                     e.Column.Header = "Bemerkung";
+                    break;
+                case "kundNamVorMatch":
+                    e.Column.Header = "Kunden matchcode";
                     break;
                 default:
                     break;
