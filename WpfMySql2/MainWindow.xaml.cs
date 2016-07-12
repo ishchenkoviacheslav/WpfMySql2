@@ -15,6 +15,7 @@ using System.Windows.Navigation;
 using System.Windows.Shapes;
 using MySql.Data.MySqlClient;
 using System.Configuration;
+using System.Collections.ObjectModel;
 namespace WpfMySql2
 {
     //
@@ -52,6 +53,7 @@ namespace WpfMySql2
                 readAllTableService();
                 dataGridMain.MouseDoubleClick += DataGridMain_MouseDoubleClick;
                 textBoxFilter.TextChanged += TextBoxFilter_TextChanged;
+                dataGridMain.AutoGeneratingColumn += DataGridMain_AutoGeneratingColumn;
                 initSuchFilter();
             }
         }
@@ -657,6 +659,42 @@ namespace WpfMySql2
             auftragQualitat(table);
             this.dataGridMain.ItemsSource = table.AsDataView();
         }
+
+        private void DataGridMain_AutoGeneratingColumn(object sender, DataGridAutoGeneratingColumnEventArgs e)
+        {
+            switch (e.Column.Header.ToString())
+            {
+                case "id":
+                    e.Column.Header = "Nr.";
+                    break;
+
+                case "dateTime":
+                    e.Column.Header = "Datum";
+                    break;
+
+                case "status":
+                    e.Column.Header = "Status";
+                    break;
+                case "clientID":
+                    e.Column.Header = "Kundennr.";
+                    break;
+                case "gerat":
+                    e.Column.Header = "Gerät";
+                    break;
+                case "serialNummer":
+                    e.Column.Header = "Seriennummer";
+                    break;
+                case "mitarbeiterNach":
+                    e.Column.Header = "angenomen von";
+                    break;
+                case "bemerkung":
+                    e.Column.Header = "Bemerkung";
+                    break;
+                default:
+                    break;
+            }
+        }
+
         private void auftragQualitat(DataTable table)
         {
             statBarAuftrag.Items.Clear();

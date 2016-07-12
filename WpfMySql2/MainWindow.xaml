@@ -62,7 +62,7 @@
             </MenuItem>
         </Menu>
         <Controls:WatermarkedTextBox x:Name="textBoxFilter" ToolTip="Suchfilter" TabIndex="0" HorizontalAlignment="Left" Height="32" Margin="10,37,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="205" Background="{x:Null}" BorderBrush="#FFABADB3"/>
-        <DataGrid x:Name="dataGridMain" ToolTip="Serviceauftragliste " SelectionMode="Single" SelectionUnit="FullRow" IsReadOnly="True" HorizontalAlignment="Left" Margin="10,74,0,0" VerticalAlignment="Top" TabIndex="2" Padding="0,0,10,0"/>
+        <DataGrid x:Name="dataGridMain" ToolTip="Serviceauftragliste " SelectionMode="Single" SelectionUnit="FullRow" IsReadOnly="True" AutoGenerateColumns="True" HorizontalAlignment="Left" Margin="10,74,0,0" VerticalAlignment="Top" TabIndex="2" Padding="0,0,10,0"/>
         <ComboBox x:Name="comboBoxStatusFilter" HorizontalAlignment="Left" Margin="310,37,0,0" VerticalAlignment="Top" Width="207" Height="32" FontSize="16"/>
         <Label x:Name="label" Content="Status: " HorizontalAlignment="Left" Margin="259,37,0,0" VerticalAlignment="Top" Height="32" Width="46"/>
         <StatusBar x:Name="statBarAuftrag" HorizontalAlignment="Left" Height="37" Margin="0,592,0,0" VerticalAlignment="Top" Width="992"/>
