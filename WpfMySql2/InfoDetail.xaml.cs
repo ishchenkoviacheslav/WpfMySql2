@@ -95,7 +95,6 @@ namespace WpfMySql2
                 }
             }
         }
-
         public void InitData()
         {
             if (MainWindow.rowDetail != null)
@@ -162,7 +161,10 @@ namespace WpfMySql2
                 FehlerbeschreibungTxt.Text = MainWindow.rowDetail["fehlerBeschreibung"].ToString();
                 InternerVermerkTxt.Text = MainWindow.rowDetail["internVermerk"].ToString();
                 reparBericht.Text = MainWindow.rowDetail["bereicht"].ToString();
-                listBoxStatus.ItemsSource = new List<string> { ("Data/Zeit:\t" + MainWindow.rowDetail["dateTime"]), ("Reparatur Nr.:\t" + MainWindow.rowDetail["id"].ToString()), ("Von:\t\t" + MainWindow.rowDetail["mitarbeiterNach"].ToString())};
+                listBoxStatus.Items.Add(("Data/Zeit:\t\t" + MainWindow.rowDetail["dateTime"]));
+                listBoxStatus.Items.Add(("Reparatur Nr.:\t\t" + MainWindow.rowDetail["id"].ToString()));
+                listBoxStatus.Items.Add(("Von:\t\t\t" + MainWindow.rowDetail["mitarbeiterNach"].ToString()));
+                readNeuList();
                 string graphKey = MainWindow.rowDetail["graphKey"].ToString();
                 textMuster1.Text = graphKey.Substring(0, 1);
                 textMuster2.Text = graphKey.Substring(1, 1);
@@ -176,7 +178,11 @@ namespace WpfMySql2
                 MainWindow.rowDetail = null;
             }
         }
-
+        void readNeuList()
+        {
+            string allNeuData = MainWindow.rowDetail["listBoxAdd"].ToString();
+            listBoxStatus.Items.Add(allNeuData);
+        }
         private void ButtonForEsc_Click(object sender, RoutedEventArgs e)
         {
             Close();
@@ -268,6 +274,47 @@ namespace WpfMySql2
                     }
                 }
             this.Close();
+        }
+
+        private void btnAddListBox_Click(object sender, RoutedEventArgs e)
+        {
+            if(textBoxData.Text != "" && textBoxHeader.Text != "")
+            {
+                string oldAddList = "";
+                
+                using (MySqlConnection cn = new MySqlConnection())
+                {
+                    cn.ConnectionString = App.GetConnection();
+                    try
+                    {
+                        cn.Open();
+                        string CommandStringEnterText = String.Format("Select listBoxAdd From service WHERE id LIKE '%{0}%'", id);
+                        using (MySqlCommand cmd = new MySqlCommand(CommandStringEnterText, cn))
+                        {
+                            using (MySqlDataReader dr = cmd.ExecuteReader())
+                            {
+                                while (dr.Read())
+                                {
+                                    oldAddList = dr["listBoxAdd"].ToString();
+                                }
+                            }
+                        }
+                        string comm = string.Format("Update service Set  listBoxAdd = '{0}' Where id = '{1}'",(addList+oldAddList), this.id);
+                        using (MySqlCommand cmd = new MySqlCommand(comm, cn))
+                        {
+                            cmd.ExecuteNonQuery();
+                        }
+                    }
+                    catch (MySqlException ex)
+                    {
+                        MessageBox.Show(ex.Message);
+                    }
+                }
+                string addList = (textBoxHeader.Text + "\t\t\t" + textBoxData.Text + "*");
+                listBoxStatus.Items.Add(addList);
+                textBoxHeader.Text = "";
+                textBoxData.Text = "";
+            }
         }
     }
 }

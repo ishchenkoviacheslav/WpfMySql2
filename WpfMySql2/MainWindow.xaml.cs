@@ -269,8 +269,8 @@ namespace WpfMySql2
         }
         private void TextBoxFilter_TextChanged(object sender, TextChangedEventArgs e)
         {
+            comboBoxStatusFilter.SelectedIndex = 0;
             readPartTable();
-            //initSuchFilter();//разобратся
         }
         private void readPartTable()
         {
@@ -449,6 +449,9 @@ namespace WpfMySql2
 
             column = new DataColumn("internVermerk", typeof(string));
             table.Columns.Add(column);
+
+            column = new DataColumn("listBoxAdd", typeof(string));
+            table.Columns.Add(column);
             using (MySqlConnection cn = new MySqlConnection())
             {
                 cn.ConnectionString = App.GetConnection();
@@ -483,6 +486,7 @@ namespace WpfMySql2
                                 row["zustadn"] = dr["zustadn"].ToString();
                                 row["bereicht"] = dr["bereicht"].ToString();
                                 row["internVermerk"] = dr["internVermerk"].ToString();
+                                row["listBoxAdd"] = dr["listBoxAdd"].ToString();
                                 table.Rows.Add(row);
                             }
                         }
@@ -556,7 +560,7 @@ namespace WpfMySql2
                     try
                     {
                         cn.Open();
-                        using (MySqlCommand cmd = new MySqlCommand("create table service (id INT AUTO_INCREMENT PRIMARY KEY, dateTime VARCHAR(50),status VARCHAR(50), clientID VARCHAR(10), gerat VARCHAR(200), serialNummer VARCHAR(50), zubehor VARCHAR(250), fehlerBeschreibung VARCHAR(250), maxPrice VARCHAR(10), mitarbeiterNach VARCHAR(50), mitarbeiterAus VARCHAR(50), passKunden VARCHAR(30), graphKey VARCHAR(30), bemerkung VARCHAR(250), zustadn VARCHAR(200),  bereicht VARCHAR(500), internVermerk VARCHAR(500), kundNamVorMatch VARCHAR(150))", cn))
+                        using (MySqlCommand cmd = new MySqlCommand("create table service (id INT AUTO_INCREMENT PRIMARY KEY, dateTime VARCHAR(50),status VARCHAR(50), clientID VARCHAR(10), gerat VARCHAR(200), serialNummer VARCHAR(50), zubehor VARCHAR(250), fehlerBeschreibung VARCHAR(250), maxPrice VARCHAR(10), mitarbeiterNach VARCHAR(50), mitarbeiterAus VARCHAR(50), passKunden VARCHAR(30), graphKey VARCHAR(30), bemerkung VARCHAR(250), zustadn VARCHAR(200),  bereicht VARCHAR(500), internVermerk VARCHAR(500), kundNamVorMatch VARCHAR(150), listBoxAdd VARCHAR(300))", cn))
                         {
                             cmd.ExecuteNonQuery();
                         }

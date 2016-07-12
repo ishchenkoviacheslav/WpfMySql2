@@ -224,7 +224,42 @@ namespace WpfMySql2
             }
             else
             {
-                MessageBox.Show("die Felder ausfüllen \n Erforderliche Felder (Gerat, Sernum, Bemerkung, Pass, Zubehor, Von, \n Name oder Vorname und Telefon oder Mobil oder Email)", "Fehler", MessageBoxButton.OK, MessageBoxImage.Error);
+                string alleFelder = "Bitte füllen Sie folgende Felder aus:";
+
+                if (((ComboBoxItem)mitarbeiterNach.SelectedValue).Content.ToString() == "\t***")
+                {
+                    alleFelder += "\n Von";
+                }
+                if (geratTxt.Text == "")
+                {
+                    alleFelder += "\n Gerät";
+                }
+                if (serialNummerTxt.Text == "")
+                {
+                    alleFelder += "\n Seriennr";
+                }
+                if (BemerkungTxt.Text == "")
+                {
+                    alleFelder += "\n Bemerkung";
+                }
+
+                if (passKundenTxt.Text == "" && (textMuster1.Text == "" && textMuster2.Text == "" && textMuster3.Text == "" && textMuster4.Text == "" && textMuster5.Text == "" && textMuster6.Text == "" && textMuster7.Text == "" && textMuster8.Text == "" && textMuster9.Text == ""))
+                {
+                    alleFelder += "\n Log/Pass";
+                }
+                if (zubehorTxt.Text == "")
+                {
+                    alleFelder += "\n Zubehör";
+                }
+                if (nameTxt.Text == "" && VornameTxt.Text == "")
+                {
+                    alleFelder += "\n Name und/oder Vorname";
+                }
+                if (TelefonTxt.Text == "" && MobilTxt.Text == "" && EMailTxt.Text == "")
+                {
+                    alleFelder += "\n Telefon oder Mobil oder E-Mail";
+                }
+                MessageBox.Show(alleFelder, "Fehler", MessageBoxButton.OK, MessageBoxImage.Error);
             }
         }
 

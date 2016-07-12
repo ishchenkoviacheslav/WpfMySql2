@@ -70,7 +70,10 @@
             </TabItem>
             <TabItem x:Name="status" Header="Status">
                 <Grid>
-                    <ListBox x:Name="listBoxStatus" HorizontalAlignment="Left" Height="312" Margin="10,10,0,0" VerticalAlignment="Top" Width="452"/>
+                    <ListBox x:Name="listBoxStatus" HorizontalAlignment="Left" Height="284" Margin="10,10,0,0" VerticalAlignment="Top" Width="452"/>
+                    <TextBox x:Name="textBoxHeader" TextWrapping="Wrap" Text="" Margin="10,299,342,10"/>
+                    <TextBox x:Name="textBoxData" TextWrapping="Wrap" Text="" Margin="135,299,217,10"/>
+                    <Button x:Name="btnAddListBox" Content="Add" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" HorizontalAlignment="Left" Margin="260,299,0,0" VerticalAlignment="Top" Width="75" Height="23"  Click="btnAddListBox_Click" Padding="1" FontSize="16"/>
 
                 </Grid>
             </TabItem>
