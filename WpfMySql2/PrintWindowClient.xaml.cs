@@ -244,14 +244,26 @@ namespace WpfMySql2
             labelPriceOther.Text = "Vorläufige Preise und andere Informationen:";
             canvas.Children.Add(labelPriceOther);
 
+            TextBlock prevPriceLab = new TextBlock();
+            prevPriceLab.Margin = new Thickness() { Top = 730, Left = 40 };
+            prevPriceLab.FontSize = 18;
+            prevPriceLab.Text = "Max Kosten:";
+            canvas.Children.Add(prevPriceLab);
+
             TextBlock prevPrice = new TextBlock();
-            prevPrice.Margin = new Thickness() { Top = 730, Left = 40 };
+            prevPrice.Margin = new Thickness() { Top = 730, Left = 150 };
             prevPrice.FontSize = 16;
             prevPrice.Text = infoDetail.maxPrice.Text;
             canvas.Children.Add(prevPrice);
 
+            TextBlock otherlab = new TextBlock();
+            otherlab.Margin = new Thickness() { Top = 750, Left = 40 };
+            otherlab.FontSize = 18;
+            otherlab.Text = "Zustand:";
+            canvas.Children.Add(otherlab);
+
             TextBlock other = new TextBlock();
-            other.Margin = new Thickness() { Top = 750, Left = 40 };
+            other.Margin = new Thickness() { Top = 750, Left = 150 };
             other.FontSize = 16;
             other.Text = infoDetail.zustandTxt.Text;
             canvas.Children.Add(other);

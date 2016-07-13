@@ -80,6 +80,9 @@
             <TabItem x:Name="repBericht" Header="Reparaturbericht" TabIndex="2">
                 <TextBox x:Name="reparBericht" TabIndex="3"/>
             </TabItem>
+            <TabItem x:Name="tabArtikel" Header="Artikel">
+                
+            </TabItem>
         </TabControl>
         <TextBox x:Name="anredeTxt" IsReadOnly="True" HorizontalAlignment="Left" Height="30" Margin="236,10,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="243" FontSize="16" IsTabStop="False"/>
         <ComboBox x:Name="statusCbx" HorizontalAlignment="Left" Margin="566,121,0,0" VerticalAlignment="Top" Width="397" Height="30" Text="" FontSize="16" TabIndex="1"/>
