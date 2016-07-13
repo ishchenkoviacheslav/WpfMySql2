@@ -452,6 +452,10 @@ namespace WpfMySql2
 
             column = new DataColumn("listBoxAdd", typeof(string));
             table.Columns.Add(column);
+
+            column = new DataColumn("artikelRecId", typeof(string));
+            table.Columns.Add(column);
+            
             using (MySqlConnection cn = new MySqlConnection())
             {
                 cn.ConnectionString = App.GetConnection();
@@ -487,6 +491,7 @@ namespace WpfMySql2
                                 row["bereicht"] = dr["bereicht"].ToString();
                                 row["internVermerk"] = dr["internVermerk"].ToString();
                                 row["listBoxAdd"] = dr["listBoxAdd"].ToString();
+                                row["artikelRecId"] = dr["artikelRecId"].ToString();
                                 table.Rows.Add(row);
                             }
                         }
@@ -560,7 +565,7 @@ namespace WpfMySql2
                     try
                     {
                         cn.Open();
-                        using (MySqlCommand cmd = new MySqlCommand("create table service (id INT AUTO_INCREMENT PRIMARY KEY, dateTime VARCHAR(50),status VARCHAR(50), clientID VARCHAR(10), gerat VARCHAR(200), serialNummer VARCHAR(50), zubehor VARCHAR(250), fehlerBeschreibung VARCHAR(350), maxPrice VARCHAR(10), mitarbeiterNach VARCHAR(50), mitarbeiterAus VARCHAR(50), passKunden VARCHAR(50), graphKey VARCHAR(30), bemerkung VARCHAR(350), zustadn VARCHAR(300),  bereicht VARCHAR(500), internVermerk VARCHAR(500), kundNamVorMatch VARCHAR(200), listBoxAdd VARCHAR(300))", cn))
+                        using (MySqlCommand cmd = new MySqlCommand("create table service (id INT AUTO_INCREMENT PRIMARY KEY, dateTime VARCHAR(50),status VARCHAR(50), clientID VARCHAR(10), gerat VARCHAR(200), serialNummer VARCHAR(50), zubehor VARCHAR(250), fehlerBeschreibung VARCHAR(350), maxPrice VARCHAR(10), mitarbeiterNach VARCHAR(50), mitarbeiterAus VARCHAR(50), passKunden VARCHAR(50), graphKey VARCHAR(30), bemerkung VARCHAR(350), zustadn VARCHAR(300),  bereicht VARCHAR(500), internVermerk VARCHAR(500), kundNamVorMatch VARCHAR(200), listBoxAdd VARCHAR(300), artikelRecId VARCHAR(10))", cn))
                         {
                             cmd.ExecuteNonQuery();
                         }

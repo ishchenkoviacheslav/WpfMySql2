@@ -30,7 +30,7 @@ namespace WpfMySql2
             this.Closing += InfoDetail_Closing;
             InitData();
         }
-
+       
         private void InfoDetail_Closing(object sender, System.ComponentModel.CancelEventArgs e)
         {
             if(MessageBoxResult.Yes ==  MessageBox.Show("speichern Sie die Änderungen?", "Schließen",MessageBoxButton.YesNo))
@@ -111,7 +111,7 @@ namespace WpfMySql2
             {
 
                 readSomeTable();
-
+                InitDataGridArtikel();
                 kundenNrtxt.Text = MainWindow.rowDetail["clientID"].ToString();
                 anredeTxt.Text = row["ANREDE"].ToString();
                 nameTxt.Text = row["NAME1"].ToString();
@@ -188,6 +188,78 @@ namespace WpfMySql2
                 MainWindow.rowDetail = null;
             }
         }
+
+        public void InitDataGridArtikel()
+        {
+            string idArtikel = "";
+            using (MySqlConnection cn = new MySqlConnection())
+            {
+                cn.ConnectionString = App.GetConnection();
+                try
+                {
+                    cn.Open();
+                    string CommandStringEnterText = String.Format("Select * From service WHERE id  LIKE '%{0}%'", MainWindow.rowDetail["id"]);
+                    using (MySqlCommand cmd = new MySqlCommand(CommandStringEnterText, cn))
+                    {
+                        using (MySqlDataReader dr = cmd.ExecuteReader())
+                        {
+                            // table.Load(dr);
+                            while (dr.Read())
+                            {
+                                idArtikel = dr["artikelRecId"].ToString();
+                            }
+                        }
+                    }
+                }
+                catch (MySqlException ex)
+                {
+                    MessageBox.Show(ex.Message);
+                }
+            }
+            if (idArtikel != "")
+            {
+                DataTable tablei = new DataTable();
+                DataColumn column = new DataColumn("Suchbegriff", typeof(string));
+                tablei.Columns.Add(column);
+                column = new DataColumn("Arikelnummer", typeof(string));
+                tablei.Columns.Add(column);
+                column = new DataColumn("Kurzname", typeof(string));
+                tablei.Columns.Add(column);
+                column = new DataColumn("VK-Preis 5N", typeof(string));
+                tablei.Columns.Add(column);
+
+                using (MySqlConnection cn = new MySqlConnection())
+                {
+                    cn.ConnectionString = App.GetConnection();
+                    try
+                    {
+                        cn.Open();
+                        string CommandStringEnterText = String.Format("Select * From artikel WHERE REC_ID  LIKE '%{0}%'", idArtikel);
+                        using (MySqlCommand cmd = new MySqlCommand(CommandStringEnterText, cn))
+                        {
+                            using (MySqlDataReader dr = cmd.ExecuteReader())
+                            {
+                                while (dr.Read())
+                                {
+                                    DataRow row = tablei.NewRow();
+                                    row["Suchbegriff"] = dr["MATCHCODE"].ToString();
+                                    row["Arikelnummer"] = dr["ARTNUM"].ToString();
+                                    row["Kurzname"] = dr["KURZNAME"].ToString();
+                                    row["VK-Preis 5N"] = dr["VK5"].ToString();
+                                    tablei.Rows.Add(row);
+                                }
+                            }
+                        }
+                    }
+                    catch (MySqlException ex)
+                    {
+                        MessageBox.Show(ex.Message);
+                    }
+                }
+                this.DataGridArtikel.ItemsSource = tablei.AsDataView();
+            }
+        }
+
         void readNeuList()
         {
             if(MainWindow.rowDetail["listBoxAdd"].ToString()!="")
