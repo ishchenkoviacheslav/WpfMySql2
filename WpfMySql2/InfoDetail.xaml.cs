@@ -27,8 +27,18 @@ namespace WpfMySql2
         {
             InitializeComponent();
             this.Title = "Reparatur Status Nr.: " + id;
+            this.Closing += InfoDetail_Closing;
             InitData();
         }
+
+        private void InfoDetail_Closing(object sender, System.ComponentModel.CancelEventArgs e)
+        {
+            if(MessageBoxResult.Yes ==  MessageBox.Show("speichern Sie die Änderungen?", "Schließen",MessageBoxButton.YesNo))
+            {
+                btnOK_Click(null, null);
+            }
+        }
+
         void readSomeTable()
         {
             DataTable table = new DataTable();
@@ -195,7 +205,7 @@ namespace WpfMySql2
         }
         private void ButtonForEsc_Click(object sender, RoutedEventArgs e)
         {
-            Close();
+            Close();//добавить вопрос о сохранении
         }
 
         //private void buttonPrint_Click(object sender, RoutedEventArgs e)
@@ -283,7 +293,8 @@ namespace WpfMySql2
                     MessageBox.Show(ex.Message);
                 }
             }
-            this.Close();
+            if (sender != null)
+                this.Close();
         }
 
         private void btnAddListBox_Click(object sender, RoutedEventArgs e)
