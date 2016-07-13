@@ -180,8 +180,18 @@ namespace WpfMySql2
         }
         void readNeuList()
         {
-            string allNeuData = MainWindow.rowDetail["listBoxAdd"].ToString();
-            listBoxStatus.Items.Add(allNeuData);
+            if(MainWindow.rowDetail["listBoxAdd"].ToString()!="")
+            {
+                string allNeuData = MainWindow.rowDetail["listBoxAdd"].ToString();
+              string[] aRallNeuData =  allNeuData.Split(new char[] {'*'});
+                foreach (string str in aRallNeuData)
+                {
+                    if(str!="")//кажется ф-ция split добавляет "" вот такую строку...
+                    {
+                        listBoxStatus.Items.Add(str);
+                    }
+                }
+            }
         }
         private void ButtonForEsc_Click(object sender, RoutedEventArgs e)
         {
@@ -250,38 +260,38 @@ namespace WpfMySql2
 
         private void btnOK_Click(object sender, RoutedEventArgs e)
         {
-                using (MySqlConnection cn = new MySqlConnection())
+            using (MySqlConnection cn = new MySqlConnection())
+            {
+                cn.ConnectionString = App.GetConnection();
+                try
                 {
-                    cn.ConnectionString = App.GetConnection();
-                    try
-                    {
-                        cn.Open();
-                        ComboBoxItem cmbx = (ComboBoxItem)statusCbx.SelectedValue;
-                        string status = (String)cmbx.Content;
-                        ComboBoxItem cmbx2 = (ComboBoxItem)mitarbeiterAus.SelectedValue;
-                        string mitarbAus = (String)cmbx2.Content;
+                    cn.Open();
+                    ComboBoxItem cmbx = (ComboBoxItem)statusCbx.SelectedValue;
+                    string status = (String)cmbx.Content;
+                    ComboBoxItem cmbx2 = (ComboBoxItem)mitarbeiterAus.SelectedValue;
+                    string mitarbAus = (String)cmbx2.Content;
                     string internerVermStr = MySqlHelper.EscapeString(InternerVermerkTxt.Text);
                     string reparBetichtStr = MySqlHelper.EscapeString(reparBericht.Text);
-                        string comm = string.Format("Update service Set  status = '{0}', mitarbeiterAus = '{1}', internVermerk = '{2}', bereicht = '{3}' Where id = '{4}'", status, mitarbAus, internerVermStr, reparBetichtStr ,this.id);
-                        using (MySqlCommand cmd = new MySqlCommand(comm, cn))
-                        {
-                            cmd.ExecuteNonQuery();
-                        }
-                    }
-                    catch (MySqlException ex)
+                    string comm = string.Format("Update service Set  status = '{0}', mitarbeiterAus = '{1}', internVermerk = '{2}', bereicht = '{3}' Where id = '{4}'", status, mitarbAus, internerVermStr, reparBetichtStr, this.id);
+                    using (MySqlCommand cmd = new MySqlCommand(comm, cn))
                     {
-                        MessageBox.Show(ex.Message);
+                        cmd.ExecuteNonQuery();
                     }
                 }
+                catch (MySqlException ex)
+                {
+                    MessageBox.Show(ex.Message);
+                }
+            }
             this.Close();
         }
 
         private void btnAddListBox_Click(object sender, RoutedEventArgs e)
         {
-            if(textBoxData.Text != "" && textBoxHeader.Text != "")
+            if (textBoxData.Text != "" && textBoxHeader.Text != "")
             {
                 string oldAddList = "";
-                
+
                 using (MySqlConnection cn = new MySqlConnection())
                 {
                     cn.ConnectionString = App.GetConnection();
@@ -299,21 +309,21 @@ namespace WpfMySql2
                                 }
                             }
                         }
-                        string comm = string.Format("Update service Set  listBoxAdd = '{0}' Where id = '{1}'",(addList+oldAddList), this.id);
+                        string addList = (textBoxHeader.Text + "\t\t\t" + textBoxData.Text);
+                        string comm = string.Format("Update service Set  listBoxAdd = '{0}' Where id = '{1}'", (oldAddList + addList + "*"), this.id);
                         using (MySqlCommand cmd = new MySqlCommand(comm, cn))
                         {
                             cmd.ExecuteNonQuery();
                         }
+                        listBoxStatus.Items.Add(addList);
+                        textBoxHeader.Text = "";
+                        textBoxData.Text = "";
                     }
                     catch (MySqlException ex)
                     {
                         MessageBox.Show(ex.Message);
                     }
                 }
-                string addList = (textBoxHeader.Text + "\t\t\t" + textBoxData.Text + "*");
-                listBoxStatus.Items.Add(addList);
-                textBoxHeader.Text = "";
-                textBoxData.Text = "";
             }
         }
     }

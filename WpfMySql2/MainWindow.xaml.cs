@@ -560,7 +560,7 @@ namespace WpfMySql2
                     try
                     {
                         cn.Open();
-                        using (MySqlCommand cmd = new MySqlCommand("create table service (id INT AUTO_INCREMENT PRIMARY KEY, dateTime VARCHAR(50),status VARCHAR(50), clientID VARCHAR(10), gerat VARCHAR(200), serialNummer VARCHAR(50), zubehor VARCHAR(250), fehlerBeschreibung VARCHAR(250), maxPrice VARCHAR(10), mitarbeiterNach VARCHAR(50), mitarbeiterAus VARCHAR(50), passKunden VARCHAR(30), graphKey VARCHAR(30), bemerkung VARCHAR(250), zustadn VARCHAR(200),  bereicht VARCHAR(500), internVermerk VARCHAR(500), kundNamVorMatch VARCHAR(150), listBoxAdd VARCHAR(300))", cn))
+                        using (MySqlCommand cmd = new MySqlCommand("create table service (id INT AUTO_INCREMENT PRIMARY KEY, dateTime VARCHAR(50),status VARCHAR(50), clientID VARCHAR(10), gerat VARCHAR(200), serialNummer VARCHAR(50), zubehor VARCHAR(250), fehlerBeschreibung VARCHAR(350), maxPrice VARCHAR(10), mitarbeiterNach VARCHAR(50), mitarbeiterAus VARCHAR(50), passKunden VARCHAR(50), graphKey VARCHAR(30), bemerkung VARCHAR(350), zustadn VARCHAR(300),  bereicht VARCHAR(500), internVermerk VARCHAR(500), kundNamVorMatch VARCHAR(200), listBoxAdd VARCHAR(300))", cn))
                         {
                             cmd.ExecuteNonQuery();
                         }
