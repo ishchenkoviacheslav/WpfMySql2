@@ -67,6 +67,9 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Compile Include="Artikel.xaml.cs">
+      <DependentUpon>Artikel.xaml</DependentUpon>
+    </Compile>
     <Compile Include="InheritedTextBox.cs" />
     <Compile Include="clientsBase.xaml.cs">
       <DependentUpon>clientsBase.xaml</DependentUpon>
@@ -86,6 +89,10 @@
     <Compile Include="takeWindow.xaml.cs">
       <DependentUpon>takeWindow.xaml</DependentUpon>
     </Compile>
+    <Page Include="Artikel.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="clientsBase.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>

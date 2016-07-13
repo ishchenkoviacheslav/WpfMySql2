@@ -1,0 +1,16 @@
+﻿<Window x:Class="WpfMySql2.Artikel"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:WpfMySql2"
+        mc:Ignorable="d"
+        Title="Artikel" Height="470.188" Width="721.805">
+    <Grid>
+        <TextBox x:Name="enterdText" ToolTip="Suchfilter" TabIndex="0" HorizontalAlignment="Left" Height="47" Margin="10,10,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="279" Background="{x:Null}"/>
+        <DataGrid x:Name="dataGridClients" ToolTip="eine Liste der Kunden aus der Datenbank CAO-Faktura" SelectionMode="Single" SelectionUnit="FullRow" IsReadOnly="True" HorizontalAlignment="Left" Margin="10,62,0,0" VerticalAlignment="Top"/>
+        <Button x:Name="buttonOK" TabIndex="1" IsDefault="True" Content="OK" HorizontalAlignment="Left" Margin="294,10,0,0" VerticalAlignment="Top" Width="91" Height="47" Click="buttonOK_Click" FontSize="16" BorderBrush="#FF707070"/>
+        <Button x:Name="buttonClear" ToolTip="Suchfilter aufheben" TabIndex="2" Content="Entfehrnen" HorizontalAlignment="Left" Margin="390,10,0,0" VerticalAlignment="Top" Width="91" Height="47" Click="buttonClear_Click" FontSize="16" BorderBrush="#FF707070"/>
+        <Button x:Name="ButtonForEsc" IsCancel="True"  Click="ButtonForEsc_Click" Margin="0,0,5000,5000"/>
+    </Grid>
+</Window>

@@ -20,6 +20,7 @@ namespace WpfMySql2
     /// </summary>
     public partial class InfoDetail : Window
     {
+        public static DataRowView artikelRow = null;
         public DataTable tableCurrentClient;
         DataRow row = null;
         string id = MainWindow.rowDetail["id"].ToString();//пробл. при дабл клик на пустой строке
@@ -407,6 +408,17 @@ namespace WpfMySql2
                         MessageBox.Show(ex.Message);
                     }
                 }
+            }
+        }
+
+        private void btnAddArtikel_Click(object sender, RoutedEventArgs e)
+        {
+            Artikel art = new Artikel();
+            art.ShowDialog();
+            if(InfoDetail.artikelRow != null)
+            {
+                DataGridArtikel.Item // тут нужно загрузить/догрузить в датагрид инфу. и не забыть про сохранение.
+                InfoDetail.artikelRow = null;
             }
         }
     }

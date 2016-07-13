@@ -81,7 +81,10 @@
                 <TextBox x:Name="reparBericht" TabIndex="3"/>
             </TabItem>
             <TabItem x:Name="tabArtikel" Header="Artikel">
-                <DataGrid x:Name="DataGridArtikel"/>
+                <Grid>
+                    <DataGrid x:Name="DataGridArtikel" Margin="0,0,446,315"/>
+                    <Button x:Name="btnAddArtikel" Content="Add" Width="75" Margin="10,295,387,10" Click="btnAddArtikel_Click"/>
+                </Grid>
             </TabItem>
         </TabControl>
         <TextBox x:Name="anredeTxt" IsReadOnly="True" HorizontalAlignment="Left" Height="30" Margin="236,10,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="243" FontSize="16" IsTabStop="False"/>
