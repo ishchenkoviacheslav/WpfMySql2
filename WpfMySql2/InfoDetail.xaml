@@ -82,8 +82,9 @@
             </TabItem>
             <TabItem x:Name="tabArtikel" Header="Artikel">
                 <Grid>
-                    <DataGrid x:Name="DataGridArtikel" Margin="0,0,446,315"/>
+                    <DataGrid x:Name="DataGridArtikel" SelectionMode="Single" SelectionUnit="FullRow" IsReadOnly="True" Margin="0,0,0,42"/>
                     <Button x:Name="btnAddArtikel" Content="Add" Width="75" Margin="10,295,387,10" Click="btnAddArtikel_Click"/>
+                    <Button x:Name="btnDelArtikel" Content="entfernen" Width="75" Margin="90,295,307,10" Click="btnDelArtikel_Click"/>
                 </Grid>
             </TabItem>
         </TabControl>

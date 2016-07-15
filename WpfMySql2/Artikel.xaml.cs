@@ -33,7 +33,7 @@ namespace WpfMySql2
             if (sender is DataGrid)
             {
                 DataGrid mainGrid = (DataGrid)sender;
-                InfoDetail.artikelRow = (DataRowView)mainGrid.SelectedItem;    //принимает весь ряд но можно юзать только ИД клиента из бд.
+                InfoDetail.artikelRow = (DataRowView)mainGrid.SelectedItem;  
             }
             this.Close();
         }
@@ -50,7 +50,9 @@ namespace WpfMySql2
         private void readAllTableGrid()
         {
             DataTable table = new DataTable();
-            DataColumn column = new DataColumn("Suchbegriff", typeof(string));
+            DataColumn column = new DataColumn("REC_ID", typeof(string));
+            table.Columns.Add(column);
+            column = new DataColumn("Suchbegriff", typeof(string));
             table.Columns.Add(column);
             column = new DataColumn("Arikelnummer", typeof(string));
             table.Columns.Add(column);
@@ -73,6 +75,7 @@ namespace WpfMySql2
                             while (dr.Read())
                             {
                                 DataRow row = table.NewRow();
+                                row["REC_ID"] = dr["REC_ID"].ToString();
                                 row["Suchbegriff"] = dr["MATCHCODE"].ToString();
                                 row["Arikelnummer"] = dr["ARTNUM"].ToString();
                                 row["Kurzname"] = dr["KURZNAME"].ToString();
@@ -101,7 +104,9 @@ namespace WpfMySql2
         void readSomeTable()
         {
             DataTable table = new DataTable();
-            DataColumn column = new DataColumn("Suchbegriff", typeof(string));
+            DataColumn column = new DataColumn("REC_ID", typeof(string));
+            table.Columns.Add(column);
+            column = new DataColumn("Suchbegriff", typeof(string));
             table.Columns.Add(column);
             column = new DataColumn("Arikelnummer", typeof(string));
             table.Columns.Add(column);
@@ -125,6 +130,7 @@ namespace WpfMySql2
                             while (dr.Read())
                             {
                                 DataRow row = table.NewRow();
+                                row["REC_ID"] = dr["REC_ID"].ToString();
                                 row["Suchbegriff"] = dr["MATCHCODE"].ToString();
                                 row["Arikelnummer"] = dr["ARTNUM"].ToString();
                                 row["Kurzname"] = dr["KURZNAME"].ToString();

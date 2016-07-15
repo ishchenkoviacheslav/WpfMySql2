@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Data;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -12,7 +13,6 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
 using MySql.Data.MySqlClient;
-using System.Data;
 namespace WpfMySql2
 {
     /// <summary>
@@ -20,6 +20,7 @@ namespace WpfMySql2
     /// </summary>
     public partial class InfoDetail : Window
     {
+        private DataTable tableArtGeid = new DataTable();
         public static DataRowView artikelRow = null;
         public DataTable tableCurrentClient;
         DataRow row = null;
@@ -30,11 +31,24 @@ namespace WpfMySql2
             this.Title = "Reparatur Status Nr.: " + id;
             this.Closing += InfoDetail_Closing;
             InitData();
+            initTable();
         }
-       
+        private void initTable()
+        {
+            DataColumn column = new DataColumn("REC_ID", typeof(string));
+            tableArtGeid.Columns.Add(column);
+            column = new DataColumn("Suchbegriff", typeof(string));
+            tableArtGeid.Columns.Add(column);
+            column = new DataColumn("Arikelnummer", typeof(string));
+            tableArtGeid.Columns.Add(column);
+            column = new DataColumn("Kurzname", typeof(string));
+            tableArtGeid.Columns.Add(column);
+            column = new DataColumn("VK-Preis 5N", typeof(string));
+            tableArtGeid.Columns.Add(column);
+        }
         private void InfoDetail_Closing(object sender, System.ComponentModel.CancelEventArgs e)
         {
-            if(MessageBoxResult.Yes ==  MessageBox.Show("speichern Sie die Änderungen?", "Schließen",MessageBoxButton.YesNo))
+            if (MessageBoxResult.Yes == MessageBox.Show("speichern Sie die Änderungen?", "Schließen", MessageBoxButton.YesNo))
             {
                 btnOK_Click(null, null);
             }
@@ -219,8 +233,12 @@ namespace WpfMySql2
             }
             if (idArtikel != "")
             {
+                char[] ar = new char[] { '*' };
+                string[] allIdArtikel = idArtikel.Split(ar);
                 DataTable tablei = new DataTable();
-                DataColumn column = new DataColumn("Suchbegriff", typeof(string));
+                DataColumn column = new DataColumn("REC_ID", typeof(string));
+                tablei.Columns.Add(column);
+                column = new DataColumn("Suchbegriff", typeof(string));
                 tablei.Columns.Add(column);
                 column = new DataColumn("Arikelnummer", typeof(string));
                 tablei.Columns.Add(column);
@@ -235,22 +253,30 @@ namespace WpfMySql2
                     try
                     {
                         cn.Open();
-                        string CommandStringEnterText = String.Format("Select * From artikel WHERE REC_ID  LIKE '%{0}%'", idArtikel);
-                        using (MySqlCommand cmd = new MySqlCommand(CommandStringEnterText, cn))
+                        foreach (string art in allIdArtikel)
                         {
-                            using (MySqlDataReader dr = cmd.ExecuteReader())
+                            if (art != "")
                             {
-                                while (dr.Read())
+                                string CommandStringEnterText = String.Format("Select * From artikel WHERE REC_ID  LIKE '{0}'", art);
+                                using (MySqlCommand cmd = new MySqlCommand(CommandStringEnterText, cn))
                                 {
-                                    DataRow row = tablei.NewRow();
-                                    row["Suchbegriff"] = dr["MATCHCODE"].ToString();
-                                    row["Arikelnummer"] = dr["ARTNUM"].ToString();
-                                    row["Kurzname"] = dr["KURZNAME"].ToString();
-                                    row["VK-Preis 5N"] = dr["VK5"].ToString();
-                                    tablei.Rows.Add(row);
+                                    using (MySqlDataReader dr = cmd.ExecuteReader())
+                                    {
+                                        while (dr.Read())
+                                        {
+                                            DataRow row = tablei.NewRow();
+                                            row["REC_ID"] = dr["REC_ID"].ToString();
+                                            row["Suchbegriff"] = dr["MATCHCODE"].ToString();
+                                            row["Arikelnummer"] = dr["ARTNUM"].ToString();
+                                            row["Kurzname"] = dr["KURZNAME"].ToString();
+                                            row["VK-Preis 5N"] = dr["VK5"].ToString();
+                                            tablei.Rows.Add(row);
+                                        }
+                                    }
                                 }
                             }
                         }
+
                     }
                     catch (MySqlException ex)
                     {
@@ -263,13 +289,13 @@ namespace WpfMySql2
 
         void readNeuList()
         {
-            if(MainWindow.rowDetail["listBoxAdd"].ToString()!="")
+            if (MainWindow.rowDetail["listBoxAdd"].ToString() != "")
             {
                 string allNeuData = MainWindow.rowDetail["listBoxAdd"].ToString();
-              string[] aRallNeuData =  allNeuData.Split(new char[] {'*'});
+                string[] aRallNeuData = allNeuData.Split(new char[] { '*' });
                 foreach (string str in aRallNeuData)
                 {
-                    if(str!="")//кажется ф-ция split добавляет "" вот такую строку...
+                    if (str != "")//кажется ф-ция split добавляет "" вот такую строку...
                     {
                         listBoxStatus.Items.Add(str);
                     }
@@ -355,7 +381,12 @@ namespace WpfMySql2
                     string mitarbAus = (String)cmbx2.Content;
                     string internerVermStr = MySqlHelper.EscapeString(InternerVermerkTxt.Text);
                     string reparBetichtStr = MySqlHelper.EscapeString(reparBericht.Text);
-                    string comm = string.Format("Update service Set  status = '{0}', mitarbeiterAus = '{1}', internVermerk = '{2}', bereicht = '{3}' Where id = '{4}'", status, mitarbAus, internerVermStr, reparBetichtStr, this.id);
+                    string allIdArtikel = "";
+                    foreach (DataRow row in tableArtGeid.Rows)
+                    {
+                        allIdArtikel += row["REC_ID"].ToString() + "*";
+                    }
+                    string comm = string.Format("Update service Set  status = '{0}', mitarbeiterAus = '{1}', internVermerk = '{2}', bereicht = '{3}', artikelRecId = '{4}' Where id = '{5}'", status, mitarbAus, internerVermStr, reparBetichtStr, allIdArtikel, this.id);
                     using (MySqlCommand cmd = new MySqlCommand(comm, cn))
                     {
                         cmd.ExecuteNonQuery();
@@ -415,10 +446,38 @@ namespace WpfMySql2
         {
             Artikel art = new Artikel();
             art.ShowDialog();
-            if(InfoDetail.artikelRow != null)
+            if (InfoDetail.artikelRow != null)
             {
-                DataGridArtikel.Item // тут нужно загрузить/догрузить в датагрид инфу. и не забыть про сохранение.
+                DataRow row = tableArtGeid.NewRow();
+                row["REC_ID"] = artikelRow["REC_ID"];
+                row["Suchbegriff"] = artikelRow["Suchbegriff"];
+                row["Arikelnummer"] = artikelRow["Arikelnummer"];
+                row["Kurzname"] = artikelRow["Kurzname"];
+                row["VK-Preis 5N"] = artikelRow["VK-Preis 5N"];
+                tableArtGeid.Rows.Add(row);
+                DataGridArtikel.ItemsSource = tableArtGeid.AsDataView();
+
                 InfoDetail.artikelRow = null;
+            }
+        }
+
+        private void btnDelArtikel_Click(object sender, RoutedEventArgs e)
+        {
+            DataRow rowToDel = ((DataRowView)DataGridArtikel.SelectedItem).Row;
+            if(rowToDel != null)
+            {
+                string id = rowToDel["REC_ID"].ToString();
+                int i = 0;
+                foreach (DataRow row in tableArtGeid.Rows)
+                {
+                    if(row["REC_ID"].ToString() == id)
+                    {
+                        tableArtGeid.Rows.RemoveAt(i);
+                        break;
+                    }
+                    i++;
+                }
+                DataGridArtikel.ItemsSource = tableArtGeid.AsDataView();
             }
         }
     }
