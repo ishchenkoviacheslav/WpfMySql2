@@ -30,9 +30,20 @@ namespace WpfMySql2
             InitializeComponent();
             this.Title = "Reparatur Status Nr.: " + id;
             this.Closing += InfoDetail_Closing;
-            InitData();
             initTable();
+            InitData();
         }
+
+        private void StatusCbx_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            ComboBox comb = sender as ComboBox;
+            ComboBoxItem combItem = comb.SelectedItem as ComboBoxItem;
+            if(combItem.Content.ToString() == "Abgeholt/Abgeschlossen")
+            {
+                MessageBox.Show("statusCbx changed!");
+            }
+        }
+
         private void initTable()
         {
             DataColumn column = new DataColumn("REC_ID", typeof(string));
@@ -160,6 +171,7 @@ namespace WpfMySql2
                         statusCbx.Items.Add(cbItm);
                     }
                 }
+                statusCbx.SelectionChanged += StatusCbx_SelectionChanged;//подпись на событие именно здесь очень важна!потому что при инициализации окна тоже оно срабатывает если этот статус уже был установлен до этого
                 ////////////////////////////////////////
                 ComboBoxItem cbItm2 = new ComboBoxItem();
                 cbItm2.IsSelected = true;
@@ -235,17 +247,17 @@ namespace WpfMySql2
             {
                 char[] ar = new char[] { '*' };
                 string[] allIdArtikel = idArtikel.Split(ar);
-                DataTable tablei = new DataTable();
-                DataColumn column = new DataColumn("REC_ID", typeof(string));
-                tablei.Columns.Add(column);
-                column = new DataColumn("Suchbegriff", typeof(string));
-                tablei.Columns.Add(column);
-                column = new DataColumn("Arikelnummer", typeof(string));
-                tablei.Columns.Add(column);
-                column = new DataColumn("Kurzname", typeof(string));
-                tablei.Columns.Add(column);
-                column = new DataColumn("VK-Preis 5N", typeof(string));
-                tablei.Columns.Add(column);
+                //DataTable tablei = new DataTable();
+                //DataColumn column = new DataColumn("REC_ID", typeof(string));
+                //tablei.Columns.Add(column);
+                //column = new DataColumn("Suchbegriff", typeof(string));
+                //tablei.Columns.Add(column);
+                //column = new DataColumn("Arikelnummer", typeof(string));
+                //tablei.Columns.Add(column);
+                //column = new DataColumn("Kurzname", typeof(string));
+                //tablei.Columns.Add(column);
+                //column = new DataColumn("VK-Preis 5N", typeof(string));
+                //tablei.Columns.Add(column);
 
                 using (MySqlConnection cn = new MySqlConnection())
                 {
@@ -264,13 +276,13 @@ namespace WpfMySql2
                                     {
                                         while (dr.Read())
                                         {
-                                            DataRow row = tablei.NewRow();
+                                            DataRow row = tableArtGeid.NewRow();
                                             row["REC_ID"] = dr["REC_ID"].ToString();
                                             row["Suchbegriff"] = dr["MATCHCODE"].ToString();
                                             row["Arikelnummer"] = dr["ARTNUM"].ToString();
                                             row["Kurzname"] = dr["KURZNAME"].ToString();
                                             row["VK-Preis 5N"] = dr["VK5"].ToString();
-                                            tablei.Rows.Add(row);
+                                            tableArtGeid.Rows.Add(row);
                                         }
                                     }
                                 }
@@ -283,7 +295,7 @@ namespace WpfMySql2
                         MessageBox.Show(ex.Message);
                     }
                 }
-                this.DataGridArtikel.ItemsSource = tablei.AsDataView();
+                this.DataGridArtikel.ItemsSource = tableArtGeid.AsDataView();
             }
         }
 
@@ -397,8 +409,11 @@ namespace WpfMySql2
                     MessageBox.Show(ex.Message);
                 }
             }
-            if (sender != null)
-                this.Close();
+
+            this.Closing -= InfoDetail_Closing;//долго сидел ночью думал почему так. Убрирать нужно для того чтобы при нажатии на ОК не спрашивало нужно ли сохранять, потому что если на ОК нажал то сохранять по любому нужно
+
+            if (sender != null)// эта функция вызывается в момент когда уже происходит завершение существования окна. поэтому повторный вызов закрытия дает исклю.сит.
+                this.Close();//тоесть нужно вызывать клозе ТОЛЬКо если наша функция вызвалась непосредственно, а не как часть процесса закрытия окна.это происходит потому что эту функцию удобно использовать как функцию для сохранения всех данных окна
         }
 
         private void btnAddListBox_Click(object sender, RoutedEventArgs e)
@@ -467,15 +482,14 @@ namespace WpfMySql2
             if(rowToDel != null)
             {
                 string id = rowToDel["REC_ID"].ToString();
-                int i = 0;
-                foreach (DataRow row in tableArtGeid.Rows)
+                
+                foreach (DataRow rowDel in tableArtGeid.Rows)
                 {
-                    if(row["REC_ID"].ToString() == id)
+                    if(rowDel["REC_ID"].ToString() == id)
                     {
-                        tableArtGeid.Rows.RemoveAt(i);
+                        tableArtGeid.Rows.Remove(rowDel);
                         break;
                     }
-                    i++;
                 }
                 DataGridArtikel.ItemsSource = tableArtGeid.AsDataView();
             }
