@@ -6,7 +6,7 @@
         xmlns:Controls="clr-namespace:UserInterface.Controls"
         xmlns:local="clr-namespace:WpfMySql2"
         mc:Ignorable="d"
-        Title="Reparaturmodul CAO"  Height="660"  Width="1000" >
+        Title="Reparaturmodul CAO"  Height="600"  Width="800" >
     <Window.Resources>
         <Style TargetType="{x:Type Controls:WatermarkedTextBox}" BasedOn="{StaticResource {x:Type TextBox}}">
             <Setter Property="FontSize" Value="14"></Setter>
@@ -45,7 +45,14 @@
         </Style>
     </Window.Resources>
     <Grid>
-        <Menu Margin="0,0,744,589" Height="34" VerticalContentAlignment="Top" VerticalAlignment="Top" Background="{x:Null}" >
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="*" MinWidth="800"/>
+        </Grid.ColumnDefinitions>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="auto"/>
+        </Grid.RowDefinitions>
+        <Menu Margin="0,0,615,0" Height="34" Width="185" VerticalAlignment="Top" Background="{x:Null}" HorizontalAlignment="Left" >
             <MenuItem  Header="Datei" TabIndex="99999">
                 <!--<MenuItem  Header="Datenbank" Click="MenuItem_Click_1"/>-->
                 <MenuItem Header="Neuer Auftrag" Click="NeuerAuftrag"/>
@@ -61,11 +68,11 @@
                 <MenuItem Header="Über"/>
             </MenuItem>
         </Menu>
-        <Controls:WatermarkedTextBox x:Name="textBoxFilter" ToolTip="Suchfilter" TabIndex="0" HorizontalAlignment="Left" Height="32" Margin="10,37,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="205" Background="{x:Null}" BorderBrush="#FFABADB3"/>
-        <DataGrid x:Name="dataGridMain" ToolTip="Serviceauftragliste " SelectionMode="Single" SelectionUnit="FullRow" IsReadOnly="True" AutoGenerateColumns="True" HorizontalAlignment="Left" Margin="10,74,0,0" VerticalAlignment="Top" TabIndex="2" Padding="0,0,10,0"/>
-        <ComboBox x:Name="comboBoxStatusFilter" HorizontalAlignment="Left" Margin="310,37,0,0" VerticalAlignment="Top" Width="207" Height="32" FontSize="16"/>
-        <Label x:Name="label" Content="Status: " HorizontalAlignment="Left" Margin="259,37,0,0" VerticalAlignment="Top" Height="32" Width="46"/>
-        <StatusBar x:Name="statBarAuftrag" HorizontalAlignment="Left" Height="37" Margin="0,592,0,0" VerticalAlignment="Top" Width="992"/>
+        <Controls:WatermarkedTextBox x:Name="textBoxFilter" ToolTip="Suchfilter" TabIndex="0" HorizontalAlignment="Left" Height="32" Margin="10,37,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Background="{x:Null}" BorderBrush="#FFABADB3" MinWidth="175"/>
+        <DataGrid x:Name="dataGridMain" ToolTip="Serviceauftragliste " SelectionMode="Single" SelectionUnit="FullRow" IsReadOnly="True" AutoGenerateColumns="True" Margin="10,74,0,0" VerticalAlignment="Top" TabIndex="2" Padding="0,0,10,0"/>
+        <ComboBox x:Name="comboBoxStatusFilter" HorizontalAlignment="Left" Margin="241,37,0,0" VerticalAlignment="Top" Width="207" Height="32" FontSize="14"/>
+        <Label x:Name="label" Content="Status: " HorizontalAlignment="Left" Margin="190,37,0,0" VerticalAlignment="Top" Height="32" Width="46"/>
+        <StatusBar x:Name="statBarAuftrag" Grid.Row="1" VerticalContentAlignment="Bottom" HorizontalContentAlignment="Stretch" Height="32" VerticalAlignment="Bottom"/>
 
     </Grid>
 </Window>
