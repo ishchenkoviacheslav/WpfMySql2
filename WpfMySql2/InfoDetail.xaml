@@ -7,28 +7,36 @@
         mc:Ignorable="d"
         Title="Detaillierte Information"  Height="593.333"  Width="982">
     <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="242*"/>
+            <ColumnDefinition Width="245*"/>
+        </Grid.ColumnDefinitions>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="auto"/>
+            <!--<RowDefinition Height="auto"/>-->
+        </Grid.RowDefinitions>
         <!--<Button x:Name="ButtonForEsc" IsCancel="True"  Click="ButtonForEsc_Click" Margin="0,0,5000,5000">
         </Button>-->
-        <TextBox x:Name="kundenNrtxt" IsReadOnly="True" HorizontalAlignment="Left" Height="30" Margin="97,10,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="60" FontSize="16" IsTabStop="False"/>
-        <Label x:Name="mobil" Content="Mobil:" HorizontalAlignment="Left" Margin="709,47,0,0" VerticalAlignment="Top" Width="74" Height="30" FontSize="16"/>
-        <Label x:Name="Ort" Content="Ort:" HorizontalAlignment="Left" Margin="709,12,0,0" VerticalAlignment="Top" Width="74" Height="30" FontSize="16"/>
-        <Label x:Name="EMail" Content="E-Mail:" HorizontalAlignment="Left" Margin="484,82,0,0" VerticalAlignment="Top" Width="76" Height="30" FontSize="16"/>
-        <Label x:Name="Telefon" Content="Telefon:" HorizontalAlignment="Left" Margin="484,47,0,0" VerticalAlignment="Top" Width="76" Height="30" FontSize="16"/>
-        <Label x:Name="PLZ" Content="PLZ:" HorizontalAlignment="Left" Margin="484,12,0,0" VerticalAlignment="Top" Width="76" Height="30" FontSize="16"/>
-        <Label x:Name="Strasse" Content="Straße:" HorizontalAlignment="Left" Margin="9,117,0,0" VerticalAlignment="Top" Width="73" Height="30" FontSize="16"/>
-        <Label x:Name="Vorname" Content="Vorname:" HorizontalAlignment="Left" Margin="9,82,0,0" VerticalAlignment="Top" Width="73" Height="30" FontSize="16"/>
-        <Label x:Name="name" Content="Name:" HorizontalAlignment="Left" Margin="9,47,0,0" VerticalAlignment="Top" Width="73" Height="30" FontSize="16"/>
-        <Label x:Name="kundeNr" Content="Kd-Nr:" HorizontalAlignment="Left" Margin="9,12,0,0" VerticalAlignment="Top" Width="73" Height="30" FontSize="16"/>
-        <TextBox x:Name="StrasseTxt" IsReadOnly="True" HorizontalAlignment="Left" Height="30" Margin="97,121,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="382" FontSize="16" IsTabStop="False"/>
-        <TextBox x:Name="VornameTxt" IsReadOnly="True" HorizontalAlignment="Left" Height="30" Margin="97,86,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="382" FontSize="16" IsTabStop="False"/>
-        <TextBox x:Name="nameTxt" IsReadOnly="True" HorizontalAlignment="Left" Height="30" Margin="97,51,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="382" FontSize="16" IsTabStop="False"/>
-        <TextBox x:Name="PLZTxt" IsReadOnly="True" HorizontalAlignment="Left" Height="30" Margin="565,12,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="139" FontSize="16" IsTabStop="False"/>
-        <TextBox x:Name="EMailTxt" IsReadOnly="True" HorizontalAlignment="Left" Height="30" Margin="565,82,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="397" FontSize="16" IsTabStop="False"/>
-        <TextBox x:Name="TelefonTxt" IsReadOnly="True" HorizontalAlignment="Left" Height="30" Margin="565,47,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="139" FontSize="16" IsTabStop="False"/>
-        <TextBox x:Name="OrtTxt" IsReadOnly="True" HorizontalAlignment="Left" Height="30" Margin="788,12,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="174" FontSize="16" IsTabStop="False"/>
-        <TextBox x:Name="MobilTxt" IsReadOnly="True" HorizontalAlignment="Left" Height="30" Margin="788,47,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="174" FontSize="16" IsTabStop="False"/>
-        <Label x:Name="anrede" Content="Anrede:" HorizontalAlignment="Left" Margin="162,12,0,0" VerticalAlignment="Top" Width="73" Height="30" FontSize="16"/>
-        <ComboBox x:Name="mitarbeiterAus" TabIndex="0" HorizontalAlignment="Left" Margin="242,451,0,0" VerticalAlignment="Top" Width="237" Height="30" Text="Arbeitet" FontSize="16">
+        <TextBox x:Name="kundenNrtxt" IsReadOnly="True" HorizontalAlignment="Left" Height="23" Margin="83,10,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="60" FontSize="14" IsTabStop="False"/>
+        <Label x:Name="mobil" Content="Mobil:" HorizontalAlignment="Left" Margin="214,47,0,0" VerticalAlignment="Top" Width="74" Height="24" FontSize="14" Grid.Column="1" Padding="3"/>
+        <Label x:Name="Ort" Content="Ort:" HorizontalAlignment="Left" Margin="214,12,0,0" VerticalAlignment="Top" Width="74" Height="24" FontSize="14" HorizontalContentAlignment="Stretch" Grid.Column="1" Padding="3"/>
+        <Label x:Name="EMail" Content="E-Mail:" HorizontalAlignment="Left" Margin="0,82,0,0" VerticalAlignment="Top" Width="76" Height="24" FontSize="14" Grid.Column="1" Padding="3"/>
+        <Label x:Name="Telefon" Content="Telefon:" HorizontalAlignment="Left" Margin="0,47,0,0" VerticalAlignment="Top" Width="76" Height="24" FontSize="14" Grid.Column="1" Padding="3"/>
+        <Label x:Name="PLZ" Content="PLZ:" HorizontalAlignment="Left" Margin="0,12,0,0" VerticalAlignment="Top" Width="76" Height="24" FontSize="14" Grid.Column="1" Padding="3"/>
+        <Label x:Name="Strasse" Content="Straße:" HorizontalAlignment="Left" Margin="9,97,0,0" VerticalAlignment="Top" Width="73" Height="24" FontSize="14" Padding="3"/>
+        <Label x:Name="Vorname" Content="Vorname:" HorizontalAlignment="Left" Margin="10,68,0,0" VerticalAlignment="Top" Width="73" Height="24" FontSize="14" Padding="3"/>
+        <Label x:Name="name" Content="Name:" HorizontalAlignment="Left" Margin="10,39,0,0" VerticalAlignment="Top" Width="73" Height="24" FontSize="14" Padding="3"/>
+        <Label x:Name="kundeNr" Content="Kd-Nr:" HorizontalAlignment="Left" Margin="10,10,0,0" VerticalAlignment="Top" Width="73" Height="24" FontSize="14" Padding="3"/>
+        <TextBox x:Name="StrasseTxt" IsReadOnly="True" HorizontalAlignment="Left" Height="24" Margin="83,97,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="291" FontSize="14" IsTabStop="False"/>
+        <TextBox x:Name="VornameTxt" IsReadOnly="True" HorizontalAlignment="Left" Height="24" Margin="83,68,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="291" FontSize="14" IsTabStop="False"/>
+        <TextBox x:Name="nameTxt" IsReadOnly="True" HorizontalAlignment="Left" Height="24" Margin="83,39,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="291" FontSize="14" IsTabStop="False"/>
+        <TextBox x:Name="PLZTxt" IsReadOnly="True" Height="24" Margin="71,10,281,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" FontSize="14" IsTabStop="False" Grid.Column="1"/>
+        <TextBox x:Name="EMailTxt" IsReadOnly="True" HorizontalAlignment="Left" Height="24" Margin="70,82,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="397" FontSize="14" IsTabStop="False" Grid.Column="1"/>
+        <TextBox x:Name="TelefonTxt" IsReadOnly="True" HorizontalAlignment="Left" Height="24" Margin="70,47,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="139" FontSize="14" IsTabStop="False" Grid.Column="1"/>
+        <TextBox x:Name="OrtTxt" IsReadOnly="True" Height="24" TextWrapping="Wrap" Text="" VerticalAlignment="Top" FontSize="14" IsTabStop="False" HorizontalContentAlignment="Stretch" Margin="293,10,23,0" Grid.Column="1"/>
+        <TextBox x:Name="MobilTxt" IsReadOnly="True" HorizontalAlignment="Left" Height="24" Margin="293,47,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="174" FontSize="14" IsTabStop="False" Grid.Column="1"/>
+        <Label x:Name="anrede" Content="Anrede:" HorizontalAlignment="Left" Margin="148,9,0,0" VerticalAlignment="Top" Width="73" Height="24" FontSize="14" Padding="3"/>
+        <ComboBox x:Name="mitarbeiterAus" TabIndex="0" HorizontalAlignment="Left" Margin="223,399,0,0" VerticalAlignment="Top" Width="151" Height="24" Text="Arbeitet" FontSize="14">
             <!--<ComboBoxItem Name="Arb" IsSelected="True">Select Mitarbeiter</ComboBoxItem>-->
             <!--<ComboBoxItem Name="ArbA">A</ComboBoxItem>
             <ComboBoxItem Name="ArbB">B</ComboBoxItem>
@@ -36,37 +44,37 @@
             <ComboBoxItem Name="ArbD">D</ComboBoxItem>
             <ComboBoxItem Name="ArbE">E</ComboBoxItem>-->
         </ComboBox>
-        <TextBox x:Name="geratTxt" ToolTip="Gerät" IsReadOnly="True" TabIndex="1" HorizontalAlignment="Left" Height="30" Margin="97,161,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="382" MaxWidth="99999" MaxHeight="99999" FontSize="16" IsTabStop="False"/>
-        <TextBox x:Name="zubehorTxt" IsReadOnly="True" TabIndex="2" HorizontalAlignment="Left" Height="75" Margin="97,371,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="382" IsTabStop="False"/>
-        <Label x:Name="labelObj" Content="Gerät:" HorizontalAlignment="Left" Margin="9,161,0,0" VerticalAlignment="Top" Width="73" Height="32" FontSize="16"/>
-        <Label x:Name="labelAccess" Content="Zubehör:" HorizontalAlignment="Left" Margin="9,365,0,0" VerticalAlignment="Top" Width="73" Height="30" FontSize="16"/>
-        <Label x:Name="labelOther" Content="Log/Pass:" HorizontalAlignment="Left" Margin="9,266,0,0" VerticalAlignment="Top" Width="88" Height="30" FontSize="16"/>
-        <Label x:Name="Zustand" Content="Zustand:" HorizontalAlignment="Left" Margin="9,486,0,0" VerticalAlignment="Top" Width="73" Height="30" FontSize="16"/>
-        <TextBox x:Name="zustandTxt" IsReadOnly="True" TabIndex="4" HorizontalAlignment="Left" Height="30" Margin="97,486,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="382" FontSize="16" IsTabStop="False"/>
-        <Label x:Name="labelPrevPrice" Content="Max Kosten:" HorizontalAlignment="Left" Margin="9,451,0,0" VerticalAlignment="Top" Width="90" Height="30" FontSize="15"/>
-        <TextBox x:Name="maxPrice" TabIndex="5" HorizontalAlignment="Left" Height="30" Margin="97,451,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="99" FontSize="16" IsReadOnly="True" IsTabStop="False"/>
-        <Label x:Name="labelPrevSerialNum" Content="Seriennr:" HorizontalAlignment="Left" Margin="9,196,0,0" VerticalAlignment="Top" Width="73" Height="30" FontSize="16"/>
-        <TextBox x:Name="serialNummerTxt" IsReadOnly="True" ToolTip="Seriennummer" TabIndex="6" HorizontalAlignment="Left" Height="30" Margin="97,196,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="382" FontSize="16" IsTabStop="False"/>
-        <Label x:Name="Benerkung" Content="Bemerkung:" HorizontalAlignment="Left" Margin="9,231,0,0" VerticalAlignment="Top" Width="88" Height="30" FontSize="15"/>
-        <TextBox x:Name="BemerkungTxt" ToolTip="Seriennummer" TabIndex="6" HorizontalAlignment="Left" Height="30" Margin="97,231,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="382" FontSize="16" IsReadOnly="True" IsTabStop="False"/>
-        <TextBox x:Name="passKundenTxt" ToolTip="Seriennummer" TabIndex="6" HorizontalAlignment="Left" Height="30" Margin="97,266,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="205" FontSize="16" IsReadOnly="True" IsTabStop="False"/>
-        <Label x:Name="Muster" Content="Muster:" HorizontalAlignment="Left" Margin="307,266,0,0" VerticalAlignment="Top" Width="67" Height="30" FontSize="16"/>
-        <TextBox x:Name="textMuster1" MaxLength="1"  HorizontalAlignment="Left" Height="30" Margin="379,265,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="30" FontSize="16" IsReadOnly="True" IsTabStop="False"/>
-        <TextBox x:Name="textMuster2" MaxLength="1" HorizontalAlignment="Left" Height="30" Margin="414,266,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="30" FontSize="16" IsReadOnly="True" IsTabStop="False"/>
-        <TextBox x:Name="textMuster3" MaxLength="1" HorizontalAlignment="Left" Height="30" Margin="449,266,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="30" FontSize="16" IsReadOnly="True" IsTabStop="False"/>
-        <TextBox x:Name="textMuster4" MaxLength="1" HorizontalAlignment="Left" Height="30" Margin="379,301,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="30" FontSize="16" IsReadOnly="True" IsTabStop="False"/>
-        <TextBox x:Name="textMuster5" MaxLength="1" HorizontalAlignment="Left" Height="30" Margin="414,301,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="30" FontSize="16" IsReadOnly="True" IsTabStop="False"/>
-        <TextBox x:Name="textMuster6" MaxLength="1" HorizontalAlignment="Left" Height="30" Margin="449,301,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="30" FontSize="16" IsReadOnly="True" IsTabStop="False"/>
-        <TextBox x:Name="textMuster7" MaxLength="1" HorizontalAlignment="Left" Height="30" Margin="379,336,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="30" FontSize="16" IsReadOnly="True" IsTabStop="False"/>
-        <TextBox x:Name="textMuster8" MaxLength="1" HorizontalAlignment="Left" Height="30" Margin="414,336,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="30" FontSize="16" IsReadOnly="True" IsTabStop="False"/>
-        <TextBox x:Name="textMuster9" MaxLength="1" HorizontalAlignment="Left" Height="30" Margin="449,336,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="30" FontSize="16" IsReadOnly="True" IsTabStop="False"/>
-        <Label x:Name="von" Content="Von:" HorizontalAlignment="Left" Margin="201,451,0,0" VerticalAlignment="Top" Width="49" Height="30" FontSize="16"/>
-        <TabControl x:Name="tabControlAuftrag" HorizontalAlignment="Left" Height="360" Margin="488,156,0,0" VerticalAlignment="Top" Width="478">
+        <TextBox x:Name="geratTxt" ToolTip="Gerät" IsReadOnly="True" TabIndex="1" HorizontalAlignment="Left" Height="24" Margin="83,126,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="291" MaxWidth="99999" MaxHeight="99999" FontSize="14" IsTabStop="False"/>
+        <TextBox x:Name="zubehorTxt" IsReadOnly="True" TabIndex="2" HorizontalAlignment="Left" Height="75" Margin="83,314,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="291" IsTabStop="False" FontSize="14"/>
+        <Label x:Name="labelObj" Content="Gerät:" HorizontalAlignment="Left" Margin="10,126,0,0" VerticalAlignment="Top" Width="73" Height="24" FontSize="14" Padding="3"/>
+        <Label x:Name="labelAccess" Content="Zubehör:" HorizontalAlignment="Left" Margin="10,314,0,0" VerticalAlignment="Top" Width="73" Height="24" FontSize="14" Padding="3"/>
+        <Label x:Name="labelOther" Content="Log/Pass:" HorizontalAlignment="Left" Margin="9,214,0,0" VerticalAlignment="Top" Width="74" Height="24" FontSize="14" Padding="3"/>
+        <Label x:Name="Zustand" Content="Zustand:" HorizontalAlignment="Left" Margin="7,428,0,0" VerticalAlignment="Top" Width="73" Height="24" FontSize="14" Padding="3"/>
+        <TextBox x:Name="zustandTxt" IsReadOnly="True" TabIndex="4" HorizontalAlignment="Left" Height="24" Margin="83,428,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="291" FontSize="14" IsTabStop="False"/>
+        <Label x:Name="labelPrevPrice" Content="Max Kosten:" HorizontalAlignment="Left" Margin="5,399,0,0" VerticalAlignment="Top" Width="81" Height="24" FontSize="14" Padding="3"/>
+        <TextBox x:Name="maxPrice" TabIndex="5" HorizontalAlignment="Left" Height="24" Margin="83,399,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="91" FontSize="14" IsReadOnly="True" IsTabStop="False"/>
+        <Label x:Name="labelPrevSerialNum" Content="Seriennr:" HorizontalAlignment="Left" Margin="10,156,0,0" VerticalAlignment="Top" Width="72" Height="24" FontSize="14" Padding="3"/>
+        <TextBox x:Name="serialNummerTxt" IsReadOnly="True" ToolTip="Seriennummer" TabIndex="6" HorizontalAlignment="Left" Height="24" Margin="83,156,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="291" FontSize="14" IsTabStop="False"/>
+        <Label x:Name="Benerkung" Content="Bemerkung:" HorizontalAlignment="Left" Margin="9,185,0,0" VerticalAlignment="Top" Width="88" Height="24" FontSize="14" Padding="3"/>
+        <TextBox x:Name="BemerkungTxt" ToolTip="Seriennummer" TabIndex="6" HorizontalAlignment="Left" Height="24" Margin="83,185,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="291" FontSize="14" IsReadOnly="True" IsTabStop="False"/>
+        <TextBox x:Name="passKundenTxt" ToolTip="Seriennummer" TabIndex="6" HorizontalAlignment="Left" Height="95" Margin="83,214,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="138" FontSize="14" IsReadOnly="True" IsTabStop="False"/>
+        <Label x:Name="Muster" Content="Muster:" HorizontalAlignment="Left" Margin="221,214,0,0" VerticalAlignment="Top" Width="51" Height="24" FontSize="14" Padding="3"/>
+        <TextBox x:Name="textMuster1" MaxLength="1"  HorizontalAlignment="Left" Height="24" Margin="280,214,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="24" FontSize="14" IsReadOnly="True" IsTabStop="False"/>
+        <TextBox x:Name="textMuster2" MaxLength="1" HorizontalAlignment="Left" Height="24" Margin="315,215,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="24" FontSize="14" IsReadOnly="True" IsTabStop="False"/>
+        <TextBox x:Name="textMuster3" MaxLength="1" HorizontalAlignment="Left" Height="24" Margin="350,215,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="24" FontSize="16" IsReadOnly="True" IsTabStop="False"/>
+        <TextBox x:Name="textMuster4" MaxLength="1" HorizontalAlignment="Left" Height="24" Margin="280,250,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="24" FontSize="14" IsReadOnly="True" IsTabStop="False"/>
+        <TextBox x:Name="textMuster5" MaxLength="1" HorizontalAlignment="Left" Height="24" Margin="315,250,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="24" FontSize="14" IsReadOnly="True" IsTabStop="False"/>
+        <TextBox x:Name="textMuster6" MaxLength="1" HorizontalAlignment="Left" Height="24" Margin="350,250,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="24" FontSize="16" IsReadOnly="True" IsTabStop="False"/>
+        <TextBox x:Name="textMuster7" MaxLength="1" HorizontalAlignment="Left" Height="24" Margin="280,285,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="24" FontSize="14" IsReadOnly="True" IsTabStop="False"/>
+        <TextBox x:Name="textMuster8" MaxLength="1" HorizontalAlignment="Left" Height="24" Margin="315,285,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="24" FontSize="14" IsReadOnly="True" IsTabStop="False"/>
+        <TextBox x:Name="textMuster9" MaxLength="1" HorizontalAlignment="Left" Height="24" Margin="350,285,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="24" FontSize="16" IsReadOnly="True" IsTabStop="False"/>
+        <Label x:Name="von" Content="Von:" HorizontalAlignment="Left" Margin="179,399,0,0" VerticalAlignment="Top" Width="39" Height="24" FontSize="14" Padding="3"/>
+        <TabControl x:Name="tabControlAuftrag" HorizontalAlignment="Left" Height="360" Margin="0,156,0,0" VerticalAlignment="Top" Width="478" Grid.Column="1">
             <TabItem Header="Fehlerbeschreibung" x:Name="Fehlerbeschreibung">
-                <TextBox x:Name="FehlerbeschreibungTxt" HorizontalAlignment="Left" Height="334" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="472" FontSize="16" IsReadOnly="True" IsTabStop="False"/>
+                <TextBox x:Name="FehlerbeschreibungTxt" HorizontalAlignment="Left" Height="334" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="472" FontSize="14" IsReadOnly="True" IsTabStop="False"/>
             </TabItem>
             <TabItem Header="Interner Vermerk" x:Name="InternerVermerk">
-                <TextBox x:Name="InternerVermerkTxt" HorizontalAlignment="Left" Height="332" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="472" FontSize="16" TabIndex="2"/>
+                <TextBox x:Name="InternerVermerkTxt" HorizontalAlignment="Left" Height="332" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="472" FontSize="14" TabIndex="2"/>
             </TabItem>
             <TabItem x:Name="status" Header="Status">
                 <Grid>
@@ -88,10 +96,10 @@
                 </Grid>
             </TabItem>
         </TabControl>
-        <TextBox x:Name="anredeTxt" IsReadOnly="True" HorizontalAlignment="Left" Height="30" Margin="236,10,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="243" FontSize="16" IsTabStop="False"/>
-        <ComboBox x:Name="statusCbx" HorizontalAlignment="Left" Margin="566,121,0,0" VerticalAlignment="Top" Width="397" Height="30" Text="" FontSize="16" TabIndex="1"/>
-        <Button x:Name="btnOK" IsDefault="True" Content="OK" HorizontalAlignment="Left" Margin="847,521,0,0" VerticalAlignment="Top" Width="119" Height="31" Click="btnOK_Click"/>
-        <Label x:Name="statusLabel" Content="Status:" HorizontalAlignment="Left" Margin="484,121,0,0" VerticalAlignment="Top" Width="76" Height="30" FontSize="16"/>
-        <Button x:Name="btnAbschlissen" IsCancel="True" Content="Abschlissen" HorizontalAlignment="Left" Margin="723,521,0,0" VerticalAlignment="Top" Width="119" Height="31" Click="ButtonForEsc_Click"/>
+        <TextBox x:Name="anredeTxt" IsReadOnly="True" Height="24" TextWrapping="Wrap" Text="" VerticalAlignment="Top" FontSize="14" IsTabStop="False" HorizontalContentAlignment="Stretch" Margin="221,9,110,0"/>
+        <ComboBox x:Name="statusCbx" HorizontalAlignment="Left" Margin="71,121,0,0" VerticalAlignment="Top" Width="397" Height="24" Text="" FontSize="14" TabIndex="1" Grid.Column="1"/>
+        <Button x:Name="btnOK" IsDefault="True" Content="OK" HorizontalAlignment="Left" Margin="352,521,0,0" VerticalAlignment="Top" Width="119" Height="31" Click="btnOK_Click" Grid.Column="1"/>
+        <Label x:Name="statusLabel" Content="Status:" HorizontalAlignment="Left" Margin="0,121,0,0" VerticalAlignment="Top" Width="76" Height="24" FontSize="14" Grid.Column="1" Padding="3"/>
+        <Button x:Name="btnAbschlissen" IsCancel="True" Content="Abschlissen" HorizontalAlignment="Left" Margin="228,521,0,0" VerticalAlignment="Top" Width="119" Height="31" Click="ButtonForEsc_Click" Grid.Column="1"/>
     </Grid>
 </Window>

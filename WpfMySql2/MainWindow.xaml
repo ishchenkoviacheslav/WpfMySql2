@@ -46,13 +46,13 @@
     </Window.Resources>
     <Grid>
         <Grid.ColumnDefinitions>
-            <ColumnDefinition Width="*" MinWidth="800"/>
+            <ColumnDefinition Width="*"/>
         </Grid.ColumnDefinitions>
         <Grid.RowDefinitions>
             <RowDefinition Height="*"/>
             <RowDefinition Height="auto"/>
         </Grid.RowDefinitions>
-        <Menu Margin="0,0,615,0" Height="34" Width="185" VerticalAlignment="Top" Background="{x:Null}" HorizontalAlignment="Left" >
+        <Menu Height="34" MinWidth="165" VerticalAlignment="Top" Background="{x:Null}" HorizontalAlignment="Left" Width="172" >
             <MenuItem  Header="Datei" TabIndex="99999">
                 <!--<MenuItem  Header="Datenbank" Click="MenuItem_Click_1"/>-->
                 <MenuItem Header="Neuer Auftrag" Click="NeuerAuftrag"/>
@@ -69,7 +69,7 @@
             </MenuItem>
         </Menu>
         <Controls:WatermarkedTextBox x:Name="textBoxFilter" ToolTip="Suchfilter" TabIndex="0" HorizontalAlignment="Left" Height="32" Margin="10,37,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Background="{x:Null}" BorderBrush="#FFABADB3" MinWidth="175"/>
-        <DataGrid x:Name="dataGridMain" ToolTip="Serviceauftragliste " SelectionMode="Single" SelectionUnit="FullRow" IsReadOnly="True" AutoGenerateColumns="True" Margin="10,74,0,0" VerticalAlignment="Top" TabIndex="2" Padding="0,0,10,0"/>
+        <DataGrid x:Name="dataGridMain" ToolTip="Serviceauftragliste " SelectionMode="Single" SelectionUnit="FullRow" IsReadOnly="True" AutoGenerateColumns="True" Margin="10,74,0,0" VerticalAlignment="Top" TabIndex="2" ColumnWidth="*" Padding="0,0,10,0" HorizontalContentAlignment="Stretch" MinColumnWidth="0"/>
         <ComboBox x:Name="comboBoxStatusFilter" HorizontalAlignment="Left" Margin="241,37,0,0" VerticalAlignment="Top" Width="207" Height="32" FontSize="14"/>
         <Label x:Name="label" Content="Status: " HorizontalAlignment="Left" Margin="190,37,0,0" VerticalAlignment="Top" Height="32" Width="46"/>
         <StatusBar x:Name="statBarAuftrag" Grid.Row="1" VerticalContentAlignment="Bottom" HorizontalContentAlignment="Stretch" Height="32" VerticalAlignment="Bottom"/>
