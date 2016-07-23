@@ -7,33 +7,54 @@
         mc:Ignorable="d"
         Title="Detaillierte Information" Width="804" Height="527">
     <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="34*"/>
+            <RowDefinition Height="30*"/>
+            <RowDefinition Height="30*"/>
+            <RowDefinition Height="31*"/>
+            <RowDefinition Height="27*"/>
+            <RowDefinition Height="30*"/>
+            <RowDefinition Height="30*"/>
+            <RowDefinition Height="100*"/>
+            <RowDefinition Height="81*"/>
+            <RowDefinition Height="33*"/>
+            <RowDefinition Height="28*"/>
+            <RowDefinition Height="42*"/>
+        </Grid.RowDefinitions>
         <Grid.ColumnDefinitions>
-            <ColumnDefinition Width="77*"/>
-            <ColumnDefinition Width="719*"/>
+            <ColumnDefinition Width="74*" MaxWidth="74"/>
+            <ColumnDefinition Width="78*"/>
+            <ColumnDefinition Width="56*"/>
+            <ColumnDefinition Width="64*"/>
+            <ColumnDefinition Width="102*"/>
+            <ColumnDefinition Width="61*" MaxWidth="55"/>
+            <ColumnDefinition Width="135*"/>
+            <ColumnDefinition Width="48*"/>
+            <ColumnDefinition Width="178*"/>
         </Grid.ColumnDefinitions>
 
         <!--<Button x:Name="ButtonForEsc" IsCancel="True"  Click="ButtonForEsc_Click" Margin="0,0,5000,5000">
         </Button>-->
-        <TextBox x:Name="kundenNrtxt" IsReadOnly="True" HorizontalAlignment="Left" Height="23" Margin="5.667,10,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="60" FontSize="14" IsTabStop="False" Grid.Column="1"/>
-        <Label x:Name="mobil" Content="Mobil:" HorizontalAlignment="Left" Margin="495.667,40,0,0" VerticalAlignment="Top" FontSize="14" Padding="3" Height="25" Width="45" Grid.Column="1"/>
-        <Label x:Name="Ort" Content="Ort:" HorizontalAlignment="Left" Margin="495.667,10,0,0" VerticalAlignment="Top" FontSize="14" HorizontalContentAlignment="Stretch" Padding="3" Width="30" Height="25" Grid.Column="1"/>
-        <Label x:Name="EMail" Content="E-Mail:" HorizontalAlignment="Left" Margin="306.667,68,0,0" VerticalAlignment="Top" FontSize="14" Padding="3" Height="25" Width="48" Grid.Column="1"/>
-        <Label x:Name="Telefon" Content="Telefon:" HorizontalAlignment="Left" Margin="306.667,38,0,0" VerticalAlignment="Top" FontSize="14" Padding="3" Height="25" Width="54" Grid.Column="1"/>
-        <Label x:Name="PLZ" Content="PLZ:" HorizontalAlignment="Left" Margin="306.667,9,0,0" VerticalAlignment="Top" FontSize="14" Padding="3" Height="25" Width="54" Grid.Column="1"/>
-        <Label x:Name="Strasse" Content="Straße:" HorizontalAlignment="Left" Margin="9,97,0,0" VerticalAlignment="Top" Width="73" Height="24" FontSize="14" Padding="3" Grid.ColumnSpan="2"/>
-        <Label x:Name="Vorname" Content="Vorname:" HorizontalAlignment="Left" Margin="5,69,0,0" VerticalAlignment="Top" Width="73" Height="24" FontSize="14" Padding="3" Grid.ColumnSpan="2"/>
-        <Label x:Name="name" Content="Name:" HorizontalAlignment="Left" Margin="10,40,0,0" VerticalAlignment="Top" Width="73" Height="24" FontSize="14" Padding="3" Grid.ColumnSpan="2"/>
-        <Label x:Name="kundeNr" Content="Kd-Nr:" HorizontalAlignment="Left" Margin="5,9,0,0" VerticalAlignment="Top" Width="73" Height="24" FontSize="14" Padding="3" Grid.ColumnSpan="2"/>
-        <TextBox x:Name="StrasseTxt" IsReadOnly="True" HorizontalAlignment="Left" Height="24" Margin="5.667,97,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="291" FontSize="14" IsTabStop="False" Grid.Column="1"/>
-        <TextBox x:Name="VornameTxt" IsReadOnly="True" HorizontalAlignment="Left" Height="24" Margin="5.667,68,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="291" FontSize="14" IsTabStop="False" Grid.Column="1"/>
-        <TextBox x:Name="nameTxt" IsReadOnly="True" HorizontalAlignment="Left" Height="24" Margin="5.667,39,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="291" FontSize="14" IsTabStop="False" Grid.Column="1"/>
-        <TextBox x:Name="PLZTxt" IsReadOnly="True" Margin="365.667,14,228,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" FontSize="14" IsTabStop="False" Height="21" Grid.Column="1"/>
-        <TextBox x:Name="EMailTxt" IsReadOnly="True" Margin="365.667,68,5,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" FontSize="14" IsTabStop="False" Height="21" Grid.Column="1"/>
-        <TextBox x:Name="TelefonTxt" IsReadOnly="True" HorizontalAlignment="Left" Margin="365.667,40,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="125" FontSize="14" IsTabStop="False" Height="21" Grid.Column="1"/>
-        <TextBox x:Name="OrtTxt" IsReadOnly="True" TextWrapping="Wrap" Text="" VerticalAlignment="Top" FontSize="14" IsTabStop="False" HorizontalContentAlignment="Stretch" Margin="545.667,10,8,0" Height="21" Grid.Column="1"/>
-        <TextBox x:Name="MobilTxt" IsReadOnly="True" Margin="545.667,39,5,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" FontSize="14" IsTabStop="False" Height="21" Grid.Column="1"/>
-        <Label x:Name="anrede" Content="Anrede:" HorizontalAlignment="Left" Margin="70.667,9,0,0" VerticalAlignment="Top" Width="73" Height="24" FontSize="14" Padding="3" Grid.Column="1"/>
-        <ComboBox x:Name="mitarbeiterAus" TabIndex="0" HorizontalAlignment="Left" Margin="145.667,399,0,0" VerticalAlignment="Top" Width="151" Height="24" Text="Arbeitet" FontSize="14" Grid.Column="1">
+        <TextBox x:Name="kundenNrtxt" IsReadOnly="True" TextWrapping="Wrap" Text="" FontSize="14" IsTabStop="False" Grid.Column="1" Margin="3"/>
+        <Label x:Name="mobil" Content="Mobil:" HorizontalAlignment="Right" Margin="3" VerticalAlignment="Center" FontSize="14" Padding="3" Grid.Column="7" Grid.Row="1"/>
+        <Label x:Name="Ort" Content="Ort:" HorizontalAlignment="Right" Margin="3" VerticalAlignment="Center" FontSize="14" HorizontalContentAlignment="Stretch" Padding="3" Grid.Column="7"/>
+        <Label x:Name="EMail" Content="E-Mail:" HorizontalAlignment="Right" Margin="3" VerticalAlignment="Center" FontSize="14" Padding="3" Grid.Column="5" Grid.Row="2"/>
+        <Label x:Name="Telefon" Content="Telefon:" HorizontalAlignment="Right" Margin="3" FontSize="14" Padding="3" Grid.Column="5" Grid.Row="1" VerticalAlignment="Center"/>
+        <Label x:Name="PLZ" Content="PLZ:" Margin="3" FontSize="14" Padding="3" Grid.Column="5" HorizontalAlignment="Right" VerticalAlignment="Center" HorizontalContentAlignment="Right"/>
+        <Label x:Name="Strasse" Content="Straße:" HorizontalAlignment="Left" VerticalAlignment="Top" FontSize="14" Padding="3" Grid.Row="3"/>
+        <Label x:Name="Vorname" Content="Vorname:" FontSize="14" Padding="3" Grid.Row="2" HorizontalAlignment="Left" VerticalAlignment="Top"/>
+        <Label x:Name="name" Content="Name:" FontSize="14" Padding="3" Grid.Row="1" HorizontalAlignment="Left" VerticalAlignment="Top"/>
+        <Label x:Name="kundeNr" Content="Kd-Nr:" Margin="5" FontSize="14" Padding="3"/>
+        <TextBox x:Name="StrasseTxt" IsReadOnly="True" Margin="3" TextWrapping="Wrap" Text="" FontSize="14" IsTabStop="False" Grid.Column="1" Grid.ColumnSpan="4" Grid.Row="3"/>
+        <TextBox x:Name="VornameTxt" IsReadOnly="True" Margin="3" TextWrapping="Wrap" Text="" FontSize="14" IsTabStop="False" Grid.Column="1" Grid.ColumnSpan="4" Grid.Row="2"/>
+        <TextBox x:Name="nameTxt" IsReadOnly="True" TextWrapping="Wrap" Text="" FontSize="14" IsTabStop="False" Grid.Column="1" Grid.ColumnSpan="4" Grid.Row="1" Margin="3"/>
+        <TextBox x:Name="PLZTxt" IsReadOnly="True" Margin="3" TextWrapping="Wrap" Text="" FontSize="14" IsTabStop="False" Grid.Column="6"/>
+        <TextBox x:Name="EMailTxt" IsReadOnly="True" Margin="3" TextWrapping="Wrap" Text="" FontSize="14" IsTabStop="False" Grid.Column="6" Grid.ColumnSpan="3" Grid.Row="2"/>
+        <TextBox x:Name="TelefonTxt" IsReadOnly="True" Margin="3" TextWrapping="Wrap" Text="" FontSize="14" IsTabStop="False" Grid.Column="6" Grid.Row="1"/>
+        <TextBox x:Name="OrtTxt" IsReadOnly="True" TextWrapping="Wrap" Text="" FontSize="14" IsTabStop="False" Margin="3" Grid.Column="8"/>
+        <TextBox x:Name="MobilTxt" IsReadOnly="True" Margin="3" TextWrapping="Wrap" Text="" FontSize="14" IsTabStop="False" Grid.Column="8" Grid.Row="1"/>
+        <Label x:Name="anrede" Content="Anrede:" FontSize="14" Padding="3" Grid.Column="2" HorizontalContentAlignment="Right" VerticalContentAlignment="Center" HorizontalAlignment="Right" VerticalAlignment="Center"/>
+        <ComboBox x:Name="mitarbeiterAus" TabIndex="0" Text="Arbeitet" FontSize="14" Grid.Column="3" Grid.ColumnSpan="2" Grid.Row="9" Margin="3">
             <!--<ComboBoxItem Name="Arb" IsSelected="True">Select Mitarbeiter</ComboBoxItem>-->
             <!--<ComboBoxItem Name="ArbA">A</ComboBoxItem>
             <ComboBoxItem Name="ArbB">B</ComboBoxItem>
@@ -41,45 +62,65 @@
             <ComboBoxItem Name="ArbD">D</ComboBoxItem>
             <ComboBoxItem Name="ArbE">E</ComboBoxItem>-->
         </ComboBox>
-        <TextBox x:Name="geratTxt" ToolTip="Gerät" IsReadOnly="True" TabIndex="1" HorizontalAlignment="Left" Height="24" Margin="5.667,126,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="291" MaxWidth="99999" MaxHeight="99999" FontSize="14" IsTabStop="False" Grid.Column="1"/>
-        <TextBox x:Name="zubehorTxt" IsReadOnly="True" TabIndex="2" HorizontalAlignment="Left" Height="75" Margin="5.667,314,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="291" IsTabStop="False" FontSize="14" Grid.Column="1"/>
-        <Label x:Name="labelObj" Content="Gerät:" HorizontalAlignment="Left" Margin="10,126,0,0" VerticalAlignment="Top" Width="73" Height="24" FontSize="14" Padding="3" Grid.ColumnSpan="2"/>
-        <Label x:Name="labelAccess" Content="Zubehör:" HorizontalAlignment="Left" Margin="5,314,0,0" VerticalAlignment="Top" Width="73" Height="24" FontSize="14" Padding="3" Grid.ColumnSpan="2"/>
-        <Label x:Name="labelOther" Content="Log/Pass:" HorizontalAlignment="Left" Margin="9,214,0,0" VerticalAlignment="Top" Width="74" Height="24" FontSize="14" Padding="3" Grid.ColumnSpan="2"/>
-        <Label x:Name="Zustand" Content="Zustand:" HorizontalAlignment="Left" Margin="5,428,0,0" VerticalAlignment="Top" Width="73" Height="24" FontSize="14" Padding="3" Grid.ColumnSpan="2"/>
-        <TextBox x:Name="zustandTxt" IsReadOnly="True" TabIndex="4" HorizontalAlignment="Left" Height="24" Margin="5.667,428,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="291" FontSize="14" IsTabStop="False" Grid.Column="1"/>
-        <Label x:Name="labelPrevPrice" Content="Max Kosten:" HorizontalAlignment="Left" Margin="1,399,0,0" VerticalAlignment="Top" Width="77" Height="24" FontSize="14" Padding="0" Grid.ColumnSpan="2"/>
-        <TextBox x:Name="maxPrice" TabIndex="5" HorizontalAlignment="Left" Height="24" Margin="5.667,399,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="91" FontSize="14" IsReadOnly="True" IsTabStop="False" Grid.Column="1"/>
-        <Label x:Name="labelPrevSerialNum" Content="Seriennr:" HorizontalAlignment="Left" Margin="10,156,0,0" VerticalAlignment="Top" Width="72" Height="24" FontSize="14" Padding="3" Grid.ColumnSpan="2"/>
-        <TextBox x:Name="serialNummerTxt" IsReadOnly="True" ToolTip="Seriennummer" TabIndex="6" HorizontalAlignment="Left" Height="24" Margin="5.667,156,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="291" FontSize="14" IsTabStop="False" Grid.Column="1"/>
-        <Label x:Name="Benerkung" Content="Bemerkung:" HorizontalAlignment="Left" Margin="0,185,0,0" VerticalAlignment="Top" Width="74" Height="24" FontSize="14" Padding="0"/>
-        <TextBox x:Name="BemerkungTxt" ToolTip="Seriennummer" TabIndex="6" HorizontalAlignment="Left" Height="24" Margin="5.667,185,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="291" FontSize="14" IsReadOnly="True" IsTabStop="False" Grid.Column="1"/>
-        <TextBox x:Name="passKundenTxt" ToolTip="Seriennummer" TabIndex="6" HorizontalAlignment="Left" Height="95" Margin="5.667,214,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="138" FontSize="14" IsReadOnly="True" IsTabStop="False" Grid.Column="1"/>
-        <Label x:Name="Muster" Content="Muster:" HorizontalAlignment="Left" Margin="143.667,214,0,0" VerticalAlignment="Top" Width="51" Height="24" FontSize="14" Padding="3" Grid.Column="1"/>
-        <TextBox x:Name="textMuster1" MaxLength="1"  HorizontalAlignment="Left" Height="24" Margin="202.667,214,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="24" FontSize="14" IsReadOnly="True" IsTabStop="False" Grid.Column="1"/>
-        <TextBox x:Name="textMuster2" MaxLength="1" HorizontalAlignment="Left" Height="24" Margin="237.667,215,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="24" FontSize="14" IsReadOnly="True" IsTabStop="False" Grid.Column="1"/>
-        <TextBox x:Name="textMuster3" MaxLength="1" HorizontalAlignment="Left" Height="24" Margin="272.667,215,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="24" FontSize="16" IsReadOnly="True" IsTabStop="False" Grid.Column="1"/>
-        <TextBox x:Name="textMuster4" MaxLength="1" HorizontalAlignment="Left" Height="24" Margin="202.667,250,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="24" FontSize="14" IsReadOnly="True" IsTabStop="False" Grid.Column="1"/>
-        <TextBox x:Name="textMuster5" MaxLength="1" HorizontalAlignment="Left" Height="24" Margin="237.667,250,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="24" FontSize="14" IsReadOnly="True" IsTabStop="False" Grid.Column="1"/>
-        <TextBox x:Name="textMuster6" MaxLength="1" HorizontalAlignment="Left" Height="24" Margin="272.667,250,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="24" FontSize="16" IsReadOnly="True" IsTabStop="False" Grid.Column="1"/>
-        <TextBox x:Name="textMuster7" MaxLength="1" HorizontalAlignment="Left" Height="24" Margin="202.667,285,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="24" FontSize="14" IsReadOnly="True" IsTabStop="False" Grid.Column="1"/>
-        <TextBox x:Name="textMuster8" MaxLength="1" HorizontalAlignment="Left" Height="24" Margin="237.667,285,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="24" FontSize="14" IsReadOnly="True" IsTabStop="False" Grid.Column="1"/>
-        <TextBox x:Name="textMuster9" MaxLength="1" HorizontalAlignment="Left" Height="24" Margin="272.667,285,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="24" FontSize="16" IsReadOnly="True" IsTabStop="False" Grid.Column="1"/>
-        <Label x:Name="von" Content="Von:" HorizontalAlignment="Left" Margin="101.667,399,0,0" VerticalAlignment="Top" Width="39" Height="24" FontSize="14" Padding="3" Grid.Column="1"/>
-        <TabControl x:Name="tabControlAuftrag" HorizontalAlignment="Left" Height="327" Margin="306.667,127,0,0" VerticalAlignment="Top" Width="404" Grid.Column="1">
+        <TextBox x:Name="geratTxt" ToolTip="Gerät" IsReadOnly="True" TabIndex="1" Margin="3,1,3,3" TextWrapping="Wrap" Text="" MaxWidth="99999" MaxHeight="99999" FontSize="14" IsTabStop="False" Grid.Column="1" Grid.ColumnSpan="4" Grid.Row="4"/>
+        <TextBox x:Name="zubehorTxt" IsReadOnly="True" TabIndex="2" TextWrapping="Wrap" Text="" IsTabStop="False" FontSize="14" Grid.Column="1" Grid.ColumnSpan="4" Grid.Row="8" Margin="3"/>
+        <Label x:Name="labelObj" Content="Gerät:" HorizontalAlignment="Left" VerticalAlignment="Top" FontSize="14" Padding="3" Grid.Row="4"/>
+        <Label x:Name="labelAccess" Content="Zubehör:" FontSize="14" Padding="3" Grid.Row="8" HorizontalAlignment="Left" VerticalAlignment="Top"/>
+        <Label x:Name="labelOther" Content="Log/Pass:" FontSize="14" Padding="3" Grid.Row="7" HorizontalAlignment="Left" VerticalAlignment="Top"/>
+        <Label x:Name="Zustand" Content="Zustand:" HorizontalAlignment="Left" VerticalAlignment="Top" FontSize="14" Padding="3" Grid.Row="10"/>
+        <TextBox x:Name="zustandTxt" IsReadOnly="True" TabIndex="4" Margin="3" TextWrapping="Wrap" Text="" FontSize="14" IsTabStop="False" Grid.Column="1" Grid.ColumnSpan="4" Grid.Row="10"/>
+        <Label x:Name="labelPrevPrice" Content="Max Kosten:" FontSize="14" Padding="0" Grid.Row="9" HorizontalAlignment="Left" VerticalAlignment="Top"/>
+        <TextBox x:Name="maxPrice" TabIndex="5" Margin="3" TextWrapping="Wrap" Text="" FontSize="14" IsReadOnly="True" IsTabStop="False" Grid.Column="1" Grid.Row="9"/>
+        <Label x:Name="labelPrevSerialNum" Content="Seriennr:" HorizontalAlignment="Left" VerticalAlignment="Top" FontSize="14" Padding="3" Grid.Row="5"/>
+        <TextBox x:Name="serialNummerTxt" IsReadOnly="True" ToolTip="Seriennummer" TabIndex="6" Margin="3" TextWrapping="Wrap" Text="" FontSize="14" IsTabStop="False" Grid.Column="1" Grid.ColumnSpan="4" Grid.Row="5"/>
+        <Label x:Name="Benerkung" Content="Bemerkung:" HorizontalAlignment="Left" VerticalAlignment="Top" FontSize="14" Padding="0" Grid.Row="6"/>
+        <TextBox x:Name="BemerkungTxt" ToolTip="Seriennummer" TabIndex="6" Margin="3" TextWrapping="Wrap" Text="" FontSize="14" IsReadOnly="True" IsTabStop="False" Grid.Column="1" Grid.ColumnSpan="4" Grid.Row="6"/>
+        <TextBox x:Name="passKundenTxt" ToolTip="Seriennummer" TabIndex="6" Margin="3" TextWrapping="Wrap" Text="" FontSize="14" IsReadOnly="True" IsTabStop="False" Grid.Column="1" Grid.ColumnSpan="2" Grid.Row="7"/>
+        <Label x:Name="Muster" Content="Muster:" HorizontalAlignment="Right" Margin="3" FontSize="14" Padding="3" Grid.Column="3" Grid.Row="7" HorizontalContentAlignment="Right" VerticalAlignment="Top"/>
+        <Grid x:Name="GridMust" Grid.Column="4" Grid.Row="7">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="33*"/>
+                <RowDefinition Height="33*"/>
+                <RowDefinition Height="33*"/>
+            </Grid.RowDefinitions>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="33*"/>
+                <ColumnDefinition Width="33*"/>
+                <ColumnDefinition Width="33*"/>
+            </Grid.ColumnDefinitions>
+            <TextBox x:Name="textMuster1" Grid.Column="0" Grid.Row="0" MaxLength="1" Margin="2" TextWrapping="Wrap" Text="" FontSize="14" IsReadOnly="True" IsTabStop="False" HorizontalContentAlignment="Center" VerticalContentAlignment="Center"/>
+            <TextBox x:Name="textMuster2" Grid.Column="1" Grid.Row="0" MaxLength="1" Margin="2" TextWrapping="Wrap" Text="" FontSize="14" IsReadOnly="True" IsTabStop="False" HorizontalContentAlignment="Center" VerticalContentAlignment="Center"/>
+            <TextBox x:Name="textMuster3" Grid.Column="2" Grid.Row="0" MaxLength="1" Margin="2" TextWrapping="Wrap" Text="" FontSize="16" IsReadOnly="True" IsTabStop="False" HorizontalContentAlignment="Center" VerticalContentAlignment="Center"/>
+            <TextBox x:Name="textMuster4" Grid.Column="0" Grid.Row="1" MaxLength="1" Margin="2" TextWrapping="Wrap" Text="" FontSize="14" IsReadOnly="True" IsTabStop="False" HorizontalContentAlignment="Center" VerticalContentAlignment="Center"/>
+            <TextBox x:Name="textMuster5" Grid.Column="1" Grid.Row="1" MaxLength="1" Margin="2" TextWrapping="Wrap" Text="" FontSize="14" IsReadOnly="True" IsTabStop="False" HorizontalContentAlignment="Center" VerticalContentAlignment="Center"/>
+            <TextBox x:Name="textMuster6" Grid.Column="2" Grid.Row="1" MaxLength="1" Margin="2" TextWrapping="Wrap" Text="" FontSize="16" IsReadOnly="True" IsTabStop="False" HorizontalContentAlignment="Center" VerticalContentAlignment="Center"/>
+            <TextBox x:Name="textMuster7" Grid.Column="0" Grid.Row="2" MaxLength="1" Margin="2" TextWrapping="Wrap" Text="" FontSize="14" IsReadOnly="True" IsTabStop="False" HorizontalContentAlignment="Center" VerticalContentAlignment="Center"/>
+            <TextBox x:Name="textMuster8" Grid.Column="1" Grid.Row="2" MaxLength="1" Margin="2" TextWrapping="Wrap" Text="" FontSize="14" IsReadOnly="True" IsTabStop="False" HorizontalContentAlignment="Center" VerticalContentAlignment="Center"/>
+            <TextBox x:Name="textMuster9" Grid.Column="2" Grid.Row="2" MaxLength="1" Margin="2" TextWrapping="Wrap" Text="" FontSize="16" IsReadOnly="True" IsTabStop="False" HorizontalContentAlignment="Center" VerticalContentAlignment="Center"/>
+        </Grid>
+        <Label x:Name="von" Content="Von:" FontSize="14" Padding="3" Grid.Column="2" Grid.Row="9" HorizontalAlignment="Right" Margin="3"/>
+        <TabControl x:Name="tabControlAuftrag" Margin="3" Grid.Column="5" Grid.ColumnSpan="4" Grid.Row="4" Grid.RowSpan="7" HorizontalContentAlignment="Left" VerticalContentAlignment="Top">
             <TabItem Header="Fehlerbeschreibung" x:Name="Fehlerbeschreibung">
-                <TextBox x:Name="FehlerbeschreibungTxt" HorizontalAlignment="Left" Height="277" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="395" FontSize="14" IsReadOnly="True" IsTabStop="False"/>
+                <TextBox x:Name="FehlerbeschreibungTxt" TextWrapping="Wrap" Text="" FontSize="14" IsReadOnly="True" IsTabStop="False"/>
             </TabItem>
             <TabItem Header="Interner Vermerk" x:Name="InternerVermerk">
-                <TextBox x:Name="InternerVermerkTxt" HorizontalAlignment="Left" Height="278" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="396" FontSize="14" TabIndex="2"/>
+                <TextBox x:Name="InternerVermerkTxt" TextWrapping="Wrap" Text="" FontSize="14" TabIndex="2"/>
             </TabItem>
             <TabItem x:Name="status" Header="Status">
-                <Grid>
-                    <ListBox x:Name="listBoxStatus" HorizontalAlignment="Left" Height="279" VerticalAlignment="Top" Width="398"/>
-                    <TextBox x:Name="textBoxHeader" TextWrapping="Wrap" Text="" Margin="10,299,342,10"/>
-                    <TextBox x:Name="textBoxData" TextWrapping="Wrap" Text="" Margin="135,299,217,10"/>
-                    <Button x:Name="btnAddListBox" Content="Add" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" HorizontalAlignment="Left" Margin="260,299,0,0" VerticalAlignment="Top" Width="75" Height="23"  Click="btnAddListBox_Click" Padding="1" FontSize="16"/>
-
+                <Grid Margin="0">
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="252*"/>
+                        <RowDefinition Height="43*"/>
+                    </Grid.RowDefinitions>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="33*"/>
+                        <ColumnDefinition Width="33*"/>
+                        <ColumnDefinition Width="33*"/>
+                    </Grid.ColumnDefinitions>
+                    <ListBox x:Name="listBoxStatus" Grid.Column="0" Grid.Row="0" Grid.ColumnSpan="3" Margin="3"/>
+                    <TextBox x:Name="textBoxHeader" Grid.Column="0" Grid.Row="1" TextWrapping="Wrap" Text="" Margin="3"/>
+                    <TextBox x:Name="textBoxData" TextWrapping="Wrap" Text="" Margin="3" Grid.Row="1" Grid.Column="1"/>
+                    <Button x:Name="btnAddListBox" Content="Add" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" Margin="3"  Click="btnAddListBox_Click" Padding="1" FontSize="16" Grid.Column="2" Grid.Row="1"/>
                 </Grid>
             </TabItem>
             <TabItem x:Name="repBericht" Header="Reparaturbericht" TabIndex="2">
@@ -87,16 +128,24 @@
             </TabItem>
             <TabItem x:Name="tabArtikel" Header="Artikel">
                 <Grid>
-                    <DataGrid x:Name="DataGridArtikel" SelectionMode="Single" SelectionUnit="FullRow" IsReadOnly="True" Margin="0,0,0,45"/>
-                    <Button x:Name="btnAddArtikel" Content="Add" Width="75" Margin="10,239,313,10" Click="btnAddArtikel_Click" Height="30"/>
-                    <Button x:Name="btnDelArtikel" Content="entfernen" Margin="90,239,233,10" Click="btnDelArtikel_Click" Width="75" Height="30"/>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="252*"/>
+                        <RowDefinition Height="43*"/>
+                    </Grid.RowDefinitions>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="33*"/>
+                        <ColumnDefinition Width="33*"/>
+                    </Grid.ColumnDefinitions>
+                    <DataGrid x:Name="DataGridArtikel" SelectionMode="Single" SelectionUnit="FullRow" IsReadOnly="True" Margin="3" Grid.ColumnSpan="2"/>
+                    <Button x:Name="btnAddArtikel" Content="Add" Margin="3" Click="btnAddArtikel_Click" Grid.Row="1"/>
+                    <Button x:Name="btnDelArtikel" Content="entfernen" Margin="3" Click="btnDelArtikel_Click" Grid.Row="1" Grid.Column="1"/>
                 </Grid>
             </TabItem>
         </TabControl>
-        <TextBox x:Name="anredeTxt" IsReadOnly="True" Height="24" TextWrapping="Wrap" Text="" VerticalAlignment="Top" FontSize="14" IsTabStop="False" HorizontalContentAlignment="Stretch" Margin="139.667,7,422,0" Grid.Column="1"/>
-        <ComboBox x:Name="statusCbx" HorizontalAlignment="Left" Margin="365.667,97,0,0" VerticalAlignment="Top" Text="" FontSize="14" TabIndex="1" Width="343" Height="25" Grid.Column="1"/>
-        <Button x:Name="btnOK" IsDefault="True" Content="OK" HorizontalAlignment="Left" Margin="207.667,457,0,0" VerticalAlignment="Top" Width="119" Height="31" Click="btnOK_Click" Grid.Column="1"/>
-        <Label x:Name="statusLabel" Content="Status:" HorizontalAlignment="Left" Margin="306.667,94,0,0" VerticalAlignment="Top" FontSize="14" Padding="3" Height="25" Width="54" Grid.Column="1"/>
-        <Button x:Name="btnAbschlissen" IsCancel="True" Content="Abschlissen" HorizontalAlignment="Left" Margin="83.667,457,0,0" VerticalAlignment="Top" Width="119" Height="31" Click="ButtonForEsc_Click" Grid.Column="1"/>
+        <TextBox x:Name="anredeTxt" IsReadOnly="True" TextWrapping="Wrap" Text="" FontSize="14" IsTabStop="False" HorizontalContentAlignment="Stretch" Margin="3" Grid.Column="3" Grid.ColumnSpan="2"/>
+        <ComboBox x:Name="statusCbx" Margin="3" Text="" FontSize="14" TabIndex="1" Grid.Column="6" Grid.ColumnSpan="3" Grid.Row="3"/>
+        <Button x:Name="btnOK" IsDefault="True" Content="OK" HorizontalAlignment="Right" Margin="0,0,8,6" VerticalAlignment="Bottom" Width="119" Height="31" Click="btnOK_Click" Grid.Column="8" Grid.Row="11"/>
+        <Label x:Name="statusLabel" Content="Status:" HorizontalAlignment="Right" Margin="3" VerticalAlignment="Center" FontSize="14" Padding="3" Grid.Column="5" Grid.Row="3"/>
+        <Button x:Name="btnAbschlissen" IsCancel="True" Content="Abschlissen" HorizontalAlignment="Right" Margin="0,0,132,6" VerticalAlignment="Bottom" Width="119" Height="31" Click="ButtonForEsc_Click" Grid.Column="6" Grid.ColumnSpan="3" Grid.Row="11"/>
     </Grid>
 </Window>
