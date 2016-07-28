@@ -77,6 +77,7 @@
     <Compile Include="InfoDetail.xaml.cs">
       <DependentUpon>InfoDetail.xaml</DependentUpon>
     </Compile>
+    <Compile Include="NeuDataType.cs" />
     <Compile Include="PrintWindow.xaml.cs">
       <DependentUpon>PrintWindow.xaml</DependentUpon>
     </Compile>
