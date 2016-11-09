@@ -53,6 +53,8 @@ namespace WpfMySql2
         [DllImport("user32.dll", CharSet = CharSet.Auto, SetLastError = true)]
         static extern int GetWindowText(IntPtr hWnd, StringBuilder lpString, int nMaxCount);
 
+        List<char> graphKeyArray = null;
+        string graphKey = "";
         IntPtr hWindow = IntPtr.Zero;
         string dateTimeString = null;
         private DataTable tableArtGeid = new DataTable();
@@ -4045,16 +4047,18 @@ namespace WpfMySql2
                 listBoxStatus.Items.Add(("Reparatur Nr.:\t\t" + MainWindow.rowDetail["id"].ToString()));
                 listBoxStatus.Items.Add(("Von:\t\t\t" + MainWindow.rowDetail["mitarbeiterNach"].ToString()));
                 readNeuList();
-                string graphKey = MainWindow.rowDetail["graphKey"].ToString();
-                textMuster1.Text = graphKey.Substring(0, 1);
-                textMuster2.Text = graphKey.Substring(1, 1);
-                textMuster3.Text = graphKey.Substring(2, 1);
-                textMuster4.Text = graphKey.Substring(3, 1);
-                textMuster5.Text = graphKey.Substring(4, 1);
-                textMuster6.Text = graphKey.Substring(5, 1);
-                textMuster7.Text = graphKey.Substring(6, 1);
-                textMuster8.Text = graphKey.Substring(7, 1);
-                textMuster9.Text = graphKey.Substring(8, 1);
+                graphKey = MainWindow.rowDetail["graphKey"].ToString();
+                graphKeyArray = graphKey.ToList();
+
+                //textMuster1.Text = graphKey.Substring(0, 1);
+                //textMuster2.Text = graphKey.Substring(1, 1);
+                //textMuster3.Text = graphKey.Substring(2, 1);
+                //textMuster4.Text = graphKey.Substring(3, 1);
+                //textMuster5.Text = graphKey.Substring(4, 1);
+                //textMuster6.Text = graphKey.Substring(5, 1);
+                //textMuster7.Text = graphKey.Substring(6, 1);
+                //textMuster8.Text = graphKey.Substring(7, 1);
+                //textMuster9.Text = graphKey.Substring(8, 1);
                 MainWindow.rowDetail = null;
             }
         }
@@ -4336,6 +4340,514 @@ namespace WpfMySql2
                 }
                 DataGridArtikel.ItemsSource = tableArtGeid.AsDataView();
             }
+        }
+
+        private void Muser_Click(object sender, RoutedEventArgs e)
+        {
+            if (graphKeyArray.Count == 0)
+            {
+                mustBut1.Background = Brushes.White;
+                mustBut2.Background = Brushes.White;
+                mustBut3.Background = Brushes.White;
+                mustBut4.Background = Brushes.White;
+                mustBut5.Background = Brushes.White;
+                mustBut6.Background = Brushes.White;
+                mustBut7.Background = Brushes.White;
+                mustBut8.Background = Brushes.White;
+                mustBut9.Background = Brushes.White;
+
+                mustBut1.ToolTip = "0";
+                mustBut2.ToolTip = "0";
+                mustBut3.ToolTip = "0";
+                mustBut4.ToolTip = "0";
+                mustBut5.ToolTip = "0";
+                mustBut6.ToolTip = "0";
+                mustBut7.ToolTip = "0";
+                mustBut8.ToolTip = "0";
+                mustBut9.ToolTip = "0";
+
+                graphKeyArray = graphKey.ToList();
+            }
+            foreach (char item in graphKeyArray)
+            {
+                switch (item.ToString())
+                {
+                    case "1":
+                        // t = new Timer((o) =>
+                        //{
+                        //this.Dispatcher.Invoke(() =>
+                        //  {
+
+
+                        if (mustBut1.ToolTip.ToString() != "1" && mustBut1.ToolTip.ToString() != "2" && mustBut1.ToolTip.ToString() != "3" &&
+                     mustBut1.ToolTip.ToString() != "4" && mustBut1.ToolTip.ToString() != "5")
+                        {
+                            mustBut1.Background = enumColor.First;
+                            mustBut1.ToolTip = "1";
+                        }
+                        else
+                        {
+                            if (mustBut1.ToolTip.ToString() == "1")
+                            {
+                                mustBut1.Background = enumColor.Second;
+                                mustBut1.ToolTip = "2";
+                            }
+                            else
+                            {
+                                if (mustBut1.ToolTip.ToString() == "2")
+                                {
+                                    mustBut1.Background = enumColor.Third;
+                                    mustBut1.ToolTip = "3";
+
+                                }
+                                else
+                                {
+                                    if (mustBut1.Background == enumColor.Third)
+                                    {
+                                        mustBut1.Background = enumColor.Fourth;
+                                        mustBut1.ToolTip = "4";
+
+                                    }
+                                    else
+                                    {
+                                        if (mustBut1.Background == enumColor.Fourth)
+                                        {
+                                            mustBut1.Background = enumColor.Fivth;
+                                            mustBut1.ToolTip = "5";
+                                        }
+                                    }
+                                }
+                            }//if
+                        }//else
+                         //  });
+                         //}, null, millisec, 999999999);
+                        break;
+
+                    case "2":
+                        // t1 = new Timer((o) =>
+                        //{
+                        //this.Dispatcher.Invoke(() =>
+                        //    {
+
+
+
+                        if (mustBut2.ToolTip.ToString() != "1" && mustBut2.ToolTip.ToString() != "2" && mustBut2.ToolTip.ToString() != "3" &&
+                                    mustBut2.ToolTip.ToString() != "4" && mustBut2.ToolTip.ToString() != "5")
+                        {
+                            mustBut2.Background = enumColor.First;
+                            mustBut2.ToolTip = "1";
+                        }
+                        else
+                        {
+                            if (mustBut2.ToolTip.ToString() == "1")
+                            {
+                                mustBut2.Background = enumColor.Second;
+                                mustBut2.ToolTip = "2";
+                            }
+                            else
+                            {
+                                if (mustBut2.ToolTip.ToString() == "2")
+                                {
+                                    mustBut2.Background = enumColor.Third;
+                                    mustBut2.ToolTip = "3";
+
+                                }
+                                else
+                                {
+                                    if (mustBut2.Background == enumColor.Third)
+                                    {
+                                        mustBut2.Background = enumColor.Fourth;
+                                        mustBut2.ToolTip = "4";
+
+                                    }
+                                    else
+                                    {
+                                        if (mustBut2.Background == enumColor.Fourth)
+                                        {
+                                            mustBut2.Background = enumColor.Fivth;
+                                            mustBut2.ToolTip = "5";
+                                        }
+                                    }
+                                }
+                            }//if
+                        }//else
+                         //    });
+                         //}, null, millisec, 999999999);
+                        break;
+
+                    case "3":
+                        // t2 = new Timer((o) =>
+                        //{
+                        //this.Dispatcher.Invoke(() =>
+                        //     {
+
+
+
+                        if (mustBut3.ToolTip.ToString() != "1" && mustBut3.ToolTip.ToString() != "2" && mustBut3.ToolTip.ToString() != "3" &&
+                                    mustBut3.ToolTip.ToString() != "4" && mustBut3.ToolTip.ToString() != "5")
+                        {
+                            mustBut3.Background = enumColor.First;
+                            mustBut3.ToolTip = "1";
+                        }
+                        else
+                        {
+                            if (mustBut3.ToolTip.ToString() == "1")
+                            {
+                                mustBut3.Background = enumColor.Second;
+                                mustBut3.ToolTip = "2";
+                            }
+                            else
+                            {
+                                if (mustBut3.ToolTip.ToString() == "2")
+                                {
+                                    mustBut3.Background = enumColor.Third;
+                                    mustBut3.ToolTip = "3";
+
+                                }
+                                else
+                                {
+                                    if (mustBut3.Background == enumColor.Third)
+                                    {
+                                        mustBut3.Background = enumColor.Fourth;
+                                        mustBut3.ToolTip = "4";
+
+                                    }
+                                    else
+                                    {
+                                        if (mustBut3.Background == enumColor.Fourth)
+                                        {
+                                            mustBut3.Background = enumColor.Fivth;
+                                            mustBut3.ToolTip = "5";
+                                        }
+                                    }
+                                }
+                            }//if
+                        }//else
+                         //     });
+                         //}, null, millisec, 999999999);
+                        break;
+
+                    case "4":
+                        // t3 = new Timer((o) =>
+                        //{
+                        //this.Dispatcher.Invoke(() =>
+                        //     {
+
+
+
+                        if (mustBut4.ToolTip.ToString() != "1" && mustBut4.ToolTip.ToString() != "2" && mustBut4.ToolTip.ToString() != "3" &&
+                                    mustBut4.ToolTip.ToString() != "4" && mustBut4.ToolTip.ToString() != "5")
+                        {
+                            mustBut4.Background = enumColor.First;
+                            mustBut4.ToolTip = "1";
+                        }
+                        else
+                        {
+                            if (mustBut4.ToolTip.ToString() == "1")
+                            {
+                                mustBut4.Background = enumColor.Second;
+                                mustBut4.ToolTip = "2";
+                            }
+                            else
+                            {
+                                if (mustBut4.ToolTip.ToString() == "2")
+                                {
+                                    mustBut4.Background = enumColor.Third;
+                                    mustBut4.ToolTip = "3";
+
+                                }
+                                else
+                                {
+                                    if (mustBut4.Background == enumColor.Third)
+                                    {
+                                        mustBut4.Background = enumColor.Fourth;
+                                        mustBut4.ToolTip = "4";
+
+                                    }
+                                    else
+                                    {
+                                        if (mustBut4.Background == enumColor.Fourth)
+                                        {
+                                            mustBut4.Background = enumColor.Fivth;
+                                            mustBut4.ToolTip = "5";
+                                        }
+                                    }
+                                }
+                            }//if
+                        }//else
+                         //     });
+                         //}, null, millisec, 999999999);
+                        break;
+
+                    case "5":
+                        // t4 = new Timer((o) =>
+                        //{
+                        //this.Dispatcher.Invoke(() =>
+                        //     {
+
+
+
+                        if (mustBut5.ToolTip.ToString() != "1" && mustBut5.ToolTip.ToString() != "2" && mustBut5.ToolTip.ToString() != "3" &&
+                                    mustBut5.ToolTip.ToString() != "4" && mustBut5.ToolTip.ToString() != "5")
+                        {
+                            mustBut5.Background = enumColor.First;
+                            mustBut5.ToolTip = "1";
+                        }
+                        else
+                        {
+                            if (mustBut5.ToolTip.ToString() == "1")
+                            {
+                                mustBut5.Background = enumColor.Second;
+                                mustBut5.ToolTip = "2";
+                            }
+                            else
+                            {
+                                if (mustBut5.ToolTip.ToString() == "2")
+                                {
+                                    mustBut5.Background = enumColor.Third;
+                                    mustBut5.ToolTip = "3";
+
+                                }
+                                else
+                                {
+                                    if (mustBut5.Background == enumColor.Third)
+                                    {
+                                        mustBut5.Background = enumColor.Fourth;
+                                        mustBut5.ToolTip = "4";
+
+                                    }
+                                    else
+                                    {
+                                        if (mustBut5.Background == enumColor.Fourth)
+                                        {
+                                            mustBut5.Background = enumColor.Fivth;
+                                            mustBut5.ToolTip = "5";
+                                        }
+                                    }
+                                }
+                            }//if
+                        }//else
+                         //     });
+                         //}, null, millisec, 999999999);
+                        break;
+
+                    case "6":
+                        // t5 = new Timer((o) =>
+                        //{
+                        //this.Dispatcher.Invoke(() =>
+                        //    {
+
+
+
+                        if (mustBut6.ToolTip.ToString() != "1" && mustBut6.ToolTip.ToString() != "2" && mustBut6.ToolTip.ToString() != "3" &&
+                                    mustBut6.ToolTip.ToString() != "4" && mustBut6.ToolTip.ToString() != "5")
+                        {
+                            mustBut6.Background = enumColor.First;
+                            mustBut6.ToolTip = "1";
+                        }
+                        else
+                        {
+                            if (mustBut6.ToolTip.ToString() == "1")
+                            {
+                                mustBut6.Background = enumColor.Second;
+                                mustBut6.ToolTip = "2";
+                            }
+                            else
+                            {
+                                if (mustBut6.ToolTip.ToString() == "2")
+                                {
+                                    mustBut6.Background = enumColor.Third;
+                                    mustBut6.ToolTip = "3";
+
+                                }
+                                else
+                                {
+                                    if (mustBut6.Background == enumColor.Third)
+                                    {
+                                        mustBut6.Background = enumColor.Fourth;
+                                        mustBut6.ToolTip = "4";
+
+                                    }
+                                    else
+                                    {
+                                        if (mustBut6.Background == enumColor.Fourth)
+                                        {
+                                            mustBut6.Background = enumColor.Fivth;
+                                            mustBut6.ToolTip = "5";
+                                        }
+                                    }
+                                }
+                            }//if
+                        }//else
+                         //    });
+                         //}, null, millisec, 999999999);
+                        break;
+
+                    case "7":
+                        // t6 = new Timer((o) =>
+                        //{
+                        //this.Dispatcher.Invoke(() =>
+                        //     {
+
+
+
+                        if (mustBut7.ToolTip.ToString() != "1" && mustBut7.ToolTip.ToString() != "2" && mustBut7.ToolTip.ToString() != "3" &&
+                                     mustBut7.ToolTip.ToString() != "4" && mustBut7.ToolTip.ToString() != "5")
+                        {
+                            mustBut7.Background = enumColor.First;
+                            mustBut7.ToolTip = "1";
+                        }
+                        else
+                        {
+                            if (mustBut7.ToolTip.ToString() == "1")
+                            {
+                                mustBut7.Background = enumColor.Second;
+                                mustBut7.ToolTip = "2";
+                            }
+                            else
+                            {
+                                if (mustBut7.ToolTip.ToString() == "2")
+                                {
+                                    mustBut7.Background = enumColor.Third;
+                                    mustBut7.ToolTip = "3";
+
+                                }
+                                else
+                                {
+                                    if (mustBut7.Background == enumColor.Third)
+                                    {
+                                        mustBut7.Background = enumColor.Fourth;
+                                        mustBut7.ToolTip = "4";
+
+                                    }
+                                    else
+                                    {
+                                        if (mustBut7.Background == enumColor.Fourth)
+                                        {
+                                            mustBut7.Background = enumColor.Fivth;
+                                            mustBut7.ToolTip = "5";
+                                        }
+                                    }
+                                }
+                            }//if
+                        }//else
+                         //     });
+                         //}, null, millisec, 999999999);
+                        break;
+
+                    case "8":
+                        // t7 = new Timer((o) =>
+                        //{
+                        //this.Dispatcher.Invoke(() =>
+                        //     {
+
+
+
+                        if (mustBut8.ToolTip.ToString() != "1" && mustBut8.ToolTip.ToString() != "2" && mustBut8.ToolTip.ToString() != "3" &&
+                                     mustBut8.ToolTip.ToString() != "4" && mustBut8.ToolTip.ToString() != "5")
+                        {
+                            mustBut8.Background = enumColor.First;
+                            mustBut8.ToolTip = "1";
+                        }
+                        else
+                        {
+                            if (mustBut8.ToolTip.ToString() == "1")
+                            {
+                                mustBut8.Background = enumColor.Second;
+                                mustBut8.ToolTip = "2";
+                            }
+                            else
+                            {
+                                if (mustBut8.ToolTip.ToString() == "2")
+                                {
+                                    mustBut8.Background = enumColor.Third;
+                                    mustBut8.ToolTip = "3";
+
+                                }
+                                else
+                                {
+                                    if (mustBut8.Background == enumColor.Third)
+                                    {
+                                        mustBut8.Background = enumColor.Fourth;
+                                        mustBut8.ToolTip = "4";
+
+                                    }
+                                    else
+                                    {
+                                        if (mustBut8.Background == enumColor.Fourth)
+                                        {
+                                            mustBut8.Background = enumColor.Fivth;
+                                            mustBut8.ToolTip = "5";
+                                        }
+                                    }
+                                }
+                            }//if
+                        }//else
+                         //     });
+                         //}, null, millisec, 999999999);
+                        break;
+
+                    case "9":
+                        // t8 = new Timer((o) =>
+                        //{
+                        //    this.Dispatcher.Invoke(() =>
+                        //          {
+
+
+
+                        if (mustBut9.ToolTip.ToString() != "1" && mustBut9.ToolTip.ToString() != "2" && mustBut9.ToolTip.ToString() != "3" &&
+                                     mustBut9.ToolTip.ToString() != "4" && mustBut9.ToolTip.ToString() != "5")
+                        {
+                            mustBut9.Background = enumColor.First;
+                            mustBut9.ToolTip = "1";
+                        }
+                        else
+                        {
+                            if (mustBut9.ToolTip.ToString() == "1")
+                            {
+                                mustBut9.Background = enumColor.Second;
+                                mustBut9.ToolTip = "2";
+                            }
+                            else
+                            {
+                                if (mustBut9.ToolTip.ToString() == "2")
+                                {
+                                    mustBut9.Background = enumColor.Third;
+                                    mustBut9.ToolTip = "3";
+
+                                }
+                                else
+                                {
+                                    if (mustBut9.Background == enumColor.Third)
+                                    {
+                                        mustBut9.Background = enumColor.Fourth;
+                                        mustBut9.ToolTip = "4";
+
+                                    }
+                                    else
+                                    {
+                                        if (mustBut9.Background == enumColor.Fourth)
+                                        {
+                                            mustBut9.Background = enumColor.Fivth;
+                                            mustBut9.ToolTip = "5";
+                                        }
+                                    }
+                                }
+                            }//if
+                        }//else
+                         //          });
+                         //}, null, millisec, 999999999);
+                        break;
+
+                    default:
+                        break;
+                }//switch
+                graphKeyArray.Remove(item);
+                break;
+            }//foreach
+
+            
+
         }
     }
 }

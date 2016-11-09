@@ -23,6 +23,7 @@ namespace WpfMySql2
 
     public partial class takeWindow : Window
     {
+       private static List<MusterClass> musterList = new List<MusterClass>();
         public long lastID;
         public string dataZeit = "";
        public string einMitarbeiterNach = "";
@@ -34,7 +35,7 @@ namespace WpfMySql2
             InitVonCbx();
             InitAnrCbx();
             InitGrpCbx();
-
+            InitTextBoxMuster();
             //mitarbeiterNach.IsEditable = true;
             //mitarbeiterNach.IsReadOnly = true;
             //mitarbeiterNach.Text = "Areit";            
@@ -90,6 +91,149 @@ namespace WpfMySql2
             }
         }
      
+        //не давать вводить в текстбокс до тех пор пока текстбокс предыдущего уровня не будет зполнен
+        private void InitTextBoxMuster()
+        {
+            //для старых мустеров(тут были только textBox'ы)
+            //1
+            //textMuster1.TextChanged += (s,e)=> {
+            //    TextBox tBx = (TextBox)s;
+            //    if (tBx.Text != "")
+            //        textMuster1_Copy.IsEnabled = true;
+            //    else
+            //        textMuster1_Copy.IsEnabled = false;
+            //};
+            //textMuster1_Copy.TextChanged += (s, e) => {
+            //    TextBox tBx = (TextBox)s;
+            //    if (tBx.Text != "")
+            //        textMuster1_Copy2.IsEnabled = true;
+            //    else
+            //        textMuster1_Copy2.IsEnabled = false;
+            //};
+            ////2
+            //textMuster2.TextChanged += (s, e) => {
+            //    TextBox tBx = (TextBox)s;
+            //    if (tBx.Text != "")
+            //        textMuster2_Сopy.IsEnabled = true;
+            //    else
+            //        textMuster2_Сopy.IsEnabled = false;
+            //};
+            //textMuster2_Сopy.TextChanged += (s, e) => {
+            //    TextBox tBx = (TextBox)s;
+            //    if (tBx.Text != "")
+            //        textMuster2_Сopy2.IsEnabled = true;
+            //    else
+            //        textMuster2_Сopy2.IsEnabled = false;
+            //};
+            ////3
+            //textMuster3.TextChanged += (s, e) => {
+            //    TextBox tBx = (TextBox)s;
+            //    if (tBx.Text != "")
+            //        textMuster3_Сopy.IsEnabled = true;
+            //    else
+            //        textMuster3_Сopy.IsEnabled = false;
+            //};
+            //textMuster3_Сopy.TextChanged += (s, e) => {
+            //    TextBox tBx = (TextBox)s;
+            //    if (tBx.Text != "")
+            //        textMuster3_Сopy2.IsEnabled = true;
+            //    else
+            //        textMuster3_Сopy2.IsEnabled = false;
+            //};
+            ////4
+            //textMuster4.TextChanged += (s, e) => {
+            //    TextBox tBx = (TextBox)s;
+            //    if (tBx.Text != "")
+            //        textMuster4_Сopy.IsEnabled = true;
+            //    else
+            //        textMuster4_Сopy.IsEnabled = false;
+            //};
+            //textMuster4_Сopy.TextChanged += (s, e) => {
+            //    TextBox tBx = (TextBox)s;
+            //    if (tBx.Text != "")
+            //        textMuster4_Сopy2.IsEnabled = true;
+            //    else
+            //        textMuster4_Сopy2.IsEnabled = false;
+            //};
+            ////5
+            //textMuster5.TextChanged += (s, e) => {
+            //    TextBox tBx = (TextBox)s;
+            //    if (tBx.Text != "")
+            //        textMuster5_Сopy.IsEnabled = true;
+            //    else
+            //        textMuster5_Сopy.IsEnabled = false;
+            //};
+            //textMuster5_Сopy.TextChanged += (s, e) => {
+            //    TextBox tBx = (TextBox)s;
+            //    if (tBx.Text != "")
+            //        textMuster5_Сopy2.IsEnabled = true;
+            //    else
+            //        textMuster5_Сopy2.IsEnabled = false;
+            //};
+            ////6
+            //textMuster6.TextChanged += (s, e) => {
+            //    TextBox tBx = (TextBox)s;
+            //    if (tBx.Text != "")
+            //        textMuster6_Сopy.IsEnabled = true;
+            //    else
+            //        textMuster6_Сopy.IsEnabled = false;
+            //};
+            //textMuster6_Сopy.TextChanged += (s, e) => {
+            //    TextBox tBx = (TextBox)s;
+            //    if (tBx.Text != "")
+            //        textMuster6_Сopy2.IsEnabled = true;
+            //    else
+            //        textMuster6_Сopy2.IsEnabled = false;
+            //};
+            ////7
+            //textMuster7.TextChanged += (s, e) => {
+            //    TextBox tBx = (TextBox)s;
+            //    if (tBx.Text != "")
+            //        textMuster7_Сopy.IsEnabled = true;
+            //    else
+            //        textMuster7_Сopy.IsEnabled = false;
+            //};
+            //textMuster7_Сopy.TextChanged += (s, e) => {
+            //    TextBox tBx = (TextBox)s;
+            //    if (tBx.Text != "")
+            //        textMuster7_Сopy2.IsEnabled = true;
+            //    else
+            //        textMuster7_Сopy2.IsEnabled = false;
+            //};
+            ////8
+            //textMuster8.TextChanged += (s, e) => {
+            //    TextBox tBx = (TextBox)s;
+            //    if (tBx.Text != "")
+            //        textMuster8_Сopy.IsEnabled = true;
+            //    else
+            //        textMuster8_Сopy.IsEnabled = false;
+            //};
+            //textMuster8_Сopy.TextChanged += (s, e) => {
+            //    TextBox tBx = (TextBox)s;
+            //    if (tBx.Text != "")
+            //        textMuster8_Сopy2.IsEnabled = true;
+            //    else
+            //        textMuster8_Сopy2.IsEnabled = false;
+            //};
+            ////9
+            //textMuster9.TextChanged += (s, e) => {
+            //    TextBox tBx = (TextBox)s;
+            //    if (tBx.Text != "")
+            //        textMuster9_Сopy.IsEnabled = true;
+            //    else
+            //        textMuster9_Сopy.IsEnabled = false;
+            //};
+            //textMuster9_Сopy.TextChanged += (s, e) => {
+            //    TextBox tBx = (TextBox)s;
+            //    if (tBx.Text != "")
+            //        textMuster9_Сopy2.IsEnabled = true;
+            //    else
+            //        textMuster9_Сopy2.IsEnabled = false;
+            //};
+        }
+
+        
+
         private void clientBaseBtn_Click(object sender, RoutedEventArgs e)
         {
             clientsBase clientBaseWnd = new clientsBase();
@@ -153,7 +297,12 @@ namespace WpfMySql2
 
         private void button_OK_Click(object sender, RoutedEventArgs e)
         {
-            if (((ComboBoxItem)mitarbeiterNach.SelectedValue).Content.ToString() != "\t***" && geratTxt.Text != "" && serialNummerTxt.Text != "" && BemerkungTxt.Text != "" && (passKundenTxt.Text != "" || (textMuster1.Text!="" || textMuster2.Text != ""|| textMuster3.Text != ""|| textMuster4.Text != ""|| textMuster5.Text != "" || textMuster6.Text != ""|| textMuster7.Text != ""|| textMuster8.Text != ""|| textMuster9.Text != "")) && zubehorTxt.Text != "" && (nameTxt.Text != "" || VornameTxt.Text != "") && (TelefonTxt.Text != "" || MobilTxt.Text != "" || EMailTxt.Text != ""))
+            string musterString = "";
+            foreach (MusterClass item in musterList)
+            {
+                musterString += item.NameNumer;
+            }
+            if (((ComboBoxItem)mitarbeiterNach.SelectedValue).Content.ToString() != "\t***" && geratTxt.Text != "" && serialNummerTxt.Text != "" && BemerkungTxt.Text != "" && (passKundenTxt.Text != "" || musterString != "") && zubehorTxt.Text != "" && (nameTxt.Text != "" || VornameTxt.Text != "") && (TelefonTxt.Text != "" || MobilTxt.Text != "" || EMailTxt.Text != ""))
             {
                 using (MySqlConnection cn = new MySqlConnection())
                 {
@@ -177,25 +326,8 @@ namespace WpfMySql2
 
                         ComboBoxItem cmbx = (ComboBoxItem)mitarbeiterNach.SelectedValue;
                         einMitarbeiterNach = (String)cmbx.Content;
-                        if (textMuster1.Text == "")
-                            textMuster1.Text = "*";
-                        if (textMuster2.Text == "")
-                            textMuster2.Text = "*";
-                        if (textMuster3.Text == "")
-                            textMuster3.Text = "*";
-                        if (textMuster4.Text == "")
-                            textMuster4.Text = "*";
-                        if (textMuster5.Text == "")
-                            textMuster5.Text = "*";
-                        if (textMuster6.Text == "")
-                            textMuster6.Text = "*";
-                        if (textMuster7.Text == "")
-                            textMuster7.Text = "*";
-                        if (textMuster8.Text == "")
-                            textMuster8.Text = "*";
-                        if (textMuster9.Text == "")
-                            textMuster9.Text = "*";
-                        string graphKey = textMuster1.Text + textMuster2.Text + textMuster3.Text + textMuster4.Text + textMuster5.Text + textMuster6.Text + textMuster7.Text + textMuster8.Text + textMuster9.Text;
+                       
+                       
                         string fehlerBeschreibungStr = MySqlHelper.EscapeString(FehlerbeschreibungTxt.Text); // чтоб можна было писать любые символы.напр. '  
                         string geratStr = MySqlHelper.EscapeString(geratTxt.Text);
                         string zubehorStr = MySqlHelper.EscapeString(zubehorTxt.Text);
@@ -204,7 +336,7 @@ namespace WpfMySql2
                         string internerFermStr = MySqlHelper.EscapeString(InternerVermerkTxt.Text);
                         string kundMatchcode = readSomeKunde(meinKundeID,cn);
                         
-                        string comm = string.Format("Insert Into service (dateTime, status, clientID, gerat, serialNummer, zubehor, fehlerBeschreibung, maxPrice, mitarbeiterNach, passKunden, graphKey, bemerkung, zustadn, internVermerk, kundNamVorMatch) values('{0}','{1}','{2}','{3}','{4}','{5}','{6}','{7}','{8}','{9}','{10}','{11}','{12}','{13}','{14}')", dataZeit , "Angenommen von", meinKundeID, geratStr, serialNummerTxt.Text, zubehorStr, fehlerBeschreibungStr, maxPrice.Text, einMitarbeiterNach, passKundenTxt.Text, graphKey, bemerkundStr, zustandStr, internerFermStr, kundMatchcode);
+                        string comm = string.Format("Insert Into service (dateTime, status, clientID, gerat, serialNummer, zubehor, fehlerBeschreibung, maxPrice, mitarbeiterNach, passKunden, graphKey, bemerkung, zustadn, internVermerk, kundNamVorMatch) values('{0}','{1}','{2}','{3}','{4}','{5}','{6}','{7}','{8}','{9}','{10}','{11}','{12}','{13}','{14}')", dataZeit , "Angenommen von", meinKundeID, geratStr, serialNummerTxt.Text, zubehorStr, fehlerBeschreibungStr, maxPrice.Text, einMitarbeiterNach, passKundenTxt.Text, musterString, bemerkundStr, zustandStr, internerFermStr, kundMatchcode);
                         using (MySqlCommand cmd = new MySqlCommand(comm, cn))
                         {
                             cmd.ExecuteNonQuery();
@@ -243,7 +375,7 @@ namespace WpfMySql2
                     alleFelder += "\n Bemerkung";
                 }
 
-                if (passKundenTxt.Text == "" && (textMuster1.Text == "" && textMuster2.Text == "" && textMuster3.Text == "" && textMuster4.Text == "" && textMuster5.Text == "" && textMuster6.Text == "" && textMuster7.Text == "" && textMuster8.Text == "" && textMuster9.Text == ""))
+                if (passKundenTxt.Text == "" && musterString == "")
                 {
                     alleFelder += "\n Log/Pass";
                 }
@@ -266,6 +398,283 @@ namespace WpfMySql2
         private void buttonCancel_Click(object sender, RoutedEventArgs e)
         {
             this.Close();
+        }
+
+        private void musBut1_Click(object sender, RoutedEventArgs e)
+        {
+            Button but = (Button)sender;
+            switch ((string)but.ToolTip)
+            {
+                case "1":
+                    but.Background = enumColor.First;
+                    but.ToolTip = "2";
+                    break;
+                case "2":
+                    but.Background = enumColor.Second;
+                    but.ToolTip = "3";
+                    break;
+                case "3":
+                    but.Background = enumColor.Third;
+                    but.ToolTip = "4";
+                    break;
+                case "4":
+                    but.Background = enumColor.Fourth;
+                    but.ToolTip = "5";
+                    break;
+                case "5":
+                    but.Background = enumColor.Fivth;
+                    break;
+                default:
+                    break;
+            }
+
+            musterList.Add(new MusterClass() { NameNumer = but.Content.ToString() }); //, time = DateTime.Now 
+        }
+
+        private void musBut2_Click(object sender, RoutedEventArgs e)
+        {
+            Button but = (Button)sender;
+            switch ((string)but.ToolTip)
+            {
+                case "1":
+                    but.Background = enumColor.First;
+                    but.ToolTip = "2";
+                    break;
+                case "2":
+                    but.Background = enumColor.Second;
+                    but.ToolTip = "3";
+                    break;
+                case "3":
+                    but.Background = enumColor.Third;
+                    but.ToolTip = "4";
+                    break;
+                case "4":
+                    but.Background = enumColor.Fourth;
+                    but.ToolTip = "5";
+                    break;
+                case "5":
+                    but.Background = enumColor.Fivth;
+                    break;
+                default:
+                    break;
+            }
+            musterList.Add(new MusterClass() { NameNumer = but.Content.ToString() });//, time = DateTime.Now
+        }
+
+        private void musBut3_Click(object sender, RoutedEventArgs e)
+        {
+            Button but = (Button)sender;
+            switch ((string)but.ToolTip)
+            {
+                case "1":
+                    but.Background = enumColor.First;
+                    but.ToolTip = "2";
+                    break;
+                case "2":
+                    but.Background = enumColor.Second;
+                    but.ToolTip = "3";
+                    break;
+                case "3":
+                    but.Background = enumColor.Third;
+                    but.ToolTip = "4";
+                    break;
+                case "4":
+                    but.Background = enumColor.Fourth;
+                    but.ToolTip = "5";
+                    break;
+                case "5":
+                    but.Background = enumColor.Fivth;
+                    break;
+                default:
+                    break;
+            }
+
+            musterList.Add(new MusterClass() { NameNumer = but.Content.ToString() });//, time = DateTime.Now
+        }
+
+        private void musBut4_Click(object sender, RoutedEventArgs e)
+        {
+            Button but = (Button)sender;
+            switch ((string)but.ToolTip)
+            {
+                case "1":
+                    but.Background = enumColor.First;
+                    but.ToolTip = "2";
+                    break;
+                case "2":
+                    but.Background = enumColor.Second;
+                    but.ToolTip = "3";
+                    break;
+                case "3":
+                    but.Background = enumColor.Third;
+                    but.ToolTip = "4";
+                    break;
+                case "4":
+                    but.Background = enumColor.Fourth;
+                    but.ToolTip = "5";
+                    break;
+                case "5":
+                    but.Background = enumColor.Fivth;
+                    break;
+                default:
+                    break;
+            }
+            musterList.Add(new MusterClass() { NameNumer = but.Content.ToString() });//, time = DateTime.Now 
+        }
+
+        private void musBut5_Click(object sender, RoutedEventArgs e)
+        {
+            Button but = (Button)sender;
+            switch ((string)but.ToolTip)
+            {
+                case "1":
+                    but.Background = enumColor.First;
+                    but.ToolTip = "2";
+                    break;
+                case "2":
+                    but.Background = enumColor.Second;
+                    but.ToolTip = "3";
+                    break;
+                case "3":
+                    but.Background = enumColor.Third;
+                    but.ToolTip = "4";
+                    break;
+                case "4":
+                    but.Background = enumColor.Fourth;
+                    but.ToolTip = "5";
+                    break;
+                case "5":
+                    but.Background = enumColor.Fivth;
+                    break;
+                default:
+                    break;
+            }
+            musterList.Add(new MusterClass() { NameNumer = but.Content.ToString() });//, time = DateTime.Now 
+        }
+
+        private void musBut6_Click(object sender, RoutedEventArgs e)
+        {
+            Button but = (Button)sender;
+            switch ((string)but.ToolTip)
+            {
+                case "1":
+                    but.Background = enumColor.First;
+                    but.ToolTip = "2";
+                    break;
+                case "2":
+                    but.Background = enumColor.Second;
+                    but.ToolTip = "3";
+                    break;
+                case "3":
+                    but.Background = enumColor.Third;
+                    but.ToolTip = "4";
+                    break;
+                case "4":
+                    but.Background = enumColor.Fourth;
+                    but.ToolTip = "5";
+                    break;
+                case "5":
+                    but.Background = enumColor.Fivth;
+                    break;
+                default:
+                    break;
+            }
+            musterList.Add(new MusterClass() { NameNumer = but.Content.ToString() });//, time = DateTime.Now
+        }
+
+        private void musBut7_Click(object sender, RoutedEventArgs e)
+        {
+            Button but = (Button)sender;
+            switch ((string)but.ToolTip)
+            {
+                case "1":
+                    but.Background = enumColor.First;
+                    but.ToolTip = "2";
+                    break;
+                case "2":
+                    but.Background = enumColor.Second;
+                    but.ToolTip = "3";
+                    break;
+                case "3":
+                    but.Background = enumColor.Third;
+                    but.ToolTip = "4";
+                    break;
+                case "4":
+                    but.Background = enumColor.Fourth;
+                    but.ToolTip = "5";
+                    break;
+                case "5":
+                    but.Background = enumColor.Fivth;
+                    break;
+                default:
+                    break;
+            }
+            musterList.Add(new MusterClass() { NameNumer = but.Content.ToString() });//, time = DateTime.Now
+        }
+
+        private void musBut8_Click(object sender, RoutedEventArgs e)
+        {
+            Button but = (Button)sender;
+            switch ((string)but.ToolTip)
+            {
+                case "1":
+                    but.Background = enumColor.First;
+                    but.ToolTip = "2";
+                    break;
+                case "2":
+                    but.Background = enumColor.Second;
+                    but.ToolTip = "3";
+                    break;
+                case "3":
+                    but.Background = enumColor.Third;
+                    but.ToolTip = "4";
+                    break;
+                case "4":
+                    but.Background = enumColor.Fourth;
+                    but.ToolTip = "5";
+                    break;
+                case "5":
+                    but.Background = enumColor.Fivth;
+                    break;
+                default:
+                    break;
+            }
+            musterList.Add(new MusterClass() { NameNumer = but.Content.ToString() });//, time = DateTime.Now
+        }
+
+        private void musBut9_Click(object sender, RoutedEventArgs e)
+        {
+            Button but = (Button)sender;
+            switch ((string)but.ToolTip)
+            {
+                case "1":
+                    but.Background = enumColor.First;
+                    but.ToolTip = "2";
+                    break;
+                case "2":
+                    but.Background = enumColor.Second;
+                    but.ToolTip = "3";
+                    break;
+                case "3":
+                    but.Background = enumColor.Third;
+                    but.ToolTip = "4";
+                    break;
+                case "4":
+                    but.Background = enumColor.Fourth;
+                    but.ToolTip = "5";
+                    break;
+                case "5":
+                    but.Background = enumColor.Fivth;
+                    break;
+                default:
+                    break;
+            }
+            musterList.Add(new MusterClass() { NameNumer = but.Content.ToString() });//, time = DateTime.Now
+        }
+
+        private void delMustButton_Click(object sender, RoutedEventArgs e)
+        {
+            MessageBox.Show("Muss machen! \nJetzt functioniert es nicht!");
         }
     }
 }

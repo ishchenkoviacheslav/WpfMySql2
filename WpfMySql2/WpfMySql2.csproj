@@ -70,6 +70,7 @@
     <Compile Include="Artikel.xaml.cs">
       <DependentUpon>Artikel.xaml</DependentUpon>
     </Compile>
+    <Compile Include="enumColor.cs" />
     <Compile Include="InheritedTextBox.cs" />
     <Compile Include="clientsBase.xaml.cs">
       <DependentUpon>clientsBase.xaml</DependentUpon>
@@ -77,6 +78,7 @@
     <Compile Include="InfoDetail.xaml.cs">
       <DependentUpon>InfoDetail.xaml</DependentUpon>
     </Compile>
+    <Compile Include="MusterClass.cs" />
     <Compile Include="NeuDataType.cs" />
     <Compile Include="PrintWindow.xaml.cs">
       <DependentUpon>PrintWindow.xaml</DependentUpon>

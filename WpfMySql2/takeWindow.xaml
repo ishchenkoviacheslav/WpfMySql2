@@ -83,9 +83,9 @@
         <Button x:Name="geratBtn" Content="Gerät" Margin="3" FontSize="16" TabIndex="10" IsTabStop="False" Grid.ColumnSpan="5" Grid.Row="5"/>
         <Label x:Name="Benerkung" Content="Bemerkung:" Margin="3,3,-1,3" FontSize="15" Grid.Row="8" Padding="5,5,1,5"/>
         <TextBox x:Name="BemerkungTxt" ToolTip="Seriennummer" TabIndex="14" Margin="3" TextWrapping="Wrap" Text="" FontSize="16" Grid.Column="1" Grid.ColumnSpan="4" Grid.Row="8"/>
-        <TextBox x:Name="passKundenTxt" ToolTip="Seriennummer" TabIndex="15" Margin="3" TextWrapping="Wrap" Text="" FontSize="16" Grid.Column="1" Grid.ColumnSpan="2" Grid.Row="9" Grid.RowSpan="2"/>
-        <Label x:Name="Muster" Content="Muster:" Margin="3" FontSize="16" Grid.Column="3" Grid.Row="9" HorizontalAlignment="Right" VerticalAlignment="Center"/>
-        <Grid Grid.Column="4" Grid.Row="9" Grid.RowSpan="2">
+        <TextBox x:Name="passKundenTxt" ToolTip="Seriennummer" TabIndex="15" Margin="3,3,3,34" TextWrapping="Wrap" Text="" FontSize="16" Grid.Column="1" Grid.ColumnSpan="2" Grid.Row="9" Grid.RowSpan="2"/>
+        <Label x:Name="Muster" Content="Muster:" Margin="0,0,0,3" FontSize="16" Grid.Column="1" Grid.Row="10" HorizontalAlignment="Right" VerticalAlignment="Bottom"/>
+        <Grid Grid.Column="3" Grid.Row="9" Grid.RowSpan="2" Grid.ColumnSpan="2" Margin="3">
             <Grid.RowDefinitions>
                 <RowDefinition Height="33*"/>
                 <RowDefinition Height="33*"/>
@@ -96,15 +96,45 @@
                 <ColumnDefinition Width="33*"/>
                 <ColumnDefinition Width="33*"/>
             </Grid.ColumnDefinitions>
-            <TextBox x:Name="textMuster1" MaxLength="1" Margin="3" TextWrapping="Wrap" Text="" FontSize="16" TabIndex="16"/>
-            <TextBox x:Name="textMuster2" MaxLength="1" Margin="3" TextWrapping="Wrap" Text="" FontSize="16" TabIndex="17" Grid.Column="1"/>
-            <TextBox x:Name="textMuster3" MaxLength="1" Margin="3" TextWrapping="Wrap" Text="" FontSize="16" TabIndex="18" Grid.Column="2"/>
-            <TextBox x:Name="textMuster4" MaxLength="1" Margin="3" TextWrapping="Wrap" Text="" FontSize="16" TabIndex="19" Grid.Row="1"/>
-            <TextBox x:Name="textMuster5" MaxLength="1" Margin="3" TextWrapping="Wrap" Text="" FontSize="16" TabIndex="20" Grid.Column="1" Grid.Row="1"/>
-            <TextBox x:Name="textMuster6" MaxLength="1" Margin="3" TextWrapping="Wrap" Text="" FontSize="16" TabIndex="21" Grid.Column="2" Grid.Row="1"/>
-            <TextBox x:Name="textMuster7" MaxLength="1" Margin="3" TextWrapping="Wrap" Text="" FontSize="16" TabIndex="22" Grid.Row="2"/>
-            <TextBox x:Name="textMuster8" MaxLength="1" Margin="3" TextWrapping="Wrap" Text="" FontSize="16" TabIndex="23" Grid.Column="1" Grid.Row="2"/>
-            <TextBox x:Name="textMuster9" MaxLength="1" Margin="3" TextWrapping="Wrap" Text="" FontSize="16" TabIndex="24" Grid.Column="2" Grid.Row="2"/>
+            <Button x:Name="musBut1" Content="1" Margin="3" Click="musBut1_Click" ToolTip="1" Background="#FFDDDDDD"/>
+            <Button x:Name="musBut2" Content="2" Margin="3" ToolTip="1" Click="musBut2_Click" Grid.Column="1"/>
+            <Button x:Name="musBut3" Content="3" Margin="3" ToolTip="1" Click="musBut3_Click" Grid.Column="2"/>
+            <Button x:Name="musBut4" Content="4" Margin="3" ToolTip="1" Click="musBut4_Click" Grid.Row="1"/>
+            <Button x:Name="musBut5" Content="5" Margin="3" ToolTip="1" Click="musBut5_Click" Grid.Column="1" Grid.Row="1"/>
+            <Button x:Name="musBut6" Content="6" Margin="3" ToolTip="1" Click="musBut6_Click" Grid.Row="1" Grid.Column="2"/>
+            <Button x:Name="musBut7" Content="7" Margin="3" ToolTip="1" Click="musBut7_Click" Grid.Row="2"/>
+            <Button x:Name="musBut8" Content="8" Margin="3" ToolTip="1" Click="musBut8_Click" Grid.Row="2" Grid.Column="1"/>
+            <Button x:Name="musBut9" Content="9" Margin="3" ToolTip="1" Click="musBut9_Click" Grid.Row="2" Grid.Column="2"/>
+
+            <!--<TextBox x:Name="textMuster1" MaxLength="1" Margin="1,3" TextWrapping="Wrap" Text="" FontSize="16" TabIndex="16"/>
+            <TextBox x:Name="textMuster1_Copy" MaxLength="1" Margin="1,3" TextWrapping="Wrap" Text="" FontSize="16" TabIndex="16" Grid.Column="3" Background="#FFD1D1D1" IsEnabled="False"/>
+            <TextBox x:Name="textMuster1_Copy2" MaxLength="1" Margin="1,3" TextWrapping="Wrap" Text="" FontSize="16" TabIndex="16" Grid.Column="6" Background="#FFA4A4A4" IsEnabled="False"/>
+            <TextBox x:Name="textMuster2" MaxLength="1" Margin="1,3" TextWrapping="Wrap" Text="" FontSize="16" TabIndex="17" Grid.Column="1"/>
+            <TextBox x:Name="textMuster2_Сopy" MaxLength="1" Margin="1,3" TextWrapping="Wrap" Text="" FontSize="16" TabIndex="17" Grid.Column="4" Background="#FFD1D1D1" IsEnabled="False"/>
+            <TextBox x:Name="textMuster2_Сopy2" MaxLength="1" Margin="1,3" TextWrapping="Wrap" Text="" FontSize="16" TabIndex="17" Grid.Column="7" Background="#FFA4A4A4" IsEnabled="False"/>
+            <TextBox x:Name="textMuster3" MaxLength="1" Margin="1,3" TextWrapping="Wrap" Text="" FontSize="16" TabIndex="18" Grid.Column="2"/>
+            <TextBox x:Name="textMuster3_Сopy" MaxLength="1" Margin="1,3" TextWrapping="Wrap" Text="" FontSize="16" TabIndex="18" Grid.Column="5" Background="#FFD1D1D1" IsEnabled="False"/>
+            <TextBox x:Name="textMuster3_Сopy2" MaxLength="1" Margin="1,3" TextWrapping="Wrap" Text="" FontSize="16" TabIndex="18" Grid.Column="8" Background="#FFA4A4A4" IsEnabled="False"/>
+            
+            <TextBox x:Name="textMuster4" MaxLength="1" Margin="1,3" TextWrapping="Wrap" Text="" FontSize="16" TabIndex="19" Grid.Row="1"/>
+            <TextBox x:Name="textMuster4_Сopy" MaxLength="1" Margin="1,3" TextWrapping="Wrap" Text="" FontSize="16" TabIndex="19" Grid.Row="1" Grid.Column="3" Background="#FFD1D1D1" IsEnabled="False"/>
+            <TextBox x:Name="textMuster4_Сopy2" MaxLength="1" Margin="1,3" TextWrapping="Wrap" Text="" FontSize="16" TabIndex="19" Grid.Row="1" Grid.Column="6" Background="#FFA4A4A4" IsEnabled="False"/>
+            <TextBox x:Name="textMuster5" MaxLength="1" Margin="1,3" TextWrapping="Wrap" Text="" FontSize="16" TabIndex="20" Grid.Column="1" Grid.Row="1"/>
+            <TextBox x:Name="textMuster5_Сopy" MaxLength="1" Margin="1,3" TextWrapping="Wrap" Text="" FontSize="16" TabIndex="20" Grid.Column="4" Grid.Row="1" Background="#FFD1D1D1" IsEnabled="False"/>
+            <TextBox x:Name="textMuster5_Сopy2" MaxLength="1" Margin="1,3" TextWrapping="Wrap" Text="" FontSize="16" TabIndex="20" Grid.Column="7" Grid.Row="1" Background="#FFA4A4A4" IsEnabled="False"/>
+            <TextBox x:Name="textMuster6" MaxLength="1" Margin="1,3" TextWrapping="Wrap" Text="" FontSize="16" TabIndex="21" Grid.Column="2" Grid.Row="1"/>
+            <TextBox x:Name="textMuster6_Сopy" MaxLength="1" Margin="1,3" TextWrapping="Wrap" Text="" FontSize="16" TabIndex="21" Grid.Column="5" Grid.Row="1" Background="#FFD1D1D1" IsEnabled="False"/>
+            <TextBox x:Name="textMuster6_Сopy2" MaxLength="1" Margin="1,3" TextWrapping="Wrap" Text="" FontSize="16" TabIndex="21" Grid.Column="8" Grid.Row="1" Background="#FFA4A4A4" IsEnabled="False"/>
+            
+            <TextBox x:Name="textMuster7" MaxLength="1" Margin="1,3" TextWrapping="Wrap" Text="" FontSize="16" TabIndex="22" Grid.Row="2"/>
+            <TextBox x:Name="textMuster7_Сopy" MaxLength="1" Margin="1,3" TextWrapping="Wrap" Text="" FontSize="16" TabIndex="22" Grid.Row="2" Grid.Column="3" Background="#FFD1D1D1" IsEnabled="False"/>
+            <TextBox x:Name="textMuster7_Сopy2" MaxLength="1" Margin="1,3" TextWrapping="Wrap" Text="" FontSize="16" TabIndex="22" Grid.Row="2" Grid.Column="6" Background="#FFA4A4A4" IsEnabled="False"/>
+            <TextBox x:Name="textMuster8" MaxLength="1" Margin="1,3" TextWrapping="Wrap" Text="" FontSize="16" TabIndex="23" Grid.Column="1" Grid.Row="2"/>
+            <TextBox x:Name="textMuster8_Сopy" MaxLength="1" Margin="1,3" TextWrapping="Wrap" Text="" FontSize="16" TabIndex="23" Grid.Column="4" Grid.Row="2" Background="#FFD1D1D1" IsEnabled="False"/>
+            <TextBox x:Name="textMuster8_Сopy2" MaxLength="1" Margin="1,3" TextWrapping="Wrap" Text="" FontSize="16" TabIndex="23" Grid.Column="7" Grid.Row="2" Background="#FFA4A4A4" IsEnabled="False"/>
+            <TextBox x:Name="textMuster9" MaxLength="1" Margin="1,3" TextWrapping="Wrap" Text="" FontSize="16" TabIndex="24" Grid.Column="2" Grid.Row="2"/>
+            <TextBox x:Name="textMuster9_Сopy" MaxLength="1" Margin="1,3" TextWrapping="Wrap" Text="" FontSize="16" TabIndex="24" Grid.Column="5" Grid.Row="2" Background="#FFD1D1D1" IsEnabled="False"/>
+            <TextBox x:Name="textMuster9_Сopy2" MaxLength="1" Margin="1,3" TextWrapping="Wrap" Text="" FontSize="16" TabIndex="24" Grid.Column="8" Grid.Row="2" Background="#FFA4A4A4" IsEnabled="False"/>-->
         </Grid>
         <Label x:Name="von" Content="Von:" HorizontalAlignment="Right" Margin="3" FontSize="16" Grid.Column="2" Grid.Row="12" HorizontalContentAlignment="Center" VerticalContentAlignment="Center"/>
         <TabControl x:Name="tabControlAuftrag" Margin="3" Grid.Column="5" Grid.ColumnSpan="4" Grid.Row="5" Grid.RowSpan="9">
@@ -115,6 +145,7 @@
                 <TextBox x:Name="InternerVermerkTxt" TextWrapping="Wrap" Text="" FontSize="16" TabIndex="32"/>
             </TabItem>
         </TabControl>
+        <Button x:Name="delMustButton" Content="delete" Grid.Column="2" HorizontalAlignment="Right" Margin="0,0,3,3" Grid.Row="10" VerticalAlignment="Bottom" Background="#FFD32222" Click="delMustButton_Click"/>
 
 
     </Grid>
